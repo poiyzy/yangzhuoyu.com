@@ -1,9 +1,7 @@
-Bin He's Blog/Portfolios
+Roy Young's Blog/Portfolios
 ========================
-http://beenhero.com
+http://yangzhuoyu.com
 
-When the time paased, only the 'print'(now binary) left.
+Forked from [Bin He's Blog](https://github.com/beenhero/beenhero.com/tree/master).
 
-Leave something in the time space.
-
-The ~/bin theme will be released as Jekyll/Middleman theme, stay tuned.
+Bin He's ~/bin theme will be released as Jekyll/Middleman theme, stay tuned.
