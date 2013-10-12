@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <id>http://yangzhuoyu.com</id>
+    <title>Roy's Blog</title>
+    <link>http://yangzhuoyu.com</link>
+    <language>zh-cn</language>
+    <copyright>&amp;#x2117; &amp;amp; &amp;#xA9; 2013 Roy Young</copyright>
+    <link href="http://yangzhuoyu.com"/>
+    <link href="http://yangzhuoyu.com/rss.xml" rel="self"/>
+    <updated>2013-10-11T10:23:00Z</updated>
+    <lastBuildDate>2013-10-11T10:23:00Z</lastBuildDate>
+    <pubDate>2013-10-11T10:23:00Z</pubDate>
+    <description>Roy's blog</description>
+    <author>
+      <name>Roy Young</name>
+    </author>
+    <item>
+      <title>The first month in Pragmatic.ly</title>
+      <link>http://yangzhuoyu.com/first-month-in-pragmatic-ly</link>
+      <description type="html">&lt;p&gt;9月初的时候，很幸运的加入了 Pragmatic.ly，随后来到了杭州，和偶像吃、住、工作在一起。啥感觉呢？看过中国好声音吧，就像一个学员加入某个导师的团队后，并且和他吃住在一起的那种感觉！&lt;/p&gt;
+
+&lt;p&gt;Pragmatic.ly 不是一个远程团队吗？怎么会在一起办公呢？我是暂时过来杭州，和大家在一起增进大家互相了解的。&lt;/p&gt;
+
+&lt;h2&gt;享受工作&lt;/h2&gt;
+
+&lt;p&gt;来到杭州后，感觉在这样一个团队里特别爽！我一直很崇拜这3位创始人，因为仅仅三个程序员就可以做出如此好的一个项目。他们的技术实力和经验就不用我介绍了，相信很多人都很了解。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;团队氛围&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;3个人都特别好相处，没有架子、没有脾气、非常和蔼。在工作中遇到问题，他们不会责备，更不会埋怨，当然也不会很直接的告诉我解决方案。他们会给我一些引导，或者给我提供一些可选择的方案让我自己去摸索。因为我刚刚加入，有些地方还不适应，很多地方需要去学习和了解，而且自己很容易去钻牛角尖，效率非常低。他们从来都不催促我，就如此耐心的等着我自己去发现问题，解决问题，然后带着自己的想法和他们去讨论。&lt;/p&gt;
+
+&lt;p&gt;在讨论中，带着自己的认识，然后再去听听大家的建议和想法后记忆深刻。而且他们的热情爆棚，刚来杭州的一周，我每天拉着 Terry 讨论问题，各种各样的话题，从技术到产品、再到业界动态、技术圈的新闻。。。真的好多时候分不清是工作还是休息，那一个星期每天和 Terry 从天黑聊到清晨，知道发现太阳出来了才意识到该睡觉了。这段时间，真的成长了很多。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;工程师文化&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;大家在工作中互相平等，尤其是在 code review 的时候。任何人写的代码都是要别其他成员 review 的，不论你在负责什么，不论你是不是创始人，不论你的技术有多么过硬，此时只有纯粹的技术和自己思路。很多时候需要指出别人代码中的不足，或者在讨论中坚持自己的思路。对于我来说，这可是对老大评头论足呀！这可是在老大面前坚持己见、顶撞老大哎！&lt;/p&gt;
+
+&lt;p&gt;这里没有老大，只有3个满怀热情追逐梦想的工程师。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;关于学习&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Tealeaf Academy 的 @knwang 介绍过一种对于团队学习和提高非常快的方法：&amp;quot;Pair Programming&amp;quot;。每个人都可以和身边的人学到很多东西，而且促进团队中的技术交流。但是在国内好像没有几家公司用这样的方法，也许是不适应，也许是没有条件去做。包括我们也是同样，因为远程，所以条件达不到。但是我们选择另外一种方式 &lt;a href="http://yedingding.com/2013/08/08/dig-into-code-review-process.html"&gt;code review&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;我觉得学习快捷有效的方式是去 review 别人的代码，所以大家一般都会去 github 找开源代码，但是当你对于设计模式或者处理方式不确定的时候却很难得到作者的回复。但是在这里我可以在 code review 的时候直接留言问问题，为什么要这样做？为什么不那样做？好处是什么？而且当我提交代码的时候大家也会对于我的代码给于建议和指正，怎样做更好，问题在哪里。除了技术上的实现，还会了解到很多经验丰富的程序员的思维方式。这个环节，让我收获颇丰。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;对于产品的理念&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;“享受工作”除了对于技术上的学习外，他们对于产品的理念同样吸引着我。&lt;em&gt;不做恶！&lt;/em&gt; 没有欺诈，没有炒作。本本分分的去用心为用户思考。讨论一个简单的排列顺序问题，他们会讨论两天；讨论一种推广方式是否作恶，他们会讨论一周。这不是效率高低的问题，这是一种真正用心的态度，或者偏激一点说这是一种“精神洁癖”。&lt;/p&gt;
+
+&lt;p&gt;当有别人的批评或者建议的时候，他们从来不会打口水仗后者争论，只是默默的反思，改进。我每天都在用这个用心打造的产品，每天都能体验到细微的感动。&lt;/p&gt;
+
+&lt;h2&gt;享受生活&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;我们不是工作狂&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;仅仅靠3个工程师可以做出来这样的项目，不停的快速更新和迭代，他们肯定是工作狂！是宅男！不对！他们很享受生活。&lt;/p&gt;
+
+&lt;p&gt;对于远程工作来说，最大问题就是没有了上下班的时间限制太过自由以后什么都不规律，比如说作息、饮食、运动。长此以往，人将不人。。。&lt;/p&gt;
+
+&lt;p&gt;对于工作时间的平衡是比较难做到的，好多次当我因为一个问题“上头”的时候，总是在一个问题上纠结很长时间。虽然效率很低，但是工作时间已经超出了，我总会收到来自他们的提醒：“Roy，如果工作时间够了就休息休息轻松一下，明天再弄，要劳逸结合嘛。” 很多管理者都会这样寒暄几句，但在这里这不是一句客气话，这是一种“理念” &amp;mdash; &lt;a href="https://pragmatic.ly/blog/we-are-back/"&gt;&amp;ldquo;1 开发 + 1 跟用户聊天 + 0.5 锻炼身体&amp;rdquo;&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;我他们都很喜欢运动，比如打球、游泳。工作时间自由，运动时间也同样会有保障。来到杭州后几乎天天游泳，而且作息也很规律，最近在尝试 Ben 亲测有效的&lt;a href="http://beenhero.com/improve-remote-work-productivity/"&gt;春上春树作息法&lt;/a&gt;。嘿，这一个月体验下来，白天精神饱满了，工作效率提高了，身体抵抗力变强了，就连打 Dota 都能一口气超神了！&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;我们追求效率&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;他们三个人中有两个都结婚生子了，他们每天没有因为创业放弃家庭，在前几天的国庆长假中，他们带着全家人去游山玩水。入秋了，孩子特别容易生病。他们不需要妻子或者家人的帮忙，每天带着孩子看病输液，甚至会一个照顾两个病人。&lt;/p&gt;
+
+&lt;p&gt;舍弃家庭而创业的情况在很多团队中都屡见不鲜。而他们在工作和家庭中平衡的很好，并不是他们懂得如何正确的选择舍弃的东西，而是他们最求的是效率。不会因为是远程工作就大把大把的挥霍时间，更不会因为创业就对生活完全舍弃。对于工作和家庭的平衡在于工作的效率，这是一种态度。&lt;/p&gt;
+
+&lt;h2&gt;骨子里的东西&lt;/h2&gt;
+
+&lt;p&gt;为什么他们的效率会这样高呢？可以看看&lt;a href="http://yedingding.com/2013/07/24/remote-team-the-things-you-should-know.html"&gt;这里&lt;/a&gt;。其实完全不用考虑他们用什么工具来让自己变的如此高效、让工作和生活都是如此的惬意，就是 &lt;a href="https://pragmatic.ly/"&gt;Pragmatic.ly&lt;/a&gt; 我也不会说这个工具是必然的。&lt;/p&gt;
+
+&lt;p&gt;我觉得这是他们骨子里的东西，他们有如此多的远程工作经验，并且他们可以说是国内第一批从传统办公到远程办公过渡的一批人，在这个过渡中他们总结了很多的经验教训。他们实践了，总结了，并把这些经验教训分享出来，其实我觉得他们最大的分享或者说贡献不是什么开源项目、演讲或者 Blog，我觉得他们最大的分享和贡献是他们把自己多年的经验教训总结出来分享给大家的 Pragmatic.ly。&lt;/p&gt;
+
+&lt;p&gt;我相信他们对于产品的态度，我很庆幸现在我是他们中的一员。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;另外，非常感谢一直教诲并帮助我的 &lt;a href="http://twitter.com/knwang"&gt;@knwang&lt;/a&gt; 和 &lt;a href="http://nvyuzhe.com"&gt;vincent&lt;/a&gt;。&lt;/em&gt;&lt;/p&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2013-10-11T10:23:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>Reading Plan</title>
+      <link>http://yangzhuoyu.com/reading-plan</link>
+      <description type="html">&lt;h3&gt;The books I have read&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.amazon.com/Well-Grounded-Rubyist-David-Black/dp/1933988657"&gt;The Well-Grounded Rubyist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.amazon.com/Eloquent-Ruby-Addison-Wesley-Professional-Series/dp/0321584104/ref=sr_1_sc_1?s=books&amp;ie=UTF8&amp;qid=1370579591&amp;sr=1-1-spell&amp;keywords=eloqunt+ruby"&gt;Eloquent Ruby&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.amazon.com/Design-Patterns-Ruby-Russ-Olsen/dp/0321490452/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1370579706&amp;sr=1-1&amp;keywords=design+patterns+in+ruby"&gt;Design Patterns in Ruby&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.amazon.com/Practical-Object-Oriented-Design-Ruby-Addison-Wesley/dp/0321721330/ref=sr_1_sc_2?s=books&amp;ie=UTF8&amp;qid=1370579591&amp;sr=1-2-spell&amp;keywords=eloqunt+ruby"&gt;Practical Object-Oriented Design in Ruby&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.amazon.com/Metaprogramming-Ruby-Program-Like-Pros/dp/1934356476/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1370579648&amp;sr=1-1&amp;keywords=metaprogramming+ruby"&gt;Metaprogramming Ruby&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;The books I am going to read&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1370579725&amp;sr=1-1&amp;keywords=clean+code"&gt;Clean Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1370579747&amp;sr=1-1&amp;keywords=refactoring"&gt;Refactoring&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1370579784&amp;sr=1-1&amp;keywords=growing+object-oriented+software+guided+by+tests"&gt;Growing Object-Oriented Software, Guided By Tests&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2013-06-06T23:31:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>Spine Mobile --- Events</title>
+      <link>http://yangzhuoyu.com/spine-mobile-events</link>
+      <description type="html">&lt;h3&gt;300ms click event&lt;/h3&gt;
+
+&lt;p&gt;一个手机开发人员经常会出的错误是使用 &lt;em&gt;click&lt;/em&gt; 事件。正确的做法：&lt;strong&gt;不要使用 click event&lt;/strong&gt;。 因为 &lt;em&gt;Mobile Safari&lt;/em&gt; 会有300毫秒的延迟来判定是否为点击操作还是可能有后续操作。&lt;/p&gt;
+
+&lt;h3&gt;tap&lt;/h3&gt;
+
+&lt;p&gt;使用 &lt;strong&gt;tap&lt;/strong&gt; 来代替 &lt;strong&gt;click&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;直接使用 &lt;strong&gt;tap&lt;/strong&gt; 来代替 &lt;strong&gt;click&lt;/strong&gt; 事件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;ContactsList&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Panel&lt;/span&gt;
+  &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nx"&gt;Replace&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;click&amp;#39;&lt;/span&gt; &lt;span class="kd"&gt;with&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;tap&amp;#39;&lt;/span&gt;
+  &lt;span class="nx"&gt;events&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;tap .item&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;select&amp;#39;&lt;/span&gt;
+
+  &lt;span class="nx"&gt;select&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class="nx"&gt;item&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;target&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;navigate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/contacts&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;trans&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;right&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;当用户的手不离开的时候这个事件将不会被激活，同样这个事件可以被手指滑动所取消。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href="http://spinejs.com/mobile/docs/events"&gt;Events&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2012-06-28T09:00:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>Spine Mobile --- Transitions</title>
+      <link>http://yangzhuoyu.com/spine-mobile-transitions</link>
+      <description type="html">&lt;h3&gt;Activating Panels&lt;/h3&gt;
+
+&lt;p&gt;激活 &lt;em&gt;Panels&lt;/em&gt; ，正如我们在之前在&lt;a href="/blog/2012/06/28/spine-mobile-stage-and-panel-controllers/"&gt;关于Controller&lt;/a&gt;中使用 &lt;code&gt;active()&lt;/code&gt; 函数完成。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;calss&lt;/span&gt; &lt;span class="nx"&gt;ContactsList&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Panel&lt;/span&gt;
+  &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt;
+
+&lt;span class="nx"&gt;list&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;ContactsList&lt;/span&gt;
+&lt;span class="nx"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;active&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;默认情况下，它将不使用任何 &lt;em&gt;transitions&lt;/em&gt; , 只是简单的显示 &lt;em&gt;controller&lt;/em&gt; 。使用 &lt;em&gt;transition&lt;/em&gt; , 需要把 &lt;code&gt;trans&lt;/code&gt; 传入到 &lt;code&gt;active()&lt;/code&gt; :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nx"&gt;Transition&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nx"&gt;form&lt;/span&gt; &lt;span class="nx"&gt;left&lt;/span&gt;
+&lt;span class="nx"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;active&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;trans&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;left&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nx"&gt;Or&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;transition&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nx"&gt;from&lt;/span&gt; &lt;span class="nx"&gt;right&lt;/span&gt;
+&lt;span class="nx"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;active&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;trans&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;right&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;目前只支持两种 &lt;em&gt;transition&lt;/em&gt; ，&lt;strong&gt;left&lt;/strong&gt; 和 &lt;strong&gt;right&lt;/strong&gt; 。&lt;/p&gt;
+
+&lt;h3&gt;Routes&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Panels&lt;/em&gt; 经常由 &lt;em&gt;routes&lt;/em&gt; 激活。&lt;em&gt;Spine&lt;/em&gt; 允许传入一个自定的对象作为 &lt;code&gt;@navigate()&lt;/code&gt; 的最后一个参数来激活 &lt;em&gt;routes&lt;/em&gt; 。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;navigate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/contacts&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;trans&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;left&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;{trans: &amp;#39;left&amp;#39;}&lt;/code&gt; 然后将会被传入到 &lt;em&gt;route callback&lt;/em&gt; 。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;routes&lt;/span&gt;
+  &lt;span class="s1"&gt;&amp;#39;/contacts&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class="nx"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;trans&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;left&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;然后应该将 &lt;em&gt;route callback params&lt;/em&gt; 传入到 &lt;code&gt;active()&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;list&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;ContactsList&lt;/span&gt;
+&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;routes&lt;/span&gt;
+  &lt;span class="s1"&gt;&amp;#39;/contacts&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;active&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;我们来浏览一下完整的例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;ContactsCreate&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Panel&lt;/span&gt;
+  &lt;span class="nx"&gt;className&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;contacts create&amp;#39;&lt;/span&gt;
+  &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt;
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;ContactsList&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Panel&lt;/span&gt;
+  &lt;span class="nx"&gt;className&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;contacts list&amp;#39;&lt;/span&gt;
+
+  &lt;span class="nx"&gt;constructor&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class="kr"&gt;super&lt;/span&gt;
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;addButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Add contact&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;add&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+  &lt;span class="nx"&gt;add&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;navigate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/contacts/create&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;trans&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;right&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;Contacts&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Spine&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Controller&lt;/span&gt;
+  &lt;span class="nx"&gt;constructor&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class="kr"&gt;super&lt;/span&gt;
+
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;list&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;ContactsList&lt;/span&gt;
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;create&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;ContactsCreate&lt;/span&gt;
+
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;routes&lt;/span&gt;
+      &lt;span class="s1"&gt;&amp;#39;/contacts&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;active&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="s1"&gt;&amp;#39;/contacts/create&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;create&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;active&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;可以看到 &lt;strong&gt;ContactsCreate&lt;/strong&gt; 的 &lt;em&gt;Panel&lt;/em&gt; 在 &lt;code&gt;add()&lt;/code&gt; 方法中指定。同时需要注意 &lt;em&gt;route&lt;/em&gt; 确认并且传递 &lt;strong&gt;params&lt;/strong&gt; 对象的方式，传入到 &lt;code&gt;active()&lt;/code&gt; 中，因此 &lt;em&gt;controller&lt;/em&gt; 知道使用 &lt;em&gt;transition&lt;/em&gt; 的顺序。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href="http://spinejs.com/mobile/docs/transitions"&gt;Transitions&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2012-06-28T07:56:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>Spine Mobile --- Stage &amp;amp; Panel Controllers</title>
+      <link>http://yangzhuoyu.com/spine-mobile-stage-and-panel-controllers</link>
+      <description type="html">&lt;h2&gt;Stage &amp;amp; Panel Controllers&lt;/h2&gt;
+
+&lt;p&gt;关于 &lt;em&gt;Stage&lt;/em&gt; 和 &lt;em&gt;Panel&lt;/em&gt;。&lt;em&gt;Stage&lt;/em&gt; 是平台，&lt;em&gt;Panel&lt;/em&gt; 是其中的面板。&lt;em&gt;Stage&lt;/em&gt; 覆盖整个可见区域，而 &lt;em&gt;Panel&lt;/em&gt; 则只覆盖应用的 &lt;strong&gt;header&lt;/strong&gt; 和 &lt;strong&gt;content&lt;/strong&gt;。一个应用通常将会同时显示 &lt;em&gt;Stage&lt;/em&gt; 和 &lt;em&gt;Panel&lt;/em&gt;。&lt;/p&gt;
+
+&lt;h3&gt;Stage&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Stage&lt;/em&gt; 包含元素： 一个 &lt;strong&gt;header&lt;/strong&gt;，一个 &lt;strong&gt;article&lt;/strong&gt; 和一个 &lt;strong&gt;footer&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;像这个样子：
+&lt;code&gt;html
+&amp;lt;body class=&amp;quot;stage&amp;quot;&amp;gt;
+  &amp;lt;header&amp;gt;&amp;lt;/header&amp;gt;
+  &amp;lt;article class=&amp;quot;viewport&amp;quot;&amp;gt;&amp;lt;/article&amp;gt;
+  &amp;lt;footer&amp;gt;&amp;lt;/footer&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Spine Mobile&lt;/strong&gt; 包括一些默认的 &lt;strong&gt;CSS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;设置整体的宽度和高度为 100%&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;header&lt;/strong&gt; 放置在 &lt;em&gt;stage&lt;/em&gt; 的顶部。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;footer&lt;/strong&gt; 放置在 &lt;em&gt;stage&lt;/em&gt; 的底部。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;article&lt;/strong&gt; 被放置在 &lt;em&gt;stage&lt;/em&gt; 的顶部和底部。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Stage&lt;/em&gt; 的布局&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="Stage layout" src="https://lh3.googleusercontent.com/-R5HgKL4wur0/TnYhHvxKsZI/AAAAAAAABYE/-VErIKpG4iw/s640/Screen%252520Shot%2525202011-09-18%252520at%25252016.59.51.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;此图中 &lt;strong&gt;header&lt;/strong&gt; 为空，所以 &lt;strong&gt;content&lt;/strong&gt; 包含了 &lt;strong&gt;header&lt;/strong&gt; 部分。&lt;/p&gt;
+
+&lt;p&gt;每一个应用建立的时候都会创建一个全域的 &lt;em&gt;Stage&lt;/em&gt;， 应用的所有 &lt;em&gt;panel&lt;/em&gt; 都会被加入其中。它通常会设置为 &lt;em&gt;body&lt;/em&gt; 元素。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;App&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Stage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Global&lt;/span&gt;
+  &lt;span class="nx"&gt;constructor&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class="kr"&gt;super&lt;/span&gt;
+
+    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nx"&gt;Instantiate&lt;/span&gt; &lt;span class="nx"&gt;panels&lt;/span&gt;
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;contacts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Contacts&lt;/span&gt;
+
+  &lt;span class="nx"&gt;jQuery&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class="nx"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;App&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;el&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;body&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在上面的例子中，全域的 &lt;em&gt;Stage&lt;/em&gt; 在页面载入的时候被展示。后来的，它的 &lt;em&gt;constructor&lt;/em&gt; 开始展示应用的 &lt;em&gt;panels&lt;/em&gt;。&lt;/p&gt;
+
+&lt;h3&gt;Panel&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Panel&lt;/em&gt; 由两个元素组成， &lt;strong&gt;header&lt;/strong&gt; 和 &lt;strong&gt;article&lt;/strong&gt;。在应用中通常一次只显示一个 &lt;em&gt;Panel&lt;/em&gt; 。
+记本的创建形式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;panel&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;header&amp;gt;&amp;lt;/header&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;article&amp;gt;&amp;lt;/article&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Spine&lt;/strong&gt; 包含一些默认的 &lt;em&gt;panels&lt;/em&gt; 的样式，它可以把 &lt;strong&gt;content&lt;/strong&gt; 延伸并填充已有的空间里。视觉效果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="Panel Style" src="https://lh3.googleusercontent.com/-rXkOzzQQd2o/TnYb9GAk1cI/AAAAAAAABXo/qsXSujwc_2I/s640/Screen%252520Shot%2525202011-09-18%252520at%25252017.10.43.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;注意：此处 &lt;em&gt;Panel&lt;/em&gt; 的 &lt;strong&gt;header&lt;/strong&gt; 覆盖了 &lt;em&gt;Stage&lt;/em&gt; 的 &lt;strong&gt;header&lt;/strong&gt; 。当 &lt;em&gt;Panel&lt;/em&gt; 的 &lt;strong&gt;header&lt;/strong&gt; 包含了 &lt;strong&gt;按钮&lt;/strong&gt; 和 &lt;strong&gt;panel的标题&lt;/strong&gt; 时，&lt;em&gt;Stage&lt;/em&gt; 的 &lt;strong&gt;header&lt;/strong&gt; 包含背景梯度。 &lt;em&gt;Panel&lt;/em&gt; 的 &lt;strong&gt;header&lt;/strong&gt; 不能包含背景色，不然会弄乱迁移。&lt;em&gt;Stage&lt;/em&gt; 的 &lt;strong&gt;header&lt;/strong&gt; 包含背景，而 &lt;em&gt;Panel&lt;/em&gt; 的 &lt;strong&gt;header&lt;/strong&gt; 包含 &lt;strong&gt;content&lt;/strong&gt; 。&lt;/p&gt;
+
+&lt;p&gt;一旦 &lt;em&gt;Panel&lt;/em&gt; 被展示出来，他就会被加入到全域的 &lt;em&gt;Stage&lt;/em&gt; 中。这意味着 &lt;em&gt;Panel&lt;/em&gt; 被加入到全域的 &lt;em&gt;Stage&lt;/em&gt; 的 &lt;strong&gt;article div&lt;/strong&gt; 中，并且被加入到了 &lt;em&gt;Stage&lt;/em&gt; 的 &lt;strong&gt;manager&lt;/strong&gt; 中。&lt;/p&gt;
+
+&lt;p&gt;如下示例：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;ConractsList&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Panel&lt;/span&gt;
+  &lt;span class="nx"&gt;constructor&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class="kr"&gt;super&lt;/span&gt;
+    &lt;span class="nx"&gt;Contact&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;refresh change&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;render&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+  &lt;span class="nx"&gt;render&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+    &lt;span class="nx"&gt;items&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;Contact&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;html&lt;/span&gt; &lt;span class="nx"&gt;require&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;views/contacts/item&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="nx"&gt;items&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;App&lt;/span&gt; &lt;span class="nx"&gt;ectends&lt;/span&gt; &lt;span class="nx"&gt;Stage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Global&lt;/span&gt;
+  &lt;span class="nx"&gt;cinstructor&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class="kr"&gt;super&lt;/span&gt;
+
+    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nx"&gt;Instantiate&lt;/span&gt; &lt;span class="nx"&gt;panels&lt;/span&gt;
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;contacts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;ContactsList&lt;/span&gt;
+
+    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nx"&gt;Acticate&lt;/span&gt; &lt;span class="nx"&gt;a&lt;/span&gt; &lt;span class="nx"&gt;panel&lt;/span&gt;
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;contacts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;active&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+  &lt;span class="nx"&gt;jQuery&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class="nx"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;App&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;el&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;body&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;正如你所见，当 &lt;strong&gt;App&lt;/strong&gt; 的 &lt;em&gt;Stage&lt;/em&gt; 被展示，然后它展示 &lt;strong&gt;COntactsList&lt;/strong&gt; 的 &lt;em&gt;Panel&lt;/em&gt;。&lt;em&gt;Panel&lt;/em&gt; 然后在 &lt;strong&gt;Contact&lt;/strong&gt; 的 &lt;em&gt;model&lt;/em&gt; 中建立一些事件的处理，和一个基本的 &lt;em&gt;render&lt;/em&gt; 函数。一旦 &lt;em&gt;Panel&lt;/em&gt; 被展示，它将会被 &lt;code&gt;active()&lt;/code&gt; 方法激活。 这将会停用 &lt;em&gt;Stage&lt;/em&gt; 所包含的其他一些 &lt;em&gt;Panel&lt;/em&gt; ，并且激活 &lt;strong&gt;ContactsList&lt;/strong&gt; &lt;em&gt;panel&lt;/em&gt;，并且显示给用户。&lt;/p&gt;
+
+&lt;h3&gt;Panel 属性&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Spine Mobile&lt;/strong&gt; 包含一些辅助方法来设置 &lt;em&gt;Panel&lt;/em&gt; 的标题以及加入 &lt;em&gt;按键&lt;/em&gt;，使用 &lt;code&gt;title&lt;/code&gt; 和 &lt;code&gt;addButton&lt;/code&gt;。如果 &lt;code&gt;title&lt;/code&gt; 实力属性存在，&lt;em&gt;Panel&lt;/em&gt; 将会在 &lt;strong&gt;header&lt;/strong&gt; 中创建一个 &lt;code&gt;&amp;lt;h2&amp;gt;&lt;/code&gt; 元素包含 &lt;em&gt;Panel&lt;/em&gt; 的title。同样的，调用 &lt;code&gt;addButon(name, callback)&lt;/code&gt; 将会添加一个 &lt;code&gt;&amp;lt;button&amp;gt;&lt;/code&gt; 在 &lt;strong&gt;header&lt;/strong&gt; 中。示例：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;ContactList&lt;/span&gt; &lt;span class="kr"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Panel&lt;/span&gt;
+  &lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Contacts&amp;#39;&lt;/span&gt;
+
+  &lt;span class="nx"&gt;constructor&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class="kr"&gt;super&lt;/span&gt;
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;addButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;New&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nx"&gt;Contact&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;refresh change&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;render&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+  &lt;span class="nx"&gt;render&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+    &lt;span class="nx"&gt;iters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;Contact&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;html&lt;/span&gt; &lt;span class="nx"&gt;require&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;views/contacts/item&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="nx"&gt;items&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+  &lt;span class="k"&gt;new&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这样将会建立如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;panel&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;header&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;button&amp;gt;&lt;/span&gt;New&lt;span class="nt"&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;Contacts&lt;span class="nt"&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;/header&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;article&amp;gt;&amp;lt;/article&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href="http://spinejs.com/mobile/docs/controllers"&gt;Stage &amp;amp; Panel Controllers&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2012-06-28T04:47:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>Ruby 1.9.2中文不支持UTF8报错invalid multibyte char (US-ASCII)</title>
+      <link>http://yangzhuoyu.com/ruby-1-dot-9-2zhong-wen-zhi-chi-utf8</link>
+      <description type="html">&lt;p&gt;在 &lt;em&gt;ruby&lt;/em&gt; 程序中写入中文，执行报错：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;invalid multibyte char &lt;span class="o"&gt;(&lt;/span&gt;US-ASCII&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;最后发现是 &lt;em&gt;locale&lt;/em&gt; 设置问题。&lt;/p&gt;
+
+&lt;p&gt;主要问题发生于 &lt;em&gt;Ruby 1.9&lt;/em&gt; 中（上一篇文章中也有提到这个通用问题），&lt;em&gt;Ruby 1.9&lt;/em&gt; 与之前版本相比较对于编码处理的差异很大，如写中文必须要在文件首行加入 &lt;code&gt;# encoding: UTF-8&lt;/code&gt; ，例如：&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;ruby test.rb&lt;/p&gt;
+
+&lt;h1&gt;encoding: UTF-8&lt;/h1&gt;
+
+&lt;p&gt;@test = &amp;quot;这是一个测试&amp;rdquo;
+puts @test
+&amp;ldquo;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;a href="http://ihower.tw/rails3/installation.html"&gt;安裝Rails開發環境&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2012-02-20T04:14:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>Rails 3.2.1中bundle Install时jquery-rails报错ArgumentError:invalid byte sequence in US-ASCII</title>
+      <link>http://yangzhuoyu.com/rails-3-dot-2-1zhong-bundle-installshi-jquery-railsbao-cuo</link>
+      <description type="html">&lt;p&gt;最近将 &lt;em&gt;Rails&lt;/em&gt; 开发环境升级到 &lt;em&gt;Ruby 1.9.2&lt;/em&gt; 和 &lt;em&gt;Rails 3.2.1&lt;/em&gt; 后，执行 &lt;code&gt;bundle install&lt;/code&gt; 时， &lt;em&gt;Jquery-rails&lt;/em&gt; 报错：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="s2"&gt;&amp;quot;ArgumentError:invalid byte sequence in US-ASCII&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;原因分析，由于 &lt;em&gt;locale&lt;/em&gt; 设置错误。据了解，这是 &lt;em&gt;Ruby 1.9&lt;/em&gt; 字符集设置时关于使用 &lt;em&gt;UTF-8&lt;/em&gt; 通用问题。&lt;/p&gt;
+
+&lt;h3&gt;解决方法一：&lt;/h3&gt;
+
+&lt;p&gt;在 &lt;em&gt;Gemfile&lt;/em&gt; 中加入如下代码：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby Gemfile
+if RUBY_VERSION =~ /1.9/
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3&gt;解决方法二：&lt;/h3&gt;
+
+&lt;p&gt;也可以在 &lt;em&gt;Shell&lt;/em&gt; 中设置 &lt;em&gt;locale&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;BASH&lt;/strong&gt; 修改：&lt;/p&gt;
+
+&lt;p&gt;在 &lt;em&gt;~/.profile&lt;/em&gt; 中或者在 &lt;em&gt;~/.bash_profile&lt;/em&gt;中加入：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sh ~/.profile
+export LC_ALL=zh_CN.UTF-8
+export LANG=zh_CN.UTF-8
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ZSH&lt;/strong&gt; 修改：&lt;/p&gt;
+
+&lt;p&gt;在 &lt;em&gt;~/.zshrc&lt;/em&gt; 中加入：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sh ~/.zshrc
+export LC_ALL=zh_CN.UTF-8
+export LANG=zh_CN.UTF-8
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;参考一：&lt;a href="http://stackoverflow.com/questions/7095845/when-run-bundle-get-invalid-byte-sequence-in-us-ascii"&gt;When run bundle get invalid byte sequence in US-ASCII&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;参考二：&lt;a href="http://github.com/rails/jquery-rails/pull/35"&gt;ArgumentError: invalid byte sequence in US-ASCII&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2012-02-20T03:37:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>Git颜色高亮</title>
+      <link>http://yangzhuoyu.com/gityan-se-gao-liang</link>
+      <description type="html">&lt;p&gt;在 &lt;em&gt;Terminal&lt;/em&gt; 中使用 &lt;code&gt;git status&lt;/code&gt; 和 &lt;code&gt;git diff&lt;/code&gt; 时，没有高亮，非常费眼，效率低。&lt;/p&gt;
+
+&lt;p&gt;可以在 &lt;em&gt;git&lt;/em&gt; 中设置颜色高亮来解决这个问题。输入如下命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git config --global color.ui &lt;span class="nb"&gt;true&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行 &lt;code&gt;git status&lt;/code&gt; 效果：&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="git_highlight" src="http://i.imgur.com/EuQZo.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;另外，关于git的学习，非常推荐的资源 &lt;a href="http://progit.org/book/zh/"&gt;&lt;em&gt;ProGit 中文&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;a href="http://progit.org/book/zh/ch1-5.html"&gt;&lt;em&gt;ProGit&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2012-02-20T01:51:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>oh-my-zsh中无法切换RVM版本</title>
+      <link>http://yangzhuoyu.com/oh-my-zshzhong-wu-fa-qie-huan-rvmban-ben</link>
+      <description type="html">&lt;p&gt;&lt;strong&gt;最近将 &lt;em&gt;Mac OS&lt;/em&gt; 自带的 &lt;em&gt;bash&lt;/em&gt; 换成了目前比较流行的 &lt;a href="https://github.com/robbyrussell/oh-my-zsh"&gt;&lt;em&gt;Oh-my-zsh&lt;/em&gt;&lt;/a&gt;，但是在使用了一些主题以后，发现 &lt;em&gt;RVM&lt;/em&gt; 无法切换版本。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;解决方法如下：&lt;/p&gt;
+
+&lt;p&gt;在 &lt;code&gt;.zshrc&lt;/code&gt; 最后加上如下代码：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sh .zshrc
+[[ -s &amp;quot;$HOME/.rvm/scripts/rvm&amp;quot; ]] &amp;amp;&amp;amp; . &amp;quot;$HOME/.rvm/scripts/rvm&amp;quot;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;a href="http://stackoverflow.com/questions/4755538/rvm-is-not-working-in-zsh"&gt;RVM is not working in ZSH&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2012-02-19T08:27:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>使用pow运行sinatra</title>
+      <link>http://yangzhuoyu.com/shi-yong-powyun-xing-sinatra</link>
+      <description type="html">&lt;p&gt;今天想拿 &lt;em&gt;&lt;a href="http://www.sinatrarb.com/intro"&gt;Sinatra&lt;/a&gt;&lt;/em&gt; 这个轻量级的 &lt;em&gt;web&lt;/em&gt; 框架练练手，写个小程序，可是使用 &lt;code&gt;ruby myapp.rb&lt;/code&gt; 运行非常的麻烦。所以想到用 &lt;em&gt;Rails&lt;/em&gt; 推荐的 &lt;em&gt;&lt;a href="http://pow.cx/"&gt;Pow&lt;/a&gt;&lt;/em&gt; 来跑。&lt;/p&gt;
+
+&lt;p&gt;在 &lt;em&gt;&lt;a href="http://www.sinatrarb.com/intro"&gt;Sinatra&lt;/a&gt;&lt;/em&gt; 建立的 &lt;em&gt;app&lt;/em&gt; 文件根目录下建立 &lt;em&gt;config.ru&lt;/em&gt; 。&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;sh config.ru
+require &amp;quot;rubygems&amp;rdquo; #必须要写，不然pow报错
+require &amp;ldquo;./myapp&amp;rdquo; #要运行的文件，相当于index，这里是myapp.rb&lt;/p&gt;
+
+&lt;p&gt;run Sinatra::Application
+&amp;ldquo;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;a href="https://github.com/37signals/pow/issues/38"&gt;传送门&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2011-12-05T05:26:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>使用Git管理服务器网站</title>
+      <link>http://yangzhuoyu.com/shi-yong-gitguan-li-fu-wu-qi-wang-zhan</link>
+      <description type="html">&lt;p&gt;&lt;strong&gt;摘要：&lt;em&gt;push&lt;/em&gt; 到一个拥有分离的 &lt;em&gt;work tree&lt;/em&gt; 和 一个运行 &lt;code&gt;git checkout -f&lt;/code&gt; 的 &lt;em&gt;post-receive hook&lt;/em&gt; 的远程代码库。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4&gt;建立本地代码库&lt;/h4&gt;
+
+&lt;p&gt;从零开始架设：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mkdir website &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;website
+&lt;span class="nv"&gt;$ &lt;/span&gt;git init
+Initialized empty Git repository in /home/ams/website/.git/
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Hello, world!&amp;#39;&lt;/span&gt; &amp;gt; index.html
+&lt;span class="nv"&gt;$ &lt;/span&gt;git add index.html
+&lt;span class="nv"&gt;$ &lt;/span&gt;git commit -q -m &lt;span class="s2"&gt;&amp;quot;The humble beginnings of my web site.&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;到此拥有了一个想要上传网站的代码库。&lt;/p&gt;
+
+&lt;h4&gt;配置远程代码库&lt;/h4&gt;
+
+&lt;p&gt;首先我们需要远程服务器有 &lt;em&gt;SSH&lt;/em&gt; 通道，并且可以不用输入密码连接 &lt;em&gt;SSH&lt;/em&gt; （通过 &lt;em&gt;keys&lt;/em&gt;）。&lt;/p&gt;
+
+&lt;p&gt;在服务器上，我们创建一个新的代码库来镜像本地代码库。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mkdir website.git &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;website.git
+&lt;span class="nv"&gt;$ &lt;/span&gt;git init --bare
+Initialized empty Git repository in /home/ams/website.git/
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;然后我们用一个 &lt;em&gt;post-receive hook&lt;/em&gt; 来 &lt;em&gt;check out&lt;/em&gt; 最后的版本树到服务器网页目录（这个目录需要手动添加）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mkdir /var/www/www.example.org
+&lt;span class="nv"&gt;$ &lt;/span&gt;cat &amp;gt; hooks/post-receive
+!/bin/sh
+&lt;span class="nv"&gt;GIT_WORK_TREE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/var/www/www.example.org git checkout -f
+&lt;span class="nv"&gt;$ &lt;/span&gt;chmod +x hooks/post-receive
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;回到本地工作&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;建立一个远程镜像的名字，然后给它作镜像，新建一个新的 &amp;ldquo;&lt;em&gt;master&lt;/em&gt;&amp;rdquo; 分支。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git remote add web ssh://server.example.org/home/ams/website.git
+&lt;span class="nv"&gt;$ &lt;/span&gt;git push web +master:refs/heads/master
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在服务器上，&lt;code&gt;/var/www/www.example.org&lt;/code&gt; 现在应该包含一份文件的拷贝，以及所有独立的 &lt;code&gt;.git&lt;/code&gt; 元数据。&lt;/p&gt;
+
+&lt;h4&gt;更新&lt;/h4&gt;
+
+&lt;p&gt;在本地代码库运行&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git push web
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这将会传送所有新的 &lt;em&gt;commits&lt;/em&gt; 到远程代码库，而且 &lt;em&gt;post-receive hook&lt;/em&gt; 会立即更新根目录。&lt;/p&gt;
+
+&lt;h4&gt;小结&lt;/h4&gt;
+
+&lt;p&gt;首先，工作树需要有可写权限。&lt;/p&gt;
+
+&lt;p&gt;另外，你也可以 &lt;em&gt;push&lt;/em&gt; 到更多的远程代码库，在 &lt;code&gt;.git/config&lt;/code&gt; 中加入代码。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;remote &lt;span class="s2"&gt;&amp;quot;web&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="nv"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; ssh://server.example.org/home/ams/website.git
+&lt;span class="nv"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; ssh://other.exaple.org/home/foo/website.git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;a href="http://toroid.org/ams/git-website-howto"&gt;Using Git to manage a web site&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2011-11-30T02:36:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>改变octopress布局</title>
+      <link>http://yangzhuoyu.com/gai-bian-octopressbu-ju</link>
+      <description type="html">&lt;p&gt;一直以来不了解什么是 &lt;em&gt;sass&lt;/em&gt;，所以没有尝试修改 &lt;em&gt;octopress&lt;/em&gt; 的默认 &lt;em&gt;layout&lt;/em&gt; ，今天大概看了一下，简单的修改方法如下。&lt;/p&gt;
+
+&lt;p&gt;颜色和宽度在octopress中定义在 &lt;code&gt;/sass/base/_layout.scss&lt;/code&gt; 中。当然我们也可以直接改写这个文件。不过对于 &lt;em&gt;sass&lt;/em&gt; 来说它可以很轻易的在 &lt;code&gt;/sass/custom/_layout.scss&lt;/code&gt; 中自定义。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;不了解 &lt;strong&gt;sass&lt;/strong&gt; 的同学可以看 &lt;a href="http://sass-lang.com/"&gt;这里&lt;/a&gt; 。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2011-11-29T03:53:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>Wordpress主题thesis的简单使用</title>
+      <link>http://yangzhuoyu.com/wordpresszhu-ti-thesisde-jian-dan-shi-yong</link>
+      <description type="html">&lt;p&gt;前几天帮助一个朋友修改wordpress商业版的thesis主题，通过简单的使用发现，这个东西确实强大！&lt;/p&gt;
+
+&lt;p&gt;主要通过两个文件来新增功能，&lt;em&gt;custom_function.php&lt;/em&gt; 和 &lt;em&gt;custom.css&lt;/em&gt; 。 其他的功能暂时未用到。先来说说添加功能吧。&lt;/p&gt;
+
+&lt;p&gt;大概的编写规则：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;php custom_function.php
+&amp;lt;?php
+function test() {
+?&amp;gt;
+&amp;lt;div&amp;gt;&amp;lt;?php echo &amp;quot;test&amp;quot;; ?&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;?php }
+add_action(&amp;quot;thesis_hook_after_sidebars&amp;quot;,&amp;quot;test&amp;quot;)
+?&amp;gt; 
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;先写一个 &lt;code&gt;function&lt;/code&gt; 然后调用 &lt;code&gt;add_action(调用位置,方法名称)&lt;/code&gt; 。&lt;/p&gt;
+
+&lt;p&gt;具体的有以下可以参考：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;传送门： &lt;a href="http://diythemes.com/thesis/rtfm/customizing-with-hooks/"&gt;Hooks&lt;/a&gt; \ &lt;a href="http://diythemes.com/thesis/rtfm/customizing-with-filters/"&gt;Filters&lt;/a&gt; \ &lt;a href="http://diythemes.com/thesis/rtfm/custom-loop-api/"&gt;Custom Loop API&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2011-11-23T07:46:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>关于rails笔记一</title>
+      <link>http://yangzhuoyu.com/guan-yu-railsbi-ji-one</link>
+      <description type="html">&lt;p&gt;最近使用Rails写一个练习项目，关于一些基础的东西，做一点笔记。&lt;/p&gt;
+
+&lt;h3&gt;首先是 &lt;em&gt;Params&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;params&lt;/strong&gt; 在代码中 &lt;code&gt;find(params[:id])&lt;/code&gt; 是查找http链接中的元素id。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;a href="http://apidock.com/rails/ActionDispatch/Http/Parameters/params"&gt;传送门&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;其次是 &lt;em&gt;Find&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;关于 &lt;strong&gt;find&lt;/strong&gt; 的用法，起始于想要在查询的内容中按照时间降序排序。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;find&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:all&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:order&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;created_up DECS&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;其中&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;:all&lt;/strong&gt; 是指在查询的内容中查找全部。也可以改为 &lt;strong&gt;:first&lt;/strong&gt; 查找数据库中第一条记录。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;:order&lt;/strong&gt; 指顺序，后面的部分就是所要实现的功能，按照 &lt;strong&gt;created_up&lt;/strong&gt; 的降序（&lt;strong&gt;DECS&lt;/strong&gt;）排序。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;另外，还可以直接写成去掉 &lt;strong&gt;find&lt;/strong&gt; 的简洁模式。例如，要查询表里的第一条记录，并按照创建时间排序可以写成：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="no"&gt;Test&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;created_at DESC&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;关于 &lt;strong&gt;find&lt;/strong&gt; 还有许多属性，再有就是条件查询。&lt;/p&gt;
+
+&lt;p&gt;两种写法:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="no"&gt;Test&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:condition&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;user_name = :user_name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="ss"&gt;:user_name&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;user_name&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;简写:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="no"&gt;Test&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;where&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;user_name = ?&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;user_name&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;简写必须 &lt;strong&gt;model&lt;/strong&gt; 后面，既 &lt;code&gt;Test.where.order&lt;/code&gt; 后面，不可写在其他 &lt;strong&gt;def&lt;/strong&gt; 后面，既 &lt;code&gt;Test.test.order&lt;/code&gt; 就会报错！！！切记！！！&lt;/p&gt;
+
+&lt;p&gt;参考：&lt;a href="http://apidock.com/rails/ActiveRecord/FinderMethods/find"&gt;传送门&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;其次关于 &lt;em&gt;self&lt;/em&gt; 和 &lt;em&gt;protected&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;两者具体的用法还不太清除，日后有时间继续补充，大概的一下了解笔记如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;self&lt;/strong&gt; 属性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在 &lt;strong&gt;model&lt;/strong&gt; 中创建 &lt;strong&gt;def&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby ./model/test.rb
+def self.test
+  ...
+end
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;在 &lt;strong&gt;controller&lt;/strong&gt; 中可以调用这个带有 &lt;strong&gt;SELF&lt;/strong&gt; 属性的 &lt;strong&gt;def&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby ./controller/tests_controller.rb
+def index
+  @test = Some.test
+end
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;protected&lt;/strong&gt; 属性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;目前仅知道，在 &lt;code&gt;:before_filter&lt;/code&gt; 中声明使用，起到安全作用。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby test_controller.rb
+before_filter :find_test
+…
+…
+protected
+  def find_test
+  …
+  end
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3&gt;最后是 &lt;strong&gt;Controller&lt;/strong&gt; 中的调用 &lt;strong&gt;model&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;在 &lt;strong&gt;controller&lt;/strong&gt; 中调用 &lt;strong&gt;model&lt;/strong&gt; 的内容，可以用首字母大写的形式。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ruby test_controller.rb
+def index
+  @test1 = Project.test
+  @test2 = Activity.test
+end
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;在上面的代码中，&lt;strong&gt;@test1&lt;/strong&gt; 调用了写在 &lt;strong&gt;./model/project.rb&lt;/strong&gt; 中的 &lt;strong&gt;def test&lt;/strong&gt; ，而在 &lt;strong&gt;@test2&lt;/strong&gt; 中调用了 &lt;strong&gt;./model/activity.rb&lt;/strong&gt; 中的 &lt;strong&gt;def test&lt;/strong&gt; 。&lt;/p&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2011-10-24T03:46:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>同时同步到heroku和github</title>
+      <link>http://yangzhuoyu.com/tong-shi-pushdao-githubhe-heroku</link>
+      <description type="html">&lt;p&gt;现在使用的 &lt;em&gt;Octopress&lt;/em&gt; ，在写完文章和做修改后，想要同时 &lt;em&gt;push&lt;/em&gt; 到 &lt;strong&gt;Github&lt;/strong&gt; 和 &lt;strong&gt;Heroku&lt;/strong&gt; 。它们两个是同一个 &lt;em&gt;Repo&lt;/em&gt; ，想要在一条命令中完成。&lt;/p&gt;
+
+&lt;p&gt;一次完成多线程 &lt;em&gt;push&lt;/em&gt; ,需要用到 &lt;code&gt;git remote set-url&lt;/code&gt; 命令。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git remote add all git@github.com:username/app-name.git
+&lt;span class="nv"&gt;$ &lt;/span&gt;git remote &lt;span class="nb"&gt;set&lt;/span&gt;-url --add all  git@herku.com:username.git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在 &lt;strong&gt;.git/config&lt;/strong&gt; 文件中将会产生下面的代码：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;bash .git/config
+[remote &amp;quot;all&amp;quot;]
+url = git@github.com:username/app-name.git
+url = git@herku.com:username.git
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;然后运行命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git push all
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果你的 &lt;em&gt;repos&lt;/em&gt; 只有你一个人可写操作，你就只需要在一次 &lt;em&gt;push&lt;/em&gt; 中更新。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;参考自 &lt;a href="http://stackoverflow.com/questions/6013362/github-and-heroku-repos-how-to-read-push-pull-and-generally-keep-them-synced"&gt;Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2011-10-18T05:48:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>使用github－新建repo</title>
+      <link>http://yangzhuoyu.com/shi-yong-github-xin-jian-repo</link>
+      <description type="html">&lt;h4&gt;首先： 新建一个库&lt;/h4&gt;
+
+&lt;p&gt;每次你使用 &lt;em&gt;Git&lt;/em&gt; 提交（commit）的时候，它都会被存储进一个库（简称为&amp;quot;repo&amp;quot;）。想要把你的项目放到 &lt;em&gt;Github&lt;/em&gt; 上，你需要一个 &lt;em&gt;Github&lt;/em&gt; 库来储存代码。&lt;/p&gt;
+
+&lt;h5&gt;1.创建一个新的库&lt;/h5&gt;
+
+&lt;p&gt;点击 &lt;strong&gt;New Repository&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://help.github.com/images/bootcamp/bootcamp_2_newrepo.jpg" /&gt;&lt;/p&gt;
+
+&lt;p&gt;填写表中的信息。写完后，点击 “&lt;strong&gt;Create Repository&lt;/strong&gt;.”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://help.github.com/images/bootcamp/bootcamp_2_repoinfo.jpg" /&gt;&lt;/p&gt;
+
+&lt;p&gt;恭喜！你成功的创建了你的第一个库！&lt;/p&gt;
+
+&lt;h4&gt;接下来：为你的库创建一个 &lt;em&gt;README&lt;/em&gt;&lt;/h4&gt;
+
+&lt;p&gt;当然 &lt;em&gt;README&lt;/em&gt; 不是 &lt;em&gt;Github&lt;/em&gt; 库必须要求使用的的，但是最好有一个。 &lt;em&gt;README&lt;/em&gt; 可以很好描述你的项目，或者增加一些文档，比如说告诉别人如何去安装和使用你的项目。&lt;/p&gt;
+
+&lt;h5&gt;1. 创建一个 &lt;em&gt;README&lt;/em&gt; 文件。&lt;/h5&gt;
+
+&lt;p&gt;在命令行，输入下面的代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mkdir ~/Hello-World
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ~/Hello-World
+&lt;span class="nv"&gt;$ &lt;/span&gt;git init
+Initialized empty Git repository in /Users/your_user_diretory/Hello-World/.git/
+&lt;span class="nv"&gt;$ &lt;/span&gt;touch README
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;用一个文档编辑器，打开刚刚在 &lt;em&gt;Hello-World&lt;/em&gt; 文件夹里新建的 &lt;em&gt;README&lt;/em&gt; 文档。在里面录入 “Hello World!”，然后保存。&lt;/p&gt;
+
+&lt;h5&gt;2. 提交 &lt;em&gt;README&lt;/em&gt;&lt;/h5&gt;
+
+&lt;p&gt;现在你已经生成了 &lt;em&gt;README&lt;/em&gt; ，该提交了。提交本质上是你的项目中所有文件在一个特定时间点快照。 在命令行，输入下面的代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git add README
+&lt;span class="nv"&gt;$ &lt;/span&gt;git commit -m &lt;span class="s1"&gt;&amp;#39;first commit&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上面的代码只是在本地执行动作，意味着你现在仍然没有在 &lt;em&gt;GitHub&lt;/em&gt; 上做任何事情。把你本地库和 &lt;em&gt;GitHub&lt;/em&gt; 账号连接，你还需要为你的库设置一个远程链接并且把你的提交结果推送上去：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git remote add origin git@github.com:username/Hello-World.git
+&lt;span class="nv"&gt;$ &lt;/span&gt;git push origin master
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;现在你可以看一下你在 &lt;em&gt;GitHub&lt;/em&gt; 上的库，&lt;em&gt;README&lt;/em&gt; 已经被添加上去了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://help.github.com/images/bootcamp/bootcamp_2_updatedreadme.jpg" /&gt;&lt;/p&gt;
+
+&lt;h4&gt;最后：庆祝一下&lt;/h4&gt;
+
+&lt;p&gt;现在，你已经在 &lt;em&gt;GitHub&lt;/em&gt; 上创建了一个库，创建了一个 &lt;em&gt;README&lt;/em&gt; ，提交并推送到了 &lt;em&gt;GitHub&lt;/em&gt; 。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;参考自 &lt;a href="http://help.github.com/create-a-repo/"&gt;github说明文档&lt;/a&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2011-10-17T14:07:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>并不熟练的markdown</title>
+      <link>http://yangzhuoyu.com/bing-bu-shou-lian-de-markdown</link>
+      <description type="html">&lt;p&gt;今天刚刚deploy了octopress，很多东西都想看都想尝试，但是已经凌晨1点多了，写完这篇流水账早点休息了。&lt;/p&gt;
+
+&lt;p&gt;现在还是不太能熟练的掌握markdown语法，对我来说还是个很新鲜的东西。我看大家对于markdown来说都推荐使用&lt;strong&gt;Mou&lt;/strong&gt;编辑器（&lt;a href="http://mouapp.com/"&gt;传送门&lt;/a&gt;）。&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="Mou icon" src="http://mouapp.com/images/Mou_Screenshot_1.png" /&gt;
+我非常想知道，关于markdown怎么调整图片的大小，看来只能明天好好研究下markdown语法了。&lt;/p&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2011-10-16T17:02:00Z</pubDate>
+      <category></category>
+    </item>
+    <item>
+      <title>My-first-post</title>
+      <link>http://yangzhuoyu.com/my-first-post</link>
+      <description type="html">&lt;p&gt;这是我使用octopress的第一篇文章，本站部署于heroku。&lt;/p&gt;
+
+&lt;p&gt;其实这个blog主要是做我个人平时笔记用的，就当是平时的学习笔记吧。主要是学习ruby on rails。&lt;/p&gt;
+
+&lt;p&gt;所以说，好记性不如个烂笔头。&lt;/p&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2011-10-16T03:46:00Z</pubDate>
+      <category></category>
+    </item>
+  </channel>
+</rss>
