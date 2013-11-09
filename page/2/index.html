@@ -36,8 +36,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link href="/stylesheets/application.css?1381561133" media="screen" rel="stylesheet" type="text/css" />
-    <script src="/javascripts/application.js?1381561132" type="text/javascript"></script>
+    <link href="/stylesheets/application.css?1383981521" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1383981520" type="text/javascript"></script>
 
   </head>
   <body class="page page_2 page_2_index">
@@ -69,6 +69,78 @@
     <section class="main">
       <div class="container">
         <div id="posts">
+  
+    <article class="post">
+      <header>
+  <h2 class="title">
+    <a href="/spine-mobile-stage-and-panel-controllers">Spine Mobile --- Stage &amp; Panel Controllers</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Jun 28, 2012
+    </li>
+    <li class="tags">
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <h2>Stage &amp; Panel Controllers</h2>
+
+<p>关于 <em>Stage</em> 和 <em>Panel</em>。<em>Stage</em> 是平台，<em>Panel</em> 是其中的面板。<em>Stage</em> 覆盖整个可见区域，而 <em>Panel</em> 则只覆盖应用的 <strong>header</strong> 和 <strong>content</strong>。一个应用通常将会同时显示 <em>Stage</em> 和 <em>Panel</em>。</p>
+
+<h3>Stage</h3>
+
+<p><em>Stage</em> 包含元素： 一个 <strong>header</strong>，一个 <strong>article</strong> 和一个 <strong>footer</strong>。</p>
+
+<p>像这个样子：
+<code>html
+&lt;body class=&quot;stage&quot;&gt;
+  &lt;header&gt;&lt;/header&gt;
+  &lt;article class=&quot;viewport&quot;&gt;&lt;/article&gt;
+  &lt;footer&gt;&lt;/footer&gt;
+&lt;/body&gt;
+</code></p>
+
+<p><strong>Spine Mobile</strong> 包括一些默认的 <strong>CSS</strong></p>
+
+<ul>
+<li>设置整体的宽度和高度为 100%</li>
+<li><strong>header</strong> 放置在 <em>stage</em> 的顶部。</li>
+<li><strong>footer</strong> 放置在 <em>stage</em> 的底部。</li>
+<li><strong>article</strong> 被放置在 <em>stage</em> 的顶部和底部。</li>
+</ul>
+
+<p><em>Stage</em> 的布局</p>
+
+<p><img alt="Stage layout" src="https://lh3.googleusercontent.com/-R5HgKL4wur0/TnYhHvxKsZI/AAAAAAAABYE/-VErIKpG4iw/s640/Screen%252520Shot%2525202011-09-18%252520at%25252016.59.51.png" /></p>
+
+<p>此图中 <strong>header</strong> 为空，所以 <strong>content</strong> 包含了 <strong>header</strong> 部分。</p>
+
+<p>每一个应用建立的时候都会创建一个全域的 <em>Stage</em>， 应用的所有 <em>panel</em> 都会被加入其中。它通常会设置为 <em>body</em> 元素。</p>
+
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/spine-mobile-stage-and-panel-controllers">Read more →</a>
+  </p>
+</div>
+
+    </article>
   
     <article class="post">
       <header>
@@ -307,59 +379,6 @@ export LANG=zh_CN.UTF-8
   </p>
   <p>
     <a href="/oh-my-zshzhong-wu-fa-qie-huan-rvmban-ben">Read more →</a>
-  </p>
-</div>
-
-    </article>
-  
-    <article class="post">
-      <header>
-  <h2 class="title">
-    <a href="/shi-yong-powyun-xing-sinatra">使用pow运行sinatra</a>
-  </h2>
-</header>
-
-<aside class="aside-block">
-  <ul class="meta">
-    <!-- <li class="author-photo">
-      <a href="http://yangzhuoyu.com">
-        <img src="/images/zhuoyu-yang.png?1381549113" />
-      </a>
-    </li>
-    <li class="author">
-     by Roy Young
-    </li> -->
-    <li class="date">
-      Dec 05, 2011
-    </li>
-    <li class="tags">
-      
-    </li>
-  </ul>
-</aside>
-
-<div class="content">
-  <p>今天想拿 <em><a href="http://www.sinatrarb.com/intro">Sinatra</a></em> 这个轻量级的 <em>web</em> 框架练练手，写个小程序，可是使用 <code>ruby myapp.rb</code> 运行非常的麻烦。所以想到用 <em>Rails</em> 推荐的 <em><a href="http://pow.cx/">Pow</a></em> 来跑。</p>
-
-<p>在 <em><a href="http://www.sinatrarb.com/intro">Sinatra</a></em> 建立的 <em>app</em> 文件根目录下建立 <em>config.ru</em> 。</p>
-
-<p>&ldquo;sh config.ru
-require &quot;rubygems&rdquo; #必须要写，不然pow报错
-require &ldquo;./myapp&rdquo; #要运行的文件，相当于index，这里是myapp.rb</p>
-
-<p>run Sinatra::Application
-&ldquo;</p>
-
-<blockquote>
-<p>参考：<a href="https://github.com/37signals/pow/issues/38">传送门</a></p>
-</blockquote>
-
-
-  <p>
-    ......
-  </p>
-  <p>
-    <a href="/shi-yong-powyun-xing-sinatra">Read more →</a>
   </p>
 </div>
 
