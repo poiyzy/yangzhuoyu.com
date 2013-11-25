@@ -46,9 +46,9 @@ p {
     line-height: 40px;
     margin: 10px auto;
     a {
-      color: $mainBgColor;
+      color: $siteNameColor;
       &:hover {
-        color: $sidebarLinkColor;
+        color: lighten($sidebarLinkColor, 30%);
       }
     }
   }
