@@ -1,12 +1,13 @@
 ---
 title: "从测试中找到更好的面向对象设计(一)"
 date: 2013-11-02 13:33
+tags: rubyconf china, ruby, oo, test
 author: roy
 ---
 
-![OO](http://thumbs.dreamstime.com/z/齿轮启用-14070207.jpg)
 
-> 这是在 RubyConf China 2013 上分享的一个 Talk, 很多同学给我了一些 Feedback 而且在现场有一些不足，所以我重新整理后以 blog 的形式再次分享出来和大家共同讨论。
+![OO](http://thumbs.dreamstime.com/z/齿轮启用-14070207.jpg)
+&copy; [thumbs.dreamstime.com](http://thumbs.dreamstime.com/)
 
 Discovering Better **Object Oriented Design** with **Test**. 我知道很多团队中不写 Test, 不是因为不会写测试，而是觉得测试写起来很麻烦、很痛苦, 不愿意写测试；我也知道很多程序员不关心设计模式，什么面向对象之类的都不在乎，只要代码能工作就好。
 
@@ -44,4 +45,4 @@ Discovering Better **Object Oriented Design** with **Test**. 我知道很多团�
 这个[功能](https://pragmatic.ly/blog/new-feature-comment-via-email/)已经在 [Pragmatic.ly](https://pragmatic.ly) 中实现并部署上线。接下来的内容，我将会展示这个新功能应用测试驱动开发和重新设计的实现过程。
 
 
-> 相关链接：
+> 相关链接：[视频](http://www.infoq.com/cn/presentations/with-tests-found-a-better-object-oriented-design)
