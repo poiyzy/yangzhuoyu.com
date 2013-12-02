@@ -109,38 +109,86 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>http://yangzhuoyu.com/discovering-better-oo-design-with-test-two</loc>
+    <lastmod>2013-11-02T15:11:00+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://yangzhuoyu.com/discovering-better-oo-design-with-test</loc>
     <lastmod>2013-11-02T13:33:00+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>http://yangzhuoyu.com/discovering-better-oo-design-with-test-three</loc>
+    <lastmod>2013-11-04T19:43:00+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://yangzhuoyu.com/discovering-better-oo-design-with-test-four</loc>
+    <lastmod>2013-12-01T12:02:00+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://yangzhuoyu.com/</loc>
-    <lastmod>2013-11-25T00:00:00+08:00</lastmod>
+    <lastmod>2013-12-02T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>http://yangzhuoyu.com/profile</loc>
-    <lastmod>2013-11-25T00:00:00+08:00</lastmod>
+    <lastmod>2013-12-02T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>http://yangzhuoyu.com/tags/rubyconf-china</loc>
+    <lastmod>2013-12-02T00:00:00+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://yangzhuoyu.com/tags/ruby</loc>
+    <lastmod>2013-12-02T00:00:00+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://yangzhuoyu.com/tags/oo</loc>
+    <lastmod>2013-12-02T00:00:00+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://yangzhuoyu.com/tags/test</loc>
+    <lastmod>2013-12-02T00:00:00+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>http://yangzhuoyu.com/page/2</loc>
-    <lastmod>2013-11-25T00:00:00+08:00</lastmod>
+    <lastmod>2013-12-02T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>http://yangzhuoyu.com/page/3</loc>
-    <lastmod>2013-11-25T00:00:00+08:00</lastmod>
+    <lastmod>2013-12-02T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>http://yangzhuoyu.com/page/4</loc>
-    <lastmod>2013-11-25T00:00:00+08:00</lastmod>
+    <lastmod>2013-12-02T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://yangzhuoyu.com/page/5</loc>
+    <lastmod>2013-12-02T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>

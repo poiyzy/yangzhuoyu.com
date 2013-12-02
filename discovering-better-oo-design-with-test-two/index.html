@@ -1,0 +1,249 @@
+
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]<!-->
+<html class="no-js" lang="en">
+  <!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+
+    <title>
+        从测试中找到更好的面向对象设计(二)
+ - Roy's Blog
+    </title>
+
+    <meta name="description" content="Nil">
+    <meta name="keywords" content="  ["rubyconf china", "ruby", "oo", "test"]
+">
+    <meta name="author" content="Roy Young">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="apple-touch-icon-precomposed" type="image/png" sizes="57x57" href="/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" type="image/png" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" type="image/png" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" type="image/png" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" type="image/png" href="/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <link rel="shortcut icon" sizes="16x16" href="/favicon.ico">
+    <link rel="alternate" type="application/rss+xml" title="Roy Young's Blog" href="/feed.xml" />
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/stylesheets/application.css?1385981090" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1385981090" type="text/javascript"></script>
+
+  </head>
+  <body class="discovering-better-oo-design-with-test-two discovering-better-oo-design-with-test-two_index">
+    <aside class="sidebar">
+      <h1 class="site-name"><a href="/">Roy</a></h1>
+      <nav class="global-nav">
+        <ul>
+          <li><a href="/">Posts</a></li>
+          <li><a href="#TODO">Photos</a></li>
+          <li><a href="/profile">Profile</a></li>
+        </ul>        
+      </nav>
+
+      <nav class="social-connect">
+        <ul>
+          <li><a href="/rss.xml"><i class="icon-rss"></i></a></li>
+          <li><a href="//twitter.com/poiyzy"><i class="icon-twitter"></i></a></li>
+          <li><a href="//weibo.com/zhuoyuyang"><i class="icon-weibo"></i></a></li>
+        </ul>
+      </nav>
+
+      <div class="block ad">
+        <h4 class="block-title"><a href="//pragmatic.ly/">Pragmatic.ly</a></h4>
+        <p class="block-cnt">团队协作工具</p>
+      </div>
+
+    </aside>
+
+    <section class="main">
+      <div class="container">
+          <div class="announcement">
+    <p>
+      
+        <img class="avatar" src="/images/zhuoyu-yang.png" alt="Zhuoyu Yang" />
+如果你在远程工作、团队协作、项目管理和创业方面需要意见，欢迎找我约个时间，免费咨询！Skype: poiyzy
+      
+    </p>
+  </div>
+
+  <article class="post single">
+
+    <header>
+  <h2 class="title">
+    <a href="/discovering-better-oo-design-with-test-two">从测试中找到更好的面向对象设计(二)</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Nov 02, 2013
+    </li>
+    <li class="tags">
+      
+        <a href="/tags/rubyconf-china">rubyconf china</a>
+      
+        <a href="/tags/ruby">ruby</a>
+      
+        <a href="/tags/oo">oo</a>
+      
+        <a href="/tags/test">test</a>
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p><aside class="aside-block">
+  <blockquote>
+    <p>这是在 RubyConf China 2013 上分享的一个 Talk, 很多同学给我了一些 Feedback 而且在现场有一些不足，所以我重新整理后以 blog 的形式再次分享出来和大家共同讨论。</p>
+  </blockquote>
+</aside></p>
+
+<h2>Working Flow of the new feature of pragmatic.ly</h2>
+
+<p><img alt="working-flow" src="/images/working-flow.png?1385969786" /></p>
+
+<ul>
+<li>在 Pragmatic.ly 项目中当有一个 Comment 被创建后，我们的 Web Server 会告诉 <a href="http://sendcloud.sohu.com">SendCloud</a> (第三方 Email 服务，类似于 <a href="http://www.mailgun.com">Mailgun</a>) 给我们的用户发送提醒邮件。</li>
+<li>当用户回复这封提醒邮件的时候，首先这封邮件会被 SendCloud parse 后，发送一个 post request 到 Pragmatic.ly 设置好的 Callback url.</li>
+<li>Pragmatic.ly 接收到这个 Pull request 后会做一些 verification 和 validation ，然后在 Web Server 上创建一个 Comment records 。</li>
+</ul>
+
+<p>我们 TDD 开发主要是在第三步，当 Web Server 接收到 pull request 后的业务逻辑。那么当一个 pull request 被发送到 Web Server 后，我们需要什么样的业务逻辑呢？</p>
+
+<p><strong>1. Verification 首先我们需要判定，这个 pull request 是来自与 SendCloud 。</strong></p>
+
+<p><strong>2. Validation 当我们知道这个 pull request 来源有效后，我们需要判定这封邮件内容是否有效。</strong></p>
+
+<p>这里我们将会得到几个数据：</p>
+
+<ul>
+<li>首先我们设置了邮件回复地址为 ticket+<em>PROJECT_UID</em>+<em>TICKET_UID</em>@info.pragmatic.ly ，并且我们还有得到用户的邮件地址。</li>
+<li>在这里我们需要判断用户的 Email 时候在 Pragmatic.ly 注册过？这个项目是否存在？他是否又权限访问这个项目？这个 Ticket 是否存在？</li>
+</ul>
+
+<p><strong>3. 当所有的这些验证通过后， WebServer 会以邮件内容创建一个相应项目中的回复</strong></p>
+
+<h2>Implementation</h2>
+
+<p>按照我们的业务逻辑，在这里我们需要一个 callback url 所以在这里我需要一个 EmailRepliesController 并且在这里需要一个 create action 来接收 post request 请求。</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">EmailRepliesController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">create</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+<p>接下来完完全全按照业务逻辑一步一步来完成我们的 test，这里我们只写描述而不去考虑具体的 test assertion 和 prepariong data。</p>
+<div class="highlight"><pre><span class="n">describe</span> <span class="no">EmailRepliesController</span> <span class="k">do</span>
+  <span class="n">describe</span> <span class="s2">&quot;POST create&quot;</span> <span class="k">do</span>
+    <span class="n">context</span> <span class="s2">&quot;when the post request is a valid request&quot;</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="s2">&quot;returns status 200&quot;</span>
+
+      <span class="n">context</span> <span class="s2">&quot;when the project uid is valid&quot;</span> <span class="k">do</span>
+        <span class="n">context</span> <span class="s2">&quot;when the user uid is valid&quot;</span> <span class="k">do</span>
+          <span class="n">context</span> <span class="s2">&quot;when the user has the right to access this project&quot;</span> <span class="k">do</span>
+            <span class="n">context</span> <span class="s2">&quot;when the ticket uid is valid&quot;</span> <span class="k">do</span>
+              <span class="n">it</span> <span class="s2">&quot;creates the comment for iteration&quot;</span>
+            <span class="k">end</span>
+
+            <span class="n">context</span> <span class="s2">&quot;when the ticket uid is invalid&quot;</span> <span class="k">do</span>
+              <span class="n">it</span> <span class="s2">&quot;doesn&#39;t create the comment&quot;</span>
+            <span class="k">end</span>
+          <span class="k">end</span>
+
+          <span class="n">context</span> <span class="s2">&quot;when the user has no right to access this project&quot;</span> <span class="k">do</span>
+            <span class="n">it</span> <span class="s2">&quot;doesn&#39;t create the comment&quot;</span>
+          <span class="k">end</span>
+        <span class="k">end</span>
+
+        <span class="n">context</span> <span class="s2">&quot;when the user uid is invalid&quot;</span> <span class="k">do</span>
+          <span class="n">it</span> <span class="s2">&quot;doesn&#39;t create the comment&quot;</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+
+      <span class="n">context</span> <span class="s2">&quot;when the project uid is invalid&quot;</span> <span class="k">do</span>
+        <span class="n">it</span> <span class="s2">&quot;doesn&#39;t create the comment&quot;</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="n">context</span> <span class="s2">&quot;when the project uid is invalid&quot;</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="s2">&quot;doesn&#39;t create the comment&quot;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+<p>在这里光是关于每一个 test example 的描述就写了如此之多。我们很直接的按照业务逻辑来写 specs ，不过在这里我已经没有勇气再继续写测试的 assertions 和 preparing test data 。那么在我们还没有写任何一行实现代码的时候，我们从 tests 中发现了什么呢？</p>
+
+<blockquote>
+<p>相关链接</p>
+</blockquote>
+
+</div>
+
+  </article>
+
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'yangzhuoyu'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+      </div>
+    </section>
+    
+    <footer>
+      <div class="copyright">
+        <p>&copy;2013 Roy</p>
+      </div>
+    </footer>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-44777679-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+  </body>
+</html>

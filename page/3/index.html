@@ -36,8 +36,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link href="/stylesheets/application.css?1385354018" media="screen" rel="stylesheet" type="text/css" />
-    <script src="/javascripts/application.js?1385354018" type="text/javascript"></script>
+    <link href="/stylesheets/application.css?1385981090" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1385981090" type="text/javascript"></script>
 
   </head>
   <body class="page page_3 page_3_index">
@@ -69,6 +69,191 @@
     <section class="main">
       <div class="container">
         <div id="posts">
+  
+    <article class="post">
+      <header>
+  <h2 class="title">
+    <a href="/rails-3-dot-2-1zhong-bundle-installshi-jquery-railsbao-cuo">Rails 3.2.1中bundle Install时jquery-rails报错ArgumentError:invalid byte sequence in US-ASCII</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Feb 20, 2012
+    </li>
+    <li class="tags">
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p>最近将 <em>Rails</em> 开发环境升级到 <em>Ruby 1.9.2</em> 和 <em>Rails 3.2.1</em> 后，执行 <code>bundle install</code> 时， <em>Jquery-rails</em> 报错：</p>
+<div class="highlight"><pre><span class="s2">&quot;ArgumentError:invalid byte sequence in US-ASCII&quot;</span>
+</pre></div>
+<p>原因分析，由于 <em>locale</em> 设置错误。据了解，这是 <em>Ruby 1.9</em> 字符集设置时关于使用 <em>UTF-8</em> 通用问题。</p>
+
+<h3>解决方法一：</h3>
+
+<p>在 <em>Gemfile</em> 中加入如下代码：</p>
+
+<p><code>ruby Gemfile
+if RUBY_VERSION =~ /1.9/
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
+</code></p>
+
+<h3>解决方法二：</h3>
+
+<p>也可以在 <em>Shell</em> 中设置 <em>locale</em></p>
+
+<p><strong>BASH</strong> 修改：</p>
+
+<p>在 <em>~/.profile</em> 中或者在 <em>~/.bash_profile</em>中加入：</p>
+
+<p><code>sh ~/.profile
+export LC_ALL=zh_CN.UTF-8
+export LANG=zh_CN.UTF-8
+</code></p>
+
+<p><strong>ZSH</strong> 修改：</p>
+
+<p>在 <em>~/.zshrc</em> 中加入：</p>
+
+<p><code>sh ~/.zshrc
+export LC_ALL=zh_CN.UTF-8
+export LANG=zh_CN.UTF-8
+</code></p>
+
+<blockquote>
+<p>参考一：<a href="http://stackoverflow.com/questions/7095845/when-run-bundle-get-invalid-byte-sequence-in-us-ascii">When run bundle get invalid byte sequence in US-ASCII</a></p>
+</blockquote>
+
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/rails-3-dot-2-1zhong-bundle-installshi-jquery-railsbao-cuo">Read more →</a>
+  </p>
+</div>
+
+    </article>
+  
+    <article class="post">
+      <header>
+  <h2 class="title">
+    <a href="/gityan-se-gao-liang">Git颜色高亮</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Feb 20, 2012
+    </li>
+    <li class="tags">
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p>在 <em>Terminal</em> 中使用 <code>git status</code> 和 <code>git diff</code> 时，没有高亮，非常费眼，效率低。</p>
+
+<p>可以在 <em>git</em> 中设置颜色高亮来解决这个问题。输入如下命令：</p>
+<div class="highlight"><pre><span class="nv">$ </span>git config --global color.ui <span class="nb">true</span>
+</pre></div>
+<p>运行 <code>git status</code> 效果：</p>
+
+<p><img alt="git_highlight" src="http://i.imgur.com/EuQZo.png" /></p>
+
+<p>另外，关于git的学习，非常推荐的资源 <a href="http://progit.org/book/zh/"><em>ProGit 中文</em></a></p>
+
+<blockquote>
+<p>参考：<a href="http://progit.org/book/zh/ch1-5.html"><em>ProGit</em></a></p>
+</blockquote>
+
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/gityan-se-gao-liang">Read more →</a>
+  </p>
+</div>
+
+    </article>
+  
+    <article class="post">
+      <header>
+  <h2 class="title">
+    <a href="/oh-my-zshzhong-wu-fa-qie-huan-rvmban-ben">oh-my-zsh中无法切换RVM版本</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Feb 19, 2012
+    </li>
+    <li class="tags">
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p><strong>最近将 <em>Mac OS</em> 自带的 <em>bash</em> 换成了目前比较流行的 <a href="https://github.com/robbyrussell/oh-my-zsh"><em>Oh-my-zsh</em></a>，但是在使用了一些主题以后，发现 <em>RVM</em> 无法切换版本。</strong></p>
+
+<p>解决方法如下：</p>
+
+<p>在 <code>.zshrc</code> 最后加上如下代码：</p>
+
+<p><code>sh .zshrc
+[[ -s &quot;$HOME/.rvm/scripts/rvm&quot; ]] &amp;&amp; . &quot;$HOME/.rvm/scripts/rvm&quot;
+</code></p>
+
+<blockquote>
+<p>参考：<a href="http://stackoverflow.com/questions/4755538/rvm-is-not-working-in-zsh">RVM is not working in ZSH</a></p>
+</blockquote>
+
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/oh-my-zshzhong-wu-fa-qie-huan-rvmban-ben">Read more →</a>
+  </p>
+</div>
+
+    </article>
   
     <article class="post">
       <header>
@@ -186,189 +371,6 @@ Initialized empty Git repository in /home/ams/website.git/
   </p>
   <p>
     <a href="/shi-yong-gitguan-li-fu-wu-qi-wang-zhan">Read more →</a>
-  </p>
-</div>
-
-    </article>
-  
-    <article class="post">
-      <header>
-  <h2 class="title">
-    <a href="/gai-bian-octopressbu-ju">改变octopress布局</a>
-  </h2>
-</header>
-
-<aside class="aside-block">
-  <ul class="meta">
-    <!-- <li class="author-photo">
-      <a href="http://yangzhuoyu.com">
-        <img src="/images/zhuoyu-yang.png?1381549113" />
-      </a>
-    </li>
-    <li class="author">
-     by Roy Young
-    </li> -->
-    <li class="date">
-      Nov 29, 2011
-    </li>
-    <li class="tags">
-      
-    </li>
-  </ul>
-</aside>
-
-<div class="content">
-  <p>一直以来不了解什么是 <em>sass</em>，所以没有尝试修改 <em>octopress</em> 的默认 <em>layout</em> ，今天大概看了一下，简单的修改方法如下。</p>
-
-<p>颜色和宽度在octopress中定义在 <code>/sass/base/_layout.scss</code> 中。当然我们也可以直接改写这个文件。不过对于 <em>sass</em> 来说它可以很轻易的在 <code>/sass/custom/_layout.scss</code> 中自定义。</p>
-
-<blockquote>
-<p>不了解 <strong>sass</strong> 的同学可以看 <a href="http://sass-lang.com/">这里</a> 。</p>
-</blockquote>
-
-
-  <p>
-    ......
-  </p>
-  <p>
-    <a href="/gai-bian-octopressbu-ju">Read more →</a>
-  </p>
-</div>
-
-    </article>
-  
-    <article class="post">
-      <header>
-  <h2 class="title">
-    <a href="/wordpresszhu-ti-thesisde-jian-dan-shi-yong">Wordpress主题thesis的简单使用</a>
-  </h2>
-</header>
-
-<aside class="aside-block">
-  <ul class="meta">
-    <!-- <li class="author-photo">
-      <a href="http://yangzhuoyu.com">
-        <img src="/images/zhuoyu-yang.png?1381549113" />
-      </a>
-    </li>
-    <li class="author">
-     by Roy Young
-    </li> -->
-    <li class="date">
-      Nov 23, 2011
-    </li>
-    <li class="tags">
-      
-    </li>
-  </ul>
-</aside>
-
-<div class="content">
-  <p>前几天帮助一个朋友修改wordpress商业版的thesis主题，通过简单的使用发现，这个东西确实强大！</p>
-
-<p>主要通过两个文件来新增功能，<em>custom_function.php</em> 和 <em>custom.css</em> 。 其他的功能暂时未用到。先来说说添加功能吧。</p>
-
-<p>大概的编写规则：</p>
-
-<p><code>php custom_function.php
-&lt;?php
-function test() {
-?&gt;
-&lt;div&gt;&lt;?php echo &quot;test&quot;; ?&gt;&lt;/div&gt;
-&lt;?php }
-add_action(&quot;thesis_hook_after_sidebars&quot;,&quot;test&quot;)
-?&gt; 
-</code></p>
-
-<p>先写一个 <code>function</code> 然后调用 <code>add_action(调用位置,方法名称)</code> 。</p>
-
-<p>具体的有以下可以参考：</p>
-
-<blockquote>
-<p>传送门： <a href="http://diythemes.com/thesis/rtfm/customizing-with-hooks/">Hooks</a> \ <a href="http://diythemes.com/thesis/rtfm/customizing-with-filters/">Filters</a> \ <a href="http://diythemes.com/thesis/rtfm/custom-loop-api/">Custom Loop API</a></p>
-</blockquote>
-
-
-  <p>
-    ......
-  </p>
-  <p>
-    <a href="/wordpresszhu-ti-thesisde-jian-dan-shi-yong">Read more →</a>
-  </p>
-</div>
-
-    </article>
-  
-    <article class="post">
-      <header>
-  <h2 class="title">
-    <a href="/guan-yu-railsbi-ji-one">关于rails笔记一</a>
-  </h2>
-</header>
-
-<aside class="aside-block">
-  <ul class="meta">
-    <!-- <li class="author-photo">
-      <a href="http://yangzhuoyu.com">
-        <img src="/images/zhuoyu-yang.png?1381549113" />
-      </a>
-    </li>
-    <li class="author">
-     by Roy Young
-    </li> -->
-    <li class="date">
-      Oct 24, 2011
-    </li>
-    <li class="tags">
-      
-    </li>
-  </ul>
-</aside>
-
-<div class="content">
-  <p>最近使用Rails写一个练习项目，关于一些基础的东西，做一点笔记。</p>
-
-<h3>首先是 <em>Params</em></h3>
-
-<p><strong>params</strong> 在代码中 <code>find(params[:id])</code> 是查找http链接中的元素id。</p>
-
-<blockquote>
-<p>参考：<a href="http://apidock.com/rails/ActionDispatch/Http/Parameters/params">传送门</a></p>
-</blockquote>
-
-<h3>其次是 <em>Find</em></h3>
-
-<p>关于 <strong>find</strong> 的用法，起始于想要在查询的内容中按照时间降序排序。</p>
-<div class="highlight"><pre><span class="n">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">,</span> <span class="ss">:order</span> <span class="o">=&gt;</span> <span class="s2">&quot;created_up DECS&quot;</span><span class="p">)</span>
-</pre></div>
-<p>其中</p>
-
-<ul>
-<li><p><strong>:all</strong> 是指在查询的内容中查找全部。也可以改为 <strong>:first</strong> 查找数据库中第一条记录。</p></li>
-<li><p><strong>:order</strong> 指顺序，后面的部分就是所要实现的功能，按照 <strong>created_up</strong> 的降序（<strong>DECS</strong>）排序。</p></li>
-</ul>
-
-<p>另外，还可以直接写成去掉 <strong>find</strong> 的简洁模式。例如，要查询表里的第一条记录，并按照创建时间排序可以写成：</p>
-<div class="highlight"><pre><span class="no">Test</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s2">&quot;created_at DESC&quot;</span><span class="p">)</span>
-</pre></div>
-<p>关于 <strong>find</strong> 还有许多属性，再有就是条件查询。</p>
-
-<p>两种写法:</p>
-<div class="highlight"><pre><span class="no">Test</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:condition</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;user_name = :user_name&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="ss">:user_name</span> <span class="o">=&gt;</span> <span class="n">user_name</span> <span class="p">}</span><span class="o">]</span><span class="p">)</span>
-</pre></div>
-<p>简写:</p>
-<div class="highlight"><pre><span class="no">Test</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">[</span><span class="s2">&quot;user_name = ?&quot;</span><span class="p">,</span> <span class="n">user_name</span><span class="o">]</span><span class="p">)</span>
-</pre></div>
-<blockquote>
-<p>简写必须 <strong>model</strong> 后面，既 <code>Test.where.order</code> 后面，不可写在其他 <strong>def</strong> 后面，既 <code>Test.test.order</code> 就会报错！！！切记！！！</p>
-</blockquote>
-
-
-  <p>
-    ......
-  </p>
-  <p>
-    <a href="/guan-yu-railsbi-ji-one">Read more →</a>
   </p>
 </div>
 

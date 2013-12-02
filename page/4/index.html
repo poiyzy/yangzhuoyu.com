@@ -36,8 +36,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link href="/stylesheets/application.css?1385354018" media="screen" rel="stylesheet" type="text/css" />
-    <script src="/javascripts/application.js?1385354018" type="text/javascript"></script>
+    <link href="/stylesheets/application.css?1385981090" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1385981090" type="text/javascript"></script>
 
   </head>
   <body class="page page_4 page_4_index">
@@ -69,6 +69,189 @@
     <section class="main">
       <div class="container">
         <div id="posts">
+  
+    <article class="post">
+      <header>
+  <h2 class="title">
+    <a href="/gai-bian-octopressbu-ju">改变octopress布局</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Nov 29, 2011
+    </li>
+    <li class="tags">
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p>一直以来不了解什么是 <em>sass</em>，所以没有尝试修改 <em>octopress</em> 的默认 <em>layout</em> ，今天大概看了一下，简单的修改方法如下。</p>
+
+<p>颜色和宽度在octopress中定义在 <code>/sass/base/_layout.scss</code> 中。当然我们也可以直接改写这个文件。不过对于 <em>sass</em> 来说它可以很轻易的在 <code>/sass/custom/_layout.scss</code> 中自定义。</p>
+
+<blockquote>
+<p>不了解 <strong>sass</strong> 的同学可以看 <a href="http://sass-lang.com/">这里</a> 。</p>
+</blockquote>
+
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/gai-bian-octopressbu-ju">Read more →</a>
+  </p>
+</div>
+
+    </article>
+  
+    <article class="post">
+      <header>
+  <h2 class="title">
+    <a href="/wordpresszhu-ti-thesisde-jian-dan-shi-yong">Wordpress主题thesis的简单使用</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Nov 23, 2011
+    </li>
+    <li class="tags">
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p>前几天帮助一个朋友修改wordpress商业版的thesis主题，通过简单的使用发现，这个东西确实强大！</p>
+
+<p>主要通过两个文件来新增功能，<em>custom_function.php</em> 和 <em>custom.css</em> 。 其他的功能暂时未用到。先来说说添加功能吧。</p>
+
+<p>大概的编写规则：</p>
+
+<p><code>php custom_function.php
+&lt;?php
+function test() {
+?&gt;
+&lt;div&gt;&lt;?php echo &quot;test&quot;; ?&gt;&lt;/div&gt;
+&lt;?php }
+add_action(&quot;thesis_hook_after_sidebars&quot;,&quot;test&quot;)
+?&gt; 
+</code></p>
+
+<p>先写一个 <code>function</code> 然后调用 <code>add_action(调用位置,方法名称)</code> 。</p>
+
+<p>具体的有以下可以参考：</p>
+
+<blockquote>
+<p>传送门： <a href="http://diythemes.com/thesis/rtfm/customizing-with-hooks/">Hooks</a> \ <a href="http://diythemes.com/thesis/rtfm/customizing-with-filters/">Filters</a> \ <a href="http://diythemes.com/thesis/rtfm/custom-loop-api/">Custom Loop API</a></p>
+</blockquote>
+
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/wordpresszhu-ti-thesisde-jian-dan-shi-yong">Read more →</a>
+  </p>
+</div>
+
+    </article>
+  
+    <article class="post">
+      <header>
+  <h2 class="title">
+    <a href="/guan-yu-railsbi-ji-one">关于rails笔记一</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Oct 24, 2011
+    </li>
+    <li class="tags">
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p>最近使用Rails写一个练习项目，关于一些基础的东西，做一点笔记。</p>
+
+<h3>首先是 <em>Params</em></h3>
+
+<p><strong>params</strong> 在代码中 <code>find(params[:id])</code> 是查找http链接中的元素id。</p>
+
+<blockquote>
+<p>参考：<a href="http://apidock.com/rails/ActionDispatch/Http/Parameters/params">传送门</a></p>
+</blockquote>
+
+<h3>其次是 <em>Find</em></h3>
+
+<p>关于 <strong>find</strong> 的用法，起始于想要在查询的内容中按照时间降序排序。</p>
+<div class="highlight"><pre><span class="n">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">,</span> <span class="ss">:order</span> <span class="o">=&gt;</span> <span class="s2">&quot;created_up DECS&quot;</span><span class="p">)</span>
+</pre></div>
+<p>其中</p>
+
+<ul>
+<li><p><strong>:all</strong> 是指在查询的内容中查找全部。也可以改为 <strong>:first</strong> 查找数据库中第一条记录。</p></li>
+<li><p><strong>:order</strong> 指顺序，后面的部分就是所要实现的功能，按照 <strong>created_up</strong> 的降序（<strong>DECS</strong>）排序。</p></li>
+</ul>
+
+<p>另外，还可以直接写成去掉 <strong>find</strong> 的简洁模式。例如，要查询表里的第一条记录，并按照创建时间排序可以写成：</p>
+<div class="highlight"><pre><span class="no">Test</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s2">&quot;created_at DESC&quot;</span><span class="p">)</span>
+</pre></div>
+<p>关于 <strong>find</strong> 还有许多属性，再有就是条件查询。</p>
+
+<p>两种写法:</p>
+<div class="highlight"><pre><span class="no">Test</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:condition</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;user_name = :user_name&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="ss">:user_name</span> <span class="o">=&gt;</span> <span class="n">user_name</span> <span class="p">}</span><span class="o">]</span><span class="p">)</span>
+</pre></div>
+<p>简写:</p>
+<div class="highlight"><pre><span class="no">Test</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">[</span><span class="s2">&quot;user_name = ?&quot;</span><span class="p">,</span> <span class="n">user_name</span><span class="o">]</span><span class="p">)</span>
+</pre></div>
+<blockquote>
+<p>简写必须 <strong>model</strong> 后面，既 <code>Test.where.order</code> 后面，不可写在其他 <strong>def</strong> 后面，既 <code>Test.test.order</code> 就会报错！！！切记！！！</p>
+</blockquote>
+
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/guan-yu-railsbi-ji-one">Read more →</a>
+  </p>
+</div>
+
+    </article>
   
     <article class="post">
       <header>
@@ -204,98 +387,11 @@ Initialized empty Git repository in /Users/your_user_diretory/Hello-World/.git/
 
     </article>
   
-    <article class="post">
-      <header>
-  <h2 class="title">
-    <a href="/bing-bu-shou-lian-de-markdown">并不熟练的markdown</a>
-  </h2>
-</header>
-
-<aside class="aside-block">
-  <ul class="meta">
-    <!-- <li class="author-photo">
-      <a href="http://yangzhuoyu.com">
-        <img src="/images/zhuoyu-yang.png?1381549113" />
-      </a>
-    </li>
-    <li class="author">
-     by Roy Young
-    </li> -->
-    <li class="date">
-      Oct 17, 2011
-    </li>
-    <li class="tags">
-      
-    </li>
-  </ul>
-</aside>
-
-<div class="content">
-  <p>今天刚刚deploy了octopress，很多东西都想看都想尝试，但是已经凌晨1点多了，写完这篇流水账早点休息了。</p>
-
-<p>现在还是不太能熟练的掌握markdown语法，对我来说还是个很新鲜的东西。我看大家对于markdown来说都推荐使用<strong>Mou</strong>编辑器（<a href="http://mouapp.com/">传送门</a>）。</p>
-
-<p><img alt="Mou icon" src="http://mouapp.com/images/Mou_Screenshot_1.png" />
-我非常想知道，关于markdown怎么调整图片的大小，看来只能明天好好研究下markdown语法了。</p>
-
-
-  <p>
-    ......
-  </p>
-  <p>
-    <a href="/bing-bu-shou-lian-de-markdown">Read more →</a>
-  </p>
-</div>
-
-    </article>
-  
-    <article class="post">
-      <header>
-  <h2 class="title">
-    <a href="/my-first-post">My-first-post</a>
-  </h2>
-</header>
-
-<aside class="aside-block">
-  <ul class="meta">
-    <!-- <li class="author-photo">
-      <a href="http://yangzhuoyu.com">
-        <img src="/images/zhuoyu-yang.png?1381549113" />
-      </a>
-    </li>
-    <li class="author">
-     by Roy Young
-    </li> -->
-    <li class="date">
-      Oct 16, 2011
-    </li>
-    <li class="tags">
-      
-    </li>
-  </ul>
-</aside>
-
-<div class="content">
-  <p>这是我使用octopress的第一篇文章，本站部署于heroku。</p>
-
-<p>其实这个blog主要是做我个人平时笔记用的，就当是平时的学习笔记吧。主要是学习ruby on rails。</p>
-
-<p>所以说，好记性不如个烂笔头。</p>
-
-
-  <p>
-    ......
-  </p>
-  <p>
-    <a href="/my-first-post">Read more →</a>
-  </p>
-</div>
-
-    </article>
-  
 
   
     <ul class="pager">
+      
+        <li class="next"><a href="/page/5">Older &rarr;</a></li>
       
       
         <li class="previous"><a href="/page/3">&larr; Newer</a></li>

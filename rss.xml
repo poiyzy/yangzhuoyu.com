@@ -8,21 +8,215 @@
     <copyright>&amp;#x2117; &amp;amp; &amp;#xA9; 2013 Roy Young</copyright>
     <link href="http://yangzhuoyu.com"/>
     <link href="http://yangzhuoyu.com/rss.xml" rel="self"/>
-    <updated>2013-11-02T05:33:00Z</updated>
-    <lastBuildDate>2013-11-02T05:33:00Z</lastBuildDate>
-    <pubDate>2013-11-02T05:33:00Z</pubDate>
+    <updated>2013-12-01T04:02:00Z</updated>
+    <lastBuildDate>2013-12-01T04:02:00Z</lastBuildDate>
+    <pubDate>2013-12-01T04:02:00Z</pubDate>
     <description>Roy's blog</description>
     <author>
       <name>Roy Young</name>
     </author>
     <item>
-      <title>从测试中找到更好的面向对象设计(一)</title>
-      <link>http://yangzhuoyu.com/discovering-better-oo-design-with-test</link>
-      <description type="html">&lt;p&gt;&lt;img alt="OO" src="http://thumbs.dreamstime.com/z/齿轮启用-14070207.jpg" /&gt;&lt;/p&gt;
+      <title>从测试中找到更好的面向对象设计(四)</title>
+      <link>http://yangzhuoyu.com/discovering-better-oo-design-with-test-four</link>
+      <description type="html">&lt;p&gt;&lt;aside class="aside-block"&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;这是在 RubyConf China 2013 上分享的一个 Talk, 很多同学给我了一些 Feedback 而且在现场有一些不足，所以我重新整理后以 blog 的形式再次分享出来和大家共同讨论。&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/aside&gt;&lt;/p&gt;
+
+&lt;p&gt;继续前一篇文章，我们实现了 &lt;em&gt;EmailRepliesController&lt;/em&gt; ，但是我们抽取了一个新的类 &lt;em&gt;EmailHandler&lt;/em&gt;。接下来，我们来完成这个新的类。&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="#handle-test" src="/images/handle-test.png?1385981086" /&gt;&lt;/p&gt;
+
+&lt;p&gt;和刚才的思路一样，我们不在乎它是如何做 validation 的，我们只需要知道有效的时候会创建 comment，无效的时候不会创建 comment。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;接下来需要具体完成这个test：&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="handle-test-2" src="/images/handle-test-2.png?1385981086" /&gt;&lt;/p&gt;
+
+&lt;p&gt;在这里，我们不关心什么是 valid email 或者什么是 invalid email 。我们只关心有一个方法叫做 &lt;em&gt;valid_email?&lt;/em&gt; 当email 有效时返回 true ，无效时返回 false。所以这里我们只关心方法名和结果，我们暂时不关心这个方法的实现，所以这里我们用一个 &lt;em&gt;stub&lt;/em&gt; 。&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="email-handler" src="/images/email-handler.png?1385981086" /&gt;&lt;/p&gt;
+
+&lt;p&gt;我们现在来看一下我们的结构：&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="now-we-get" src="/images/now-we-get.png?1385981086" /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Mock is brittle.&lt;/h2&gt;
+
+&lt;p&gt;现在所有的 test 全部 pass，结构清晰，那我们的工作做完了么？还没有，我想大家一定听说过 &lt;strong&gt;Mock is brittle&lt;/strong&gt; 吧。&lt;/p&gt;
+
+&lt;p&gt;我们再来看一下我们的设计结构，目前他们都是完全独立（Controller, EmailHandler)。再来回想一下我们的 test，我们只有一个 should_receive 的测试。如果这是在我们 EmailHandler 里 handle 方法名称发生改变。那我们的 Test 依然通过，就是为什么说 &lt;em&gt;Mock is brittle.&lt;/em&gt;。所以对于测试来说，我们还缺少一个 &lt;em&gt;Integrate Test&lt;/em&gt; 来把这些所有独立的 Object 统一起来，以真实的请求做一次测试。&lt;/p&gt;
+
+&lt;p&gt;未完待续&amp;hellip;&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;这是在 RubyConf China 2013 上分享的一个 Talk, 很多同学给我了一些 Feedback 而且在现场有一些不足，所以我重新整理后以 blog 的形式再次分享出来和大家共同讨论。&lt;/p&gt;
+&lt;p&gt;相关链接&lt;/p&gt;
 &lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2013-12-01T04:02:00Z</pubDate>
+      <category>rubyconf china, ruby, oo, test</category>
+    </item>
+    <item>
+      <title>从测试中找到更好的面向对象设计(三)</title>
+      <link>http://yangzhuoyu.com/discovering-better-oo-design-with-test-three</link>
+      <description type="html">&lt;p&gt;&lt;aside class="aside-block"&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;这是在 RubyConf China 2013 上分享的一个 Talk, 很多同学给我了一些 Feedback 而且在现场有一些不足，所以我重新整理后以 blog 的形式再次分享出来和大家共同讨论。&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/aside&gt;&lt;/p&gt;
+
+&lt;p&gt;到目前为止我们还没有写任何一行代码，但是 test 让我们望而却步无法继续。很多时候大家讨厌写 test ，或者放弃决定不做 test 都是从此时开始。一开始说过，测试将会反映出我们的设计模式，那么此时我们从测试中可以发现些什么呢？&lt;/p&gt;
+
+&lt;h2&gt;Test reflect the design.&lt;/h2&gt;
+
+&lt;p&gt;我们严格按照业务逻辑写完的 specs ，在这里每一个 &lt;em&gt;context&lt;/em&gt; 都意味着在我们的实现代码中会产生一个 if statement ，每一个嵌套的 &lt;em&gt;context&lt;/em&gt; 也就意味着 if statement 的嵌套。&lt;/p&gt;
+
+&lt;p&gt;每一个在描述中提到的 object 就将是我们实现代码中需要与之交互作用的。&lt;/p&gt;
+
+&lt;p&gt;所以经过我们按照我们目前想像的业务逻辑可以画出这样一张图:&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="test-reflect-design" src="/images/test-reflect-design.png?1385969786" /&gt;&lt;/p&gt;
+
+&lt;p&gt;在这里我们把所有的业务都交给 &lt;strong&gt;EmailRepliesController#create&lt;/strong&gt; 来做，所以就会有这样的结果。具体的问题大致如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Structural Coupling!&lt;/li&gt;
+&lt;li&gt;Controller 做了太多太多的事情。&lt;/li&gt;
+&lt;li&gt;Controller 知道了太多太多的细节。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;发现问题，解决问题。越早的发现问题，我们就会越少的面临难题。在我们还没有写任何一行实现代码的时候就开始重构(Structural Refactoring)，或者我更愿意称之为重新设计(Re-Design)。&lt;/p&gt;
+
+&lt;p&gt;在我们开始下一步的重新设计之前，我想先设想一下如果我们坚持把那个复杂的版本做完后会怎么样？当然我还记得那个时候我没有勇气去完成 test，那么如果不写 Test 直接写实现代码会怎么呢？&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="havenot-refactoring" src="/images/havenot-refactoring.png?1385969786" /&gt;&lt;/p&gt;
+
+&lt;p&gt;看到这样的代码，我想我更没有勇气去做重构了。所以越早的发现问题，就能够越早的避免难题。&lt;/p&gt;
+
+&lt;h2&gt;Re-Design From the Test.&lt;/h2&gt;
+
+&lt;p&gt;对于&lt;em&gt;面向对象&lt;/em&gt;设计模式，就是一个把整体复杂变为局部简单的过程。因为我们无法改变项目本身的业务逻辑，所以我们可以做的就是拆分整体的复杂程度，用一个个新的 Object 来达到每个对象之间的关系清晰,每个对象本身局部简单的目的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="redesign" src="/images/redesign.png?1385969786" /&gt;&lt;/p&gt;
+
+&lt;p&gt;从我们从 test 中发现的复杂程度，Controller 做了太多的事情。所以我们要求把他改变为单一只做一件事。我们不考虑它具体怎么去做验证和 Validation ，我们也不考虑它如何创建 Comment。在这里，我们只关心它是否告诉一个叫做 &lt;em&gt;email handler&lt;/em&gt; 的 Object，并且让 &lt;em&gt;email handler&lt;/em&gt; 来 &lt;em&gt;handle&lt;/em&gt; 。&lt;/p&gt;
+
+&lt;p&gt;什么是 &lt;em&gt;email_handler&lt;/em&gt; ? 我希望它是一个叫做 &lt;em&gt;EmailHandler&lt;/em&gt; 的实力。&lt;code&gt;email_handler = EmailHandler.any_instance&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;那又如何 &lt;em&gt;handle&lt;/em&gt; 呢？我们不关心他如何去做，我们只在乎当 post request 有效的时候，&lt;em&gt;email_handler&lt;/em&gt; 是否接收到了这个 command 。&lt;code&gt;email_handler.should_receive(:handle)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;最后的 controller 实现就会如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="controller" src="/images/controller.png?1385969786" /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;相关链接&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2013-11-04T11:43:00Z</pubDate>
+      <category>rubyconf china, ruby, oo, test</category>
+    </item>
+    <item>
+      <title>从测试中找到更好的面向对象设计(二)</title>
+      <link>http://yangzhuoyu.com/discovering-better-oo-design-with-test-two</link>
+      <description type="html">&lt;p&gt;&lt;aside class="aside-block"&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;这是在 RubyConf China 2013 上分享的一个 Talk, 很多同学给我了一些 Feedback 而且在现场有一些不足，所以我重新整理后以 blog 的形式再次分享出来和大家共同讨论。&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/aside&gt;&lt;/p&gt;
+
+&lt;h2&gt;Working Flow of the new feature of pragmatic.ly&lt;/h2&gt;
+
+&lt;p&gt;&lt;img alt="working-flow" src="/images/working-flow.png?1385969786" /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在 Pragmatic.ly 项目中当有一个 Comment 被创建后，我们的 Web Server 会告诉 &lt;a href="http://sendcloud.sohu.com"&gt;SendCloud&lt;/a&gt; (第三方 Email 服务，类似于 &lt;a href="http://www.mailgun.com"&gt;Mailgun&lt;/a&gt;) 给我们的用户发送提醒邮件。&lt;/li&gt;
+&lt;li&gt;当用户回复这封提醒邮件的时候，首先这封邮件会被 SendCloud parse 后，发送一个 post request 到 Pragmatic.ly 设置好的 Callback url.&lt;/li&gt;
+&lt;li&gt;Pragmatic.ly 接收到这个 Pull request 后会做一些 verification 和 validation ，然后在 Web Server 上创建一个 Comment records 。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;我们 TDD 开发主要是在第三步，当 Web Server 接收到 pull request 后的业务逻辑。那么当一个 pull request 被发送到 Web Server 后，我们需要什么样的业务逻辑呢？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Verification 首先我们需要判定，这个 pull request 是来自与 SendCloud 。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Validation 当我们知道这个 pull request 来源有效后，我们需要判定这封邮件内容是否有效。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这里我们将会得到几个数据：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;首先我们设置了邮件回复地址为 ticket+&lt;em&gt;PROJECT_UID&lt;/em&gt;+&lt;em&gt;TICKET_UID&lt;/em&gt;@info.pragmatic.ly ，并且我们还有得到用户的邮件地址。&lt;/li&gt;
+&lt;li&gt;在这里我们需要判断用户的 Email 时候在 Pragmatic.ly 注册过？这个项目是否存在？他是否又权限访问这个项目？这个 Ticket 是否存在？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;3. 当所有的这些验证通过后， WebServer 会以邮件内容创建一个相应项目中的回复&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2&gt;Implementation&lt;/h2&gt;
+
+&lt;p&gt;按照我们的业务逻辑，在这里我们需要一个 callback url 所以在这里我需要一个 EmailRepliesController 并且在这里需要一个 create action 来接收 post request 请求。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;EmailRepliesController&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;ApplicationController&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;接下来完完全全按照业务逻辑一步一步来完成我们的 test，这里我们只写描述而不去考虑具体的 test assertion 和 prepariong data。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;describe&lt;/span&gt; &lt;span class="no"&gt;EmailRepliesController&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="n"&gt;describe&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;POST create&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;when the post request is a valid request&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+      &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;returns status 200&amp;quot;&lt;/span&gt;
+
+      &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;when the project uid is valid&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+        &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;when the user uid is valid&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+          &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;when the user has the right to access this project&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+            &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;when the ticket uid is valid&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+              &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;creates the comment for iteration&amp;quot;&lt;/span&gt;
+            &lt;span class="k"&gt;end&lt;/span&gt;
+
+            &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;when the ticket uid is invalid&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+              &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;doesn&amp;#39;t create the comment&amp;quot;&lt;/span&gt;
+            &lt;span class="k"&gt;end&lt;/span&gt;
+          &lt;span class="k"&gt;end&lt;/span&gt;
+
+          &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;when the user has no right to access this project&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+            &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;doesn&amp;#39;t create the comment&amp;quot;&lt;/span&gt;
+          &lt;span class="k"&gt;end&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt;
+
+        &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;when the user uid is invalid&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+          &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;doesn&amp;#39;t create the comment&amp;quot;&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+
+      &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;when the project uid is invalid&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+        &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;doesn&amp;#39;t create the comment&amp;quot;&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+
+    &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;when the project uid is invalid&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+      &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;doesn&amp;#39;t create the comment&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在这里光是关于每一个 test example 的描述就写了如此之多。我们很直接的按照业务逻辑来写 specs ，不过在这里我已经没有勇气再继续写测试的 assertions 和 preparing test data 。那么在我们还没有写任何一行实现代码的时候，我们从 tests 中发现了什么呢？&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;相关链接&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2013-11-02T07:11:00Z</pubDate>
+      <category>rubyconf china, ruby, oo, test</category>
+    </item>
+    <item>
+      <title>从测试中找到更好的面向对象设计(一)</title>
+      <link>http://yangzhuoyu.com/discovering-better-oo-design-with-test</link>
+      <description type="html">&lt;p&gt;&lt;img alt="OO" src="http://thumbs.dreamstime.com/z/齿轮启用-14070207.jpg" /&gt;
+&amp;copy; &lt;a href="http://thumbs.dreamstime.com/"&gt;thumbs.dreamstime.com&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Discovering Better &lt;strong&gt;Object Oriented Design&lt;/strong&gt; with &lt;strong&gt;Test&lt;/strong&gt;. 我知道很多团队中不写 Test, 不是因为不会写测试，而是觉得测试写起来很麻烦、很痛苦, 不愿意写测试；我也知道很多程序员不关心设计模式，什么面向对象之类的都不在乎，只要代码能工作就好。&lt;/p&gt;
 
@@ -66,12 +260,12 @@
 &lt;p&gt;这个&lt;a href="https://pragmatic.ly/blog/new-feature-comment-via-email/"&gt;功能&lt;/a&gt;已经在 &lt;a href="https://pragmatic.ly"&gt;Pragmatic.ly&lt;/a&gt; 中实现并部署上线。接下来的内容，我将会展示这个新功能应用测试驱动开发和重新设计的实现过程。&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;相关链接：&lt;/p&gt;
+&lt;p&gt;相关链接：&lt;a href="http://www.infoq.com/cn/presentations/with-tests-found-a-better-object-oriented-design"&gt;视频&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
       <guid>tag:yangzhuoyu.com,article.url</guid>
       <pubDate>2013-11-02T05:33:00Z</pubDate>
-      <category></category>
+      <category>rubyconf china, ruby, oo, test</category>
     </item>
     <item>
       <title>新的起点：远程创业团队</title>

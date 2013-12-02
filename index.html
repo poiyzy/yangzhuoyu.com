@@ -36,8 +36,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link href="/stylesheets/application.css?1385354018" media="screen" rel="stylesheet" type="text/css" />
-    <script src="/javascripts/application.js?1385354018" type="text/javascript"></script>
+    <link href="/stylesheets/application.css?1385981090" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1385981090" type="text/javascript"></script>
 
   </head>
   <body class="index">
@@ -73,6 +73,204 @@
     <article class="post">
       <header>
   <h2 class="title">
+    <a href="/discovering-better-oo-design-with-test-four">从测试中找到更好的面向对象设计(四)</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Dec 01, 2013
+    </li>
+    <li class="tags">
+      
+        <a href="/tags/rubyconf-china">rubyconf china</a>
+      
+        <a href="/tags/ruby">ruby</a>
+      
+        <a href="/tags/oo">oo</a>
+      
+        <a href="/tags/test">test</a>
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p><aside class="aside-block">
+  <blockquote>
+    <p>这是在 RubyConf China 2013 上分享的一个 Talk, 很多同学给我了一些 Feedback 而且在现场有一些不足，所以我重新整理后以 blog 的形式再次分享出来和大家共同讨论。</p>
+  </blockquote>
+</aside></p>
+
+<p>继续前一篇文章，我们实现了 <em>EmailRepliesController</em> ，但是我们抽取了一个新的类 <em>EmailHandler</em>。接下来，我们来完成这个新的类。</p>
+
+<p><img alt="#handle-test" src="/images/handle-test.png?1385981086" /></p>
+
+<p>和刚才的思路一样，我们不在乎它是如何做 validation 的，我们只需要知道有效的时候会创建 comment，无效的时候不会创建 comment。</p>
+
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/discovering-better-oo-design-with-test-four">Read more →</a>
+  </p>
+</div>
+
+    </article>
+  
+    <article class="post">
+      <header>
+  <h2 class="title">
+    <a href="/discovering-better-oo-design-with-test-three">从测试中找到更好的面向对象设计(三)</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Nov 04, 2013
+    </li>
+    <li class="tags">
+      
+        <a href="/tags/rubyconf-china">rubyconf china</a>
+      
+        <a href="/tags/ruby">ruby</a>
+      
+        <a href="/tags/oo">oo</a>
+      
+        <a href="/tags/test">test</a>
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p><aside class="aside-block">
+  <blockquote>
+    <p>这是在 RubyConf China 2013 上分享的一个 Talk, 很多同学给我了一些 Feedback 而且在现场有一些不足，所以我重新整理后以 blog 的形式再次分享出来和大家共同讨论。</p>
+  </blockquote>
+</aside></p>
+
+<p>到目前为止我们还没有写任何一行代码，但是 test 让我们望而却步无法继续。很多时候大家讨厌写 test ，或者放弃决定不做 test 都是从此时开始。一开始说过，测试将会反映出我们的设计模式，那么此时我们从测试中可以发现些什么呢？</p>
+
+<h2>Test reflect the design.</h2>
+
+<p>我们严格按照业务逻辑写完的 specs ，在这里每一个 <em>context</em> 都意味着在我们的实现代码中会产生一个 if statement ，每一个嵌套的 <em>context</em> 也就意味着 if statement 的嵌套。</p>
+
+<p>每一个在描述中提到的 object 就将是我们实现代码中需要与之交互作用的。</p>
+
+<p>所以经过我们按照我们目前想像的业务逻辑可以画出这样一张图:</p>
+
+<p><img alt="test-reflect-design" src="/images/test-reflect-design.png?1385969786" /></p>
+
+<p>在这里我们把所有的业务都交给 <strong>EmailRepliesController#create</strong> 来做，所以就会有这样的结果。具体的问题大致如下：</p>
+
+<ul>
+<li>Structural Coupling!</li>
+<li>Controller 做了太多太多的事情。</li>
+<li>Controller 知道了太多太多的细节。</li>
+</ul>
+
+<p>发现问题，解决问题。越早的发现问题，我们就会越少的面临难题。在我们还没有写任何一行实现代码的时候就开始重构(Structural Refactoring)，或者我更愿意称之为重新设计(Re-Design)。</p>
+
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/discovering-better-oo-design-with-test-three">Read more →</a>
+  </p>
+</div>
+
+    </article>
+  
+    <article class="post">
+      <header>
+  <h2 class="title">
+    <a href="/discovering-better-oo-design-with-test-two">从测试中找到更好的面向对象设计(二)</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Nov 02, 2013
+    </li>
+    <li class="tags">
+      
+        <a href="/tags/rubyconf-china">rubyconf china</a>
+      
+        <a href="/tags/ruby">ruby</a>
+      
+        <a href="/tags/oo">oo</a>
+      
+        <a href="/tags/test">test</a>
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p><aside class="aside-block">
+  <blockquote>
+    <p>这是在 RubyConf China 2013 上分享的一个 Talk, 很多同学给我了一些 Feedback 而且在现场有一些不足，所以我重新整理后以 blog 的形式再次分享出来和大家共同讨论。</p>
+  </blockquote>
+</aside></p>
+
+<h2>Working Flow of the new feature of pragmatic.ly</h2>
+
+<p><img alt="working-flow" src="/images/working-flow.png?1385969786" /></p>
+
+<ul>
+<li>在 Pragmatic.ly 项目中当有一个 Comment 被创建后，我们的 Web Server 会告诉 <a href="http://sendcloud.sohu.com">SendCloud</a> (第三方 Email 服务，类似于 <a href="http://www.mailgun.com">Mailgun</a>) 给我们的用户发送提醒邮件。</li>
+<li>当用户回复这封提醒邮件的时候，首先这封邮件会被 SendCloud parse 后，发送一个 post request 到 Pragmatic.ly 设置好的 Callback url.</li>
+<li>Pragmatic.ly 接收到这个 Pull request 后会做一些 verification 和 validation ，然后在 Web Server 上创建一个 Comment records 。</li>
+</ul>
+
+<p>我们 TDD 开发主要是在第三步，当 Web Server 接收到 pull request 后的业务逻辑。那么当一个 pull request 被发送到 Web Server 后，我们需要什么样的业务逻辑呢？</p>
+
+<p><strong>1. Verification 首先我们需要判定，这个 pull request 是来自与 SendCloud 。</strong></p>
+
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/discovering-better-oo-design-with-test-two">Read more →</a>
+  </p>
+</div>
+
+    </article>
+  
+    <article class="post">
+      <header>
+  <h2 class="title">
     <a href="/discovering-better-oo-design-with-test">从测试中找到更好的面向对象设计(一)</a>
   </h2>
 </header>
@@ -92,16 +290,21 @@
     </li>
     <li class="tags">
       
+        <a href="/tags/rubyconf-china">rubyconf china</a>
+      
+        <a href="/tags/ruby">ruby</a>
+      
+        <a href="/tags/oo">oo</a>
+      
+        <a href="/tags/test">test</a>
+      
     </li>
   </ul>
 </aside>
 
 <div class="content">
-  <p><img alt="OO" src="http://thumbs.dreamstime.com/z/齿轮启用-14070207.jpg" /></p>
-
-<blockquote>
-<p>这是在 RubyConf China 2013 上分享的一个 Talk, 很多同学给我了一些 Feedback 而且在现场有一些不足，所以我重新整理后以 blog 的形式再次分享出来和大家共同讨论。</p>
-</blockquote>
+  <p><img alt="OO" src="http://thumbs.dreamstime.com/z/齿轮启用-14070207.jpg" />
+&copy; <a href="http://thumbs.dreamstime.com/">thumbs.dreamstime.com</a></p>
 
 <p>Discovering Better <strong>Object Oriented Design</strong> with <strong>Test</strong>. 我知道很多团队中不写 Test, 不是因为不会写测试，而是觉得测试写起来很麻烦、很痛苦, 不愿意写测试；我也知道很多程序员不关心设计模式，什么面向对象之类的都不在乎，只要代码能工作就好。</p>
 
@@ -190,182 +393,6 @@
   </p>
   <p>
     <a href="/first-month-in-pragmatic-ly">Read more →</a>
-  </p>
-</div>
-
-    </article>
-  
-    <article class="post">
-      <header>
-  <h2 class="title">
-    <a href="/reading-plan">Reading Plan</a>
-  </h2>
-</header>
-
-<aside class="aside-block">
-  <ul class="meta">
-    <!-- <li class="author-photo">
-      <a href="http://yangzhuoyu.com">
-        <img src="/images/zhuoyu-yang.png?1381549113" />
-      </a>
-    </li>
-    <li class="author">
-     by Roy Young
-    </li> -->
-    <li class="date">
-      Jun 07, 2013
-    </li>
-    <li class="tags">
-      
-    </li>
-  </ul>
-</aside>
-
-<div class="content">
-  <h3>The books I have read</h3>
-
-<ul>
-<li><a href="http://www.amazon.com/Well-Grounded-Rubyist-David-Black/dp/1933988657">The Well-Grounded Rubyist</a></li>
-<li><a href="http://www.amazon.com/Eloquent-Ruby-Addison-Wesley-Professional-Series/dp/0321584104/ref=sr_1_sc_1?s=books&ie=UTF8&qid=1370579591&sr=1-1-spell&keywords=eloqunt+ruby">Eloquent Ruby</a></li>
-<li><a href="http://www.amazon.com/Design-Patterns-Ruby-Russ-Olsen/dp/0321490452/ref=sr_1_1?s=books&ie=UTF8&qid=1370579706&sr=1-1&keywords=design+patterns+in+ruby">Design Patterns in Ruby</a></li>
-<li><a href="http://www.amazon.com/Practical-Object-Oriented-Design-Ruby-Addison-Wesley/dp/0321721330/ref=sr_1_sc_2?s=books&ie=UTF8&qid=1370579591&sr=1-2-spell&keywords=eloqunt+ruby">Practical Object-Oriented Design in Ruby</a></li>
-<li><a href="http://www.amazon.com/Metaprogramming-Ruby-Program-Like-Pros/dp/1934356476/ref=sr_1_1?s=books&ie=UTF8&qid=1370579648&sr=1-1&keywords=metaprogramming+ruby">Metaprogramming Ruby</a></li>
-</ul>
-
-
-  <p>
-    ......
-  </p>
-  <p>
-    <a href="/reading-plan">Read more →</a>
-  </p>
-</div>
-
-    </article>
-  
-    <article class="post">
-      <header>
-  <h2 class="title">
-    <a href="/spine-mobile-events">Spine Mobile --- Events</a>
-  </h2>
-</header>
-
-<aside class="aside-block">
-  <ul class="meta">
-    <!-- <li class="author-photo">
-      <a href="http://yangzhuoyu.com">
-        <img src="/images/zhuoyu-yang.png?1381549113" />
-      </a>
-    </li>
-    <li class="author">
-     by Roy Young
-    </li> -->
-    <li class="date">
-      Jun 28, 2012
-    </li>
-    <li class="tags">
-      
-    </li>
-  </ul>
-</aside>
-
-<div class="content">
-  <h3>300ms click event</h3>
-
-<p>一个手机开发人员经常会出的错误是使用 <em>click</em> 事件。正确的做法：<strong>不要使用 click event</strong>。 因为 <em>Mobile Safari</em> 会有300毫秒的延迟来判定是否为点击操作还是可能有后续操作。</p>
-
-<h3>tap</h3>
-
-<p>使用 <strong>tap</strong> 来代替 <strong>click</strong>。</p>
-
-<p>直接使用 <strong>tap</strong> 来代替 <strong>click</strong> 事件：</p>
-<div class="highlight"><pre><span class="kr">class</span> <span class="nx">ContactsList</span> <span class="kr">extends</span> <span class="nx">Panel</span>
-  <span class="err">#</span><span class="nx">Replace</span> <span class="s1">&#39;click&#39;</span> <span class="kd">with</span> <span class="s1">&#39;tap&#39;</span>
-  <span class="nx">events</span><span class="o">:</span>
-    <span class="s1">&#39;tap .item&#39;</span><span class="o">:</span> <span class="s1">&#39;select&#39;</span>
-
-  <span class="nx">select</span><span class="o">:</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">-&gt;</span>
-    <span class="nx">item</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">item</span><span class="p">()</span>
-    <span class="err">@</span><span class="nx">navigate</span><span class="p">(</span><span class="s1">&#39;/contacts&#39;</span><span class="p">,</span> <span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">trans</span><span class="o">:</span> <span class="s1">&#39;right&#39;</span><span class="p">)</span>
-</pre></div>
-<p>当用户的手不离开的时候这个事件将不会被激活，同样这个事件可以被手指滑动所取消。</p>
-
-<blockquote>
-<p><a href="http://spinejs.com/mobile/docs/events">Events</a></p>
-</blockquote>
-
-
-  <p>
-    ......
-  </p>
-  <p>
-    <a href="/spine-mobile-events">Read more →</a>
-  </p>
-</div>
-
-    </article>
-  
-    <article class="post">
-      <header>
-  <h2 class="title">
-    <a href="/spine-mobile-transitions">Spine Mobile --- Transitions</a>
-  </h2>
-</header>
-
-<aside class="aside-block">
-  <ul class="meta">
-    <!-- <li class="author-photo">
-      <a href="http://yangzhuoyu.com">
-        <img src="/images/zhuoyu-yang.png?1381549113" />
-      </a>
-    </li>
-    <li class="author">
-     by Roy Young
-    </li> -->
-    <li class="date">
-      Jun 28, 2012
-    </li>
-    <li class="tags">
-      
-    </li>
-  </ul>
-</aside>
-
-<div class="content">
-  <h3>Activating Panels</h3>
-
-<p>激活 <em>Panels</em> ，正如我们在之前在<a href="/blog/2012/06/28/spine-mobile-stage-and-panel-controllers/">关于Controller</a>中使用 <code>active()</code> 函数完成。</p>
-<div class="highlight"><pre><span class="nx">calss</span> <span class="nx">ContactsList</span> <span class="kr">extends</span> <span class="nx">Panel</span>
-  <span class="err">#</span> <span class="p">...</span>
-
-<span class="nx">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ContactsList</span>
-<span class="nx">list</span><span class="p">.</span><span class="nx">active</span><span class="p">()</span>
-</pre></div>
-<p>默认情况下，它将不使用任何 <em>transitions</em> , 只是简单的显示 <em>controller</em> 。使用 <em>transition</em> , 需要把 <code>trans</code> 传入到 <code>active()</code> :</p>
-<div class="highlight"><pre><span class="err">#</span> <span class="nx">Transition</span> <span class="k">in</span> <span class="nx">form</span> <span class="nx">left</span>
-<span class="nx">list</span><span class="p">.</span><span class="nx">active</span><span class="p">(</span><span class="nx">trans</span><span class="o">:</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
-
-<span class="err">#</span> <span class="nx">Or</span><span class="p">,</span> <span class="nx">transition</span> <span class="k">in</span> <span class="nx">from</span> <span class="nx">right</span>
-<span class="nx">list</span><span class="p">.</span><span class="nx">active</span><span class="p">(</span><span class="nx">trans</span><span class="o">:</span> <span class="s1">&#39;right&#39;</span><span class="p">)</span>
-</pre></div>
-<p>目前只支持两种 <em>transition</em> ，<strong>left</strong> 和 <strong>right</strong> 。</p>
-
-<h3>Routes</h3>
-
-<p><em>Panels</em> 经常由 <em>routes</em> 激活。<em>Spine</em> 允许传入一个自定的对象作为 <code>@navigate()</code> 的最后一个参数来激活 <em>routes</em> 。</p>
-<div class="highlight"><pre><span class="err">@</span><span class="nx">navigate</span><span class="p">(</span><span class="s1">&#39;/contacts&#39;</span><span class="p">,</span> <span class="nx">trans</span><span class="o">:</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
-</pre></div>
-<p><code>{trans: &#39;left&#39;}</code> 然后将会被传入到 <em>route callback</em> 。</p>
-<div class="highlight"><pre><span class="err">@</span><span class="nx">routes</span>
-  <span class="s1">&#39;/contacts&#39;</span><span class="o">:</span> <span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="o">-&gt;</span>
-    <span class="nx">assertEqual</span><span class="p">(</span> <span class="nx">params</span><span class="p">.</span><span class="nx">trans</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
-</pre></div>
-
-  <p>
-    ......
-  </p>
-  <p>
-    <a href="/spine-mobile-transitions">Read more →</a>
   </p>
 </div>
 

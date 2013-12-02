@@ -1,0 +1,219 @@
+
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]<!-->
+<html class="no-js" lang="en">
+  <!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+
+    <title>
+        从测试中找到更好的面向对象设计(三)
+ - Roy's Blog
+    </title>
+
+    <meta name="description" content="Nil">
+    <meta name="keywords" content="  ["rubyconf china", "ruby", "oo", "test"]
+">
+    <meta name="author" content="Roy Young">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="apple-touch-icon-precomposed" type="image/png" sizes="57x57" href="/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" type="image/png" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" type="image/png" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" type="image/png" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" type="image/png" href="/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <link rel="shortcut icon" sizes="16x16" href="/favicon.ico">
+    <link rel="alternate" type="application/rss+xml" title="Roy Young's Blog" href="/feed.xml" />
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/stylesheets/application.css?1385981090" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1385981090" type="text/javascript"></script>
+
+  </head>
+  <body class="discovering-better-oo-design-with-test-three discovering-better-oo-design-with-test-three_index">
+    <aside class="sidebar">
+      <h1 class="site-name"><a href="/">Roy</a></h1>
+      <nav class="global-nav">
+        <ul>
+          <li><a href="/">Posts</a></li>
+          <li><a href="#TODO">Photos</a></li>
+          <li><a href="/profile">Profile</a></li>
+        </ul>        
+      </nav>
+
+      <nav class="social-connect">
+        <ul>
+          <li><a href="/rss.xml"><i class="icon-rss"></i></a></li>
+          <li><a href="//twitter.com/poiyzy"><i class="icon-twitter"></i></a></li>
+          <li><a href="//weibo.com/zhuoyuyang"><i class="icon-weibo"></i></a></li>
+        </ul>
+      </nav>
+
+      <div class="block ad">
+        <h4 class="block-title"><a href="//pragmatic.ly/">Pragmatic.ly</a></h4>
+        <p class="block-cnt">团队协作工具</p>
+      </div>
+
+    </aside>
+
+    <section class="main">
+      <div class="container">
+          <div class="announcement">
+    <p>
+      
+        <img class="avatar" src="/images/zhuoyu-yang.png" alt="Zhuoyu Yang" />
+如果你在远程工作、团队协作、项目管理和创业方面需要意见，欢迎找我约个时间，免费咨询！Skype: poiyzy
+      
+    </p>
+  </div>
+
+  <article class="post single">
+
+    <header>
+  <h2 class="title">
+    <a href="/discovering-better-oo-design-with-test-three">从测试中找到更好的面向对象设计(三)</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Nov 04, 2013
+    </li>
+    <li class="tags">
+      
+        <a href="/tags/rubyconf-china">rubyconf china</a>
+      
+        <a href="/tags/ruby">ruby</a>
+      
+        <a href="/tags/oo">oo</a>
+      
+        <a href="/tags/test">test</a>
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p><aside class="aside-block">
+  <blockquote>
+    <p>这是在 RubyConf China 2013 上分享的一个 Talk, 很多同学给我了一些 Feedback 而且在现场有一些不足，所以我重新整理后以 blog 的形式再次分享出来和大家共同讨论。</p>
+  </blockquote>
+</aside></p>
+
+<p>到目前为止我们还没有写任何一行代码，但是 test 让我们望而却步无法继续。很多时候大家讨厌写 test ，或者放弃决定不做 test 都是从此时开始。一开始说过，测试将会反映出我们的设计模式，那么此时我们从测试中可以发现些什么呢？</p>
+
+<h2>Test reflect the design.</h2>
+
+<p>我们严格按照业务逻辑写完的 specs ，在这里每一个 <em>context</em> 都意味着在我们的实现代码中会产生一个 if statement ，每一个嵌套的 <em>context</em> 也就意味着 if statement 的嵌套。</p>
+
+<p>每一个在描述中提到的 object 就将是我们实现代码中需要与之交互作用的。</p>
+
+<p>所以经过我们按照我们目前想像的业务逻辑可以画出这样一张图:</p>
+
+<p><img alt="test-reflect-design" src="/images/test-reflect-design.png?1385969786" /></p>
+
+<p>在这里我们把所有的业务都交给 <strong>EmailRepliesController#create</strong> 来做，所以就会有这样的结果。具体的问题大致如下：</p>
+
+<ul>
+<li>Structural Coupling!</li>
+<li>Controller 做了太多太多的事情。</li>
+<li>Controller 知道了太多太多的细节。</li>
+</ul>
+
+<p>发现问题，解决问题。越早的发现问题，我们就会越少的面临难题。在我们还没有写任何一行实现代码的时候就开始重构(Structural Refactoring)，或者我更愿意称之为重新设计(Re-Design)。</p>
+
+<p>在我们开始下一步的重新设计之前，我想先设想一下如果我们坚持把那个复杂的版本做完后会怎么样？当然我还记得那个时候我没有勇气去完成 test，那么如果不写 Test 直接写实现代码会怎么呢？</p>
+
+<p><img alt="havenot-refactoring" src="/images/havenot-refactoring.png?1385969786" /></p>
+
+<p>看到这样的代码，我想我更没有勇气去做重构了。所以越早的发现问题，就能够越早的避免难题。</p>
+
+<h2>Re-Design From the Test.</h2>
+
+<p>对于<em>面向对象</em>设计模式，就是一个把整体复杂变为局部简单的过程。因为我们无法改变项目本身的业务逻辑，所以我们可以做的就是拆分整体的复杂程度，用一个个新的 Object 来达到每个对象之间的关系清晰,每个对象本身局部简单的目的。</p>
+
+<p><img alt="redesign" src="/images/redesign.png?1385969786" /></p>
+
+<p>从我们从 test 中发现的复杂程度，Controller 做了太多的事情。所以我们要求把他改变为单一只做一件事。我们不考虑它具体怎么去做验证和 Validation ，我们也不考虑它如何创建 Comment。在这里，我们只关心它是否告诉一个叫做 <em>email handler</em> 的 Object，并且让 <em>email handler</em> 来 <em>handle</em> 。</p>
+
+<p>什么是 <em>email_handler</em> ? 我希望它是一个叫做 <em>EmailHandler</em> 的实力。<code>email_handler = EmailHandler.any_instance</code>。</p>
+
+<p>那又如何 <em>handle</em> 呢？我们不关心他如何去做，我们只在乎当 post request 有效的时候，<em>email_handler</em> 是否接收到了这个 command 。<code>email_handler.should_receive(:handle)</code></p>
+
+<p>最后的 controller 实现就会如下：</p>
+
+<p><img alt="controller" src="/images/controller.png?1385969786" /></p>
+
+<blockquote>
+<p>相关链接</p>
+</blockquote>
+
+</div>
+
+  </article>
+
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'yangzhuoyu'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+      </div>
+    </section>
+    
+    <footer>
+      <div class="copyright">
+        <p>&copy;2013 Roy</p>
+      </div>
+    </footer>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-44777679-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+  </body>
+</html>
