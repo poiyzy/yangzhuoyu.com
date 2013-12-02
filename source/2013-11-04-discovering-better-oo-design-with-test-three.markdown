@@ -39,5 +39,18 @@ author: roy
 
 ## Re-Design From the Test.
 
+对于*面向对象*设计模式，就是一个把整体复杂变为局部简单的过程。因为我们无法改变项目本身的业务逻辑，所以我们可以做的就是拆分整体的复杂程度，用一个个新的 Object 来达到每个对象之间的关系清晰,每个对象本身局部简单的目的。
+
+![redesign](/images/redesign.png)
+
+从我们从 test 中发现的复杂程度，Controller 做了太多的事情。所以我们要求把他改变为单一只做一件事。我们不考虑它具体怎么去做验证和 Validation ，我们也不考虑它如何创建 Comment。在这里，我们只关心它是否告诉一个叫做 *email handler* 的 Object，并且让 *email handler* 来 *handle* 。
+
+什么是 *email_handler* ? 我希望它是一个叫做 *EmailHandler* 的实力。`email_handler = EmailHandler.any_instance`。
+
+那又如何 *handle* 呢？我们不关心他如何去做，我们只在乎当 post request 有效的时候，*email_handler* 是否接收到了这个 command 。`email_handler.should_receive(:handle)`
+
+最后的 controller 实现就会如下：
+
+![controller](/images/controller.png)
 
 > 相关链接
