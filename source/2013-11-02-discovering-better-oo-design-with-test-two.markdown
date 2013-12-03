@@ -87,4 +87,12 @@ end
 
 在这里光是关于每一个 test example 的描述就写了如此之多。我们很直接的按照业务逻辑来写 specs ，不过在这里我已经没有勇气再继续写测试的 assertions 和 preparing test data 。那么在我们还没有写任何一行实现代码的时候，我们从 tests 中发现了什么呢？
 
-> 相关链接
+> 相关链接：
+
+> [RubyConf China 2013 演讲视频](http://www.infoq.com/cn/presentations/with-tests-found-a-better-object-oriented-design)
+
+> [从测试中找到更好的面向对象设计(一)](/discovering-better-oo-design-with-test)
+
+> [从测试中找到更好的面向对象设计(三)](/discovering-better-oo-design-with-test-three)
+
+> [从测试中找到更好的面向对象设计(四)](/discovering-better-oo-design-with-test)

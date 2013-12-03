@@ -5,6 +5,11 @@ tags: rubyconf china, ruby, oo, test
 author: roy
 ---
 
+<aside class="aside-block">
+  <blockquote>
+    <p>这是在 RubyConf China 2013 上分享的一个 Talk, 很多同学给我了一些 Feedback 而且在现场有一些不足，所以我重新整理后以 blog 的形式再次分享出来和大家共同讨论。</p>
+  </blockquote>
+</aside>
 
 ![OO](http://thumbs.dreamstime.com/z/齿轮启用-14070207.jpg)
 &copy; [thumbs.dreamstime.com](http://thumbs.dreamstime.com/)
@@ -45,4 +50,12 @@ Discovering Better **Object Oriented Design** with **Test**. 我知道很多团�
 这个[功能](https://pragmatic.ly/blog/new-feature-comment-via-email/)已经在 [Pragmatic.ly](https://pragmatic.ly) 中实现并部署上线。接下来的内容，我将会展示这个新功能应用测试驱动开发和重新设计的实现过程。
 
 
-> 相关链接：[视频](http://www.infoq.com/cn/presentations/with-tests-found-a-better-object-oriented-design)
+> 相关链接：
+
+> [RubyConf China 2013 演讲视频](http://www.infoq.com/cn/presentations/with-tests-found-a-better-object-oriented-design)
+
+> [从测试中找到更好的面向对象设计(二)](/discovering-better-oo-design-with-test-two)
+
+> [从测试中找到更好的面向对象设计(三)](/discovering-better-oo-design-with-test-three)
+
+> [从测试中找到更好的面向对象设计(四)](/discovering-better-oo-design-with-test-four)

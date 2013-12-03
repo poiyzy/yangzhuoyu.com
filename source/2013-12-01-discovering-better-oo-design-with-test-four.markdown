@@ -39,4 +39,12 @@ READMORE
 
 未完待续...
 
-> 相关链接
+> 相关链接：
+
+> [RubyConf China 2013 演讲视频](http://www.infoq.com/cn/presentations/with-tests-found-a-better-object-oriented-design)
+
+> [从测试中找到更好的面向对象设计(一)](/discovering-better-oo-design-with-test)
+
+> [从测试中找到更好的面向对象设计(二)](/discovering-better-oo-design-with-test-two)
+
+> [从测试中找到更好的面向对象设计(三)](/discovering-better-oo-design-with-test-three)
