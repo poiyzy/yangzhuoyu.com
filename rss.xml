@@ -53,7 +53,15 @@
 &lt;p&gt;未完待续&amp;hellip;&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;相关链接&lt;/p&gt;
+&lt;p&gt;相关链接：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.infoq.com/cn/presentations/with-tests-found-a-better-object-oriented-design"&gt;RubyConf China 2013 演讲视频&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/discovering-better-oo-design-with-test"&gt;从测试中找到更好的面向对象设计(一)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/discovering-better-oo-design-with-test-two"&gt;从测试中找到更好的面向对象设计(二)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/discovering-better-oo-design-with-test-three"&gt;从测试中找到更好的面向对象设计(三)&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
       <guid>tag:yangzhuoyu.com,article.url</guid>
@@ -114,7 +122,15 @@
 &lt;p&gt;&lt;img alt="controller" src="/images/controller.png?1385969786" /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;相关链接&lt;/p&gt;
+&lt;p&gt;相关链接：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.infoq.com/cn/presentations/with-tests-found-a-better-object-oriented-design"&gt;RubyConf China 2013 演讲视频&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/discovering-better-oo-design-with-test"&gt;从测试中找到更好的面向对象设计(一)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/discovering-better-oo-design-with-test-two"&gt;从测试中找到更好的面向对象设计(二)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/discovering-better-oo-design-with-test-four"&gt;从测试中找到更好的面向对象设计(四)&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
       <guid>tag:yangzhuoyu.com,article.url</guid>
@@ -205,7 +221,15 @@
 &lt;p&gt;在这里光是关于每一个 test example 的描述就写了如此之多。我们很直接的按照业务逻辑来写 specs ，不过在这里我已经没有勇气再继续写测试的 assertions 和 preparing test data 。那么在我们还没有写任何一行实现代码的时候，我们从 tests 中发现了什么呢？&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;相关链接&lt;/p&gt;
+&lt;p&gt;相关链接：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.infoq.com/cn/presentations/with-tests-found-a-better-object-oriented-design"&gt;RubyConf China 2013 演讲视频&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/discovering-better-oo-design-with-test"&gt;从测试中找到更好的面向对象设计(一)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/discovering-better-oo-design-with-test-three"&gt;从测试中找到更好的面向对象设计(三)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/discovering-better-oo-design-with-test"&gt;从测试中找到更好的面向对象设计(四)&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
       <guid>tag:yangzhuoyu.com,article.url</guid>
@@ -215,7 +239,13 @@
     <item>
       <title>从测试中找到更好的面向对象设计(一)</title>
       <link>http://yangzhuoyu.com/discovering-better-oo-design-with-test</link>
-      <description type="html">&lt;p&gt;&lt;img alt="OO" src="http://thumbs.dreamstime.com/z/齿轮启用-14070207.jpg" /&gt;
+      <description type="html">&lt;p&gt;&lt;aside class="aside-block"&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;这是在 RubyConf China 2013 上分享的一个 Talk, 很多同学给我了一些 Feedback 而且在现场有一些不足，所以我重新整理后以 blog 的形式再次分享出来和大家共同讨论。&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/aside&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="OO" src="http://thumbs.dreamstime.com/z/齿轮启用-14070207.jpg" /&gt;
 &amp;copy; &lt;a href="http://thumbs.dreamstime.com/"&gt;thumbs.dreamstime.com&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Discovering Better &lt;strong&gt;Object Oriented Design&lt;/strong&gt; with &lt;strong&gt;Test&lt;/strong&gt;. 我知道很多团队中不写 Test, 不是因为不会写测试，而是觉得测试写起来很麻烦、很痛苦, 不愿意写测试；我也知道很多程序员不关心设计模式，什么面向对象之类的都不在乎，只要代码能工作就好。&lt;/p&gt;
@@ -260,7 +290,15 @@
 &lt;p&gt;这个&lt;a href="https://pragmatic.ly/blog/new-feature-comment-via-email/"&gt;功能&lt;/a&gt;已经在 &lt;a href="https://pragmatic.ly"&gt;Pragmatic.ly&lt;/a&gt; 中实现并部署上线。接下来的内容，我将会展示这个新功能应用测试驱动开发和重新设计的实现过程。&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;相关链接：&lt;a href="http://www.infoq.com/cn/presentations/with-tests-found-a-better-object-oriented-design"&gt;视频&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;相关链接：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.infoq.com/cn/presentations/with-tests-found-a-better-object-oriented-design"&gt;RubyConf China 2013 演讲视频&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/discovering-better-oo-design-with-test-two"&gt;从测试中找到更好的面向对象设计(二)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/discovering-better-oo-design-with-test-three"&gt;从测试中找到更好的面向对象设计(三)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/discovering-better-oo-design-with-test-four"&gt;从测试中找到更好的面向对象设计(四)&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
       <guid>tag:yangzhuoyu.com,article.url</guid>
