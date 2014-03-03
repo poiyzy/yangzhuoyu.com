@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"><![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
@@ -12,13 +9,11 @@
     <meta charset="UTF-8">
 
     <title>
-        Ruby 1.9.2中文不支持UTF8报错invalid multibyte char (US-ASCII)
- - Roy's Blog
+      Roy's Blog
     </title>
 
     <meta name="description" content="Nil">
-    <meta name="keywords" content="  []
-">
+    <meta name="keywords" content="Haha">
     <meta name="author" content="Roy Young">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -45,7 +40,7 @@
     <script src="/javascripts/application.js?1393868355" type="text/javascript"></script>
 
   </head>
-  <body class="ruby-1-dot-9-2zhong-wen-zhi-chi-utf8 ruby-1-dot-9-2zhong-wen-zhi-chi-utf8_index">
+  <body class="tags tags_design-pattern tags_design-pattern_index">
     <aside class="sidebar">
       <h1 class="site-name"><a href="/">Roy</a></h1>
       <nav class="global-nav">
@@ -73,21 +68,14 @@
 
     <section class="main">
       <div class="container">
-          <div class="announcement">
-    <p>
-      
-        <img class="avatar" src="/images/zhuoyu-yang.png" alt="Zhuoyu Yang" />
-努力学习 Javascript 中...
+        <h1 class="tag-page-title">Articles tagged '<em>Design Pattern</em>'</h1>
 
-      
-    </p>
-  </div>
-
-  <article class="post single">
-
-    <header>
+<div id="posts">
+  
+    <article class="post">
+      <header>
   <h2 class="title">
-    <a href="/ruby-1-dot-9-2zhong-wen-zhi-chi-utf8">Ruby 1.9.2中文不支持UTF8报错invalid multibyte char (US-ASCII)</a>
+    <a href="/why-we-use-rails-observer">为什么使用 Rails Observer</a>
   </h2>
 </header>
 
@@ -102,54 +90,63 @@
      by Roy Young
     </li> -->
     <li class="date">
-      Feb 20, 2012
+      Mar 03, 2014
     </li>
     <li class="tags">
+      
+        <a href="/tags/observer">Observer</a>
+      
+        <a href="/tags/rails">Rails</a>
+      
+        <a href="/tags/design-pattern">Design Pattern</a>
       
     </li>
   </ul>
 </aside>
 
 <div class="content">
-  <p>在 <em>ruby</em> 程序中写入中文，执行报错：</p>
-<div class="highlight"><pre>invalid multibyte char <span class="o">(</span>US-ASCII<span class="o">)</span>
-</pre></div>
-<p>最后发现是 <em>locale</em> 设置问题。</p>
+  <p><aside class="aside-block">
+  <blockquote>
+    <p><strong>Observer</strong> 和 <strong>ActionController::Caching::Sweeper</strong> 虽然在 Rails 4 中被剥离掉，但是可以使用这个 <a href="https://github.com/rails/rails-observers">Gem</a>。被剥离掉，并不意味者不好，而是出于“减肥”的目的遵循 <a href="http://en.wikipedia.org/wiki/Composition_over_inheritance">Composition over inheritance</a> ，拿掉了不常用的类。</p>
+  </blockquote>
+</aside></p>
 
-<p>主要问题发生于 <em>Ruby 1.9</em> 中（上一篇文章中也有提到这个通用问题），<em>Ruby 1.9</em> 与之前版本相比较对于编码处理的差异很大，如写中文必须要在文件首行加入 <code># encoding: UTF-8</code> ，例如：</p>
+<p>在 Rails 4 中，<strong>Observer</strong> 和 <strong>ActionController::Caching::Sweeper</strong> 被剥离掉。但是在我们的项目 <a href="http://fengche.co">FengChe.co</a> 中却非常重的使用的他们。所以在这里我想用几篇文章来分享下，我们是如何使用的。</p>
 
-<p>&ldquo;ruby test.rb</p>
+<p>我们使用两种 Observers:</p>
 
-<h1>encoding: UTF-8</h1>
+<ul>
+<li>Active Record Observer</li>
+<li>Action Controller Sweeper</li>
+</ul>
 
-<p>@test = &quot;这是一个测试&rdquo;
-puts @test
-&ldquo;</p>
+<h2>Active Record Observer 和 Callbacks</h2>
 
-<blockquote>
-<p>参考：<a href="http://ihower.tw/rails3/installation.html">安裝Rails開發環境</a></p>
-</blockquote>
+<p>刚开始接触 Observer 的时候，在 Model 中我很难分清什么时候使用 Observer 什么时候使用 Callback。接下来看看一段真实的代码。</p>
 
+<h3>特定情况是否适用 Callback</h3>
+
+<p>在 Fengche.co 中有这样一个用例，当一个 Comment 被创建的时候，我们需要让用户的使用界面与网站数据保持同步更新，这时会通过 <a href="http://pusher.com">Pusher</a> 来及时为用户更新数据。</p>
+
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/why-we-use-rails-observer">Read more →</a>
+  </p>
 </div>
 
-  </article>
-
-  <div class="comments">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'yangzhuoyu'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-  </div>
+    </article>
+  
+  
+  
+    <ul class="pager">
+      
+      
+    </ul>
+  
+</div>
 
       </div>
     </section>

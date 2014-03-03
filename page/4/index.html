@@ -36,8 +36,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link href="/stylesheets/application.css?1392192392" media="screen" rel="stylesheet" type="text/css" />
-    <script src="/javascripts/application.js?1392192391" type="text/javascript"></script>
+    <link href="/stylesheets/application.css?1393868356" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1393868355" type="text/javascript"></script>
 
   </head>
   <body class="page page_4 page_4_index">
@@ -69,6 +69,74 @@
     <section class="main">
       <div class="container">
         <div id="posts">
+  
+    <article class="post">
+      <header>
+  <h2 class="title">
+    <a href="/shi-yong-gitguan-li-fu-wu-qi-wang-zhan">使用Git管理服务器网站</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Nov 30, 2011
+    </li>
+    <li class="tags">
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p><strong>摘要：<em>push</em> 到一个拥有分离的 <em>work tree</em> 和 一个运行 <code>git checkout -f</code> 的 <em>post-receive hook</em> 的远程代码库。</strong></p>
+
+<h4>建立本地代码库</h4>
+
+<p>从零开始架设：</p>
+<div class="highlight"><pre><span class="nv">$ </span>mkdir website <span class="o">&amp;&amp;</span> <span class="nb">cd </span>website
+<span class="nv">$ </span>git init
+Initialized empty Git repository in /home/ams/website/.git/
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s1">&#39;Hello, world!&#39;</span> &gt; index.html
+<span class="nv">$ </span>git add index.html
+<span class="nv">$ </span>git commit -q -m <span class="s2">&quot;The humble beginnings of my web site.&quot;</span>
+</pre></div>
+<p>到此拥有了一个想要上传网站的代码库。</p>
+
+<h4>配置远程代码库</h4>
+
+<p>首先我们需要远程服务器有 <em>SSH</em> 通道，并且可以不用输入密码连接 <em>SSH</em> （通过 <em>keys</em>）。</p>
+
+<p>在服务器上，我们创建一个新的代码库来镜像本地代码库。</p>
+<div class="highlight"><pre><span class="nv">$ </span>mkdir website.git <span class="o">&amp;&amp;</span> <span class="nb">cd </span>website.git
+<span class="nv">$ </span>git init --bare
+Initialized empty Git repository in /home/ams/website.git/
+</pre></div>
+<p>然后我们用一个 <em>post-receive hook</em> 来 <em>check out</em> 最后的版本树到服务器网页目录（这个目录需要手动添加）：</p>
+<div class="highlight"><pre><span class="nv">$ </span>mkdir /var/www/www.example.org
+<span class="nv">$ </span>cat &gt; hooks/post-receive
+!/bin/sh
+<span class="nv">GIT_WORK_TREE</span><span class="o">=</span>/var/www/www.example.org git checkout -f
+<span class="nv">$ </span>chmod +x hooks/post-receive
+</pre></div>
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/shi-yong-gitguan-li-fu-wu-qi-wang-zhan">Read more →</a>
+  </p>
+</div>
+
+    </article>
   
     <article class="post">
       <header>
@@ -309,79 +377,6 @@ url = git@herku.com:username.git
   </p>
   <p>
     <a href="/tong-shi-pushdao-githubhe-heroku">Read more →</a>
-  </p>
-</div>
-
-    </article>
-  
-    <article class="post">
-      <header>
-  <h2 class="title">
-    <a href="/shi-yong-github-xin-jian-repo">使用github－新建repo</a>
-  </h2>
-</header>
-
-<aside class="aside-block">
-  <ul class="meta">
-    <!-- <li class="author-photo">
-      <a href="http://yangzhuoyu.com">
-        <img src="/images/zhuoyu-yang.png?1381549113" />
-      </a>
-    </li>
-    <li class="author">
-     by Roy Young
-    </li> -->
-    <li class="date">
-      Oct 17, 2011
-    </li>
-    <li class="tags">
-      
-    </li>
-  </ul>
-</aside>
-
-<div class="content">
-  <h4>首先： 新建一个库</h4>
-
-<p>每次你使用 <em>Git</em> 提交（commit）的时候，它都会被存储进一个库（简称为&quot;repo&quot;）。想要把你的项目放到 <em>Github</em> 上，你需要一个 <em>Github</em> 库来储存代码。</p>
-
-<h5>1.创建一个新的库</h5>
-
-<p>点击 <strong>New Repository</strong>.</p>
-
-<p><img src="http://help.github.com/images/bootcamp/bootcamp_2_newrepo.jpg" /></p>
-
-<p>填写表中的信息。写完后，点击 “<strong>Create Repository</strong>.”</p>
-
-<p><img src="http://help.github.com/images/bootcamp/bootcamp_2_repoinfo.jpg" /></p>
-
-<p>恭喜！你成功的创建了你的第一个库！</p>
-
-<h4>接下来：为你的库创建一个 <em>README</em></h4>
-
-<p>当然 <em>README</em> 不是 <em>Github</em> 库必须要求使用的的，但是最好有一个。 <em>README</em> 可以很好描述你的项目，或者增加一些文档，比如说告诉别人如何去安装和使用你的项目。</p>
-
-<h5>1. 创建一个 <em>README</em> 文件。</h5>
-
-<p>在命令行，输入下面的代码：</p>
-<div class="highlight"><pre><span class="nv">$ </span>mkdir ~/Hello-World
-<span class="nv">$ </span><span class="nb">cd</span> ~/Hello-World
-<span class="nv">$ </span>git init
-Initialized empty Git repository in /Users/your_user_diretory/Hello-World/.git/
-<span class="nv">$ </span>touch README
-</pre></div>
-<p>用一个文档编辑器，打开刚刚在 <em>Hello-World</em> 文件夹里新建的 <em>README</em> 文档。在里面录入 “Hello World!”，然后保存。</p>
-
-<h5>2. 提交 <em>README</em></h5>
-
-<p>现在你已经生成了 <em>README</em> ，该提交了。提交本质上是你的项目中所有文件在一个特定时间点快照。 在命令行，输入下面的代码：</p>
-
-
-  <p>
-    ......
-  </p>
-  <p>
-    <a href="/shi-yong-github-xin-jian-repo">Read more →</a>
   </p>
 </div>
 

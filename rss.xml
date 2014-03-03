@@ -8,13 +8,98 @@
     <copyright>&amp;#x2117; &amp;amp; &amp;#xA9; 2013 Roy Young</copyright>
     <link href="http://yangzhuoyu.com"/>
     <link href="http://yangzhuoyu.com/rss.xml" rel="self"/>
-    <updated>2013-12-01T04:02:00Z</updated>
-    <lastBuildDate>2013-12-01T04:02:00Z</lastBuildDate>
-    <pubDate>2013-12-01T04:02:00Z</pubDate>
+    <updated>2014-03-03T14:43:00Z</updated>
+    <lastBuildDate>2014-03-03T14:43:00Z</lastBuildDate>
+    <pubDate>2014-03-03T14:43:00Z</pubDate>
     <description>Roy's blog</description>
     <author>
       <name>Roy Young</name>
     </author>
+    <item>
+      <title>为什么使用 Rails Observer</title>
+      <link>http://yangzhuoyu.com/why-we-use-rails-observer</link>
+      <description type="html">&lt;p&gt;&lt;aside class="aside-block"&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;&lt;strong&gt;Observer&lt;/strong&gt; 和 &lt;strong&gt;ActionController::Caching::Sweeper&lt;/strong&gt; 虽然在 Rails 4 中被剥离掉，但是可以使用这个 &lt;a href="https://github.com/rails/rails-observers"&gt;Gem&lt;/a&gt;。被剥离掉，并不意味者不好，而是出于“减肥”的目的遵循 &lt;a href="http://en.wikipedia.org/wiki/Composition_over_inheritance"&gt;Composition over inheritance&lt;/a&gt; ，拿掉了不常用的类。&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/aside&gt;&lt;/p&gt;
+
+&lt;p&gt;在 Rails 4 中，&lt;strong&gt;Observer&lt;/strong&gt; 和 &lt;strong&gt;ActionController::Caching::Sweeper&lt;/strong&gt; 被剥离掉。但是在我们的项目 &lt;a href="http://fengche.co"&gt;FengChe.co&lt;/a&gt; 中却非常重的使用的他们。所以在这里我想用几篇文章来分享下，我们是如何使用的。&lt;/p&gt;
+
+&lt;p&gt;我们使用两种 Observers:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Active Record Observer&lt;/li&gt;
+&lt;li&gt;Action Controller Sweeper&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Active Record Observer 和 Callbacks&lt;/h2&gt;
+
+&lt;p&gt;刚开始接触 Observer 的时候，在 Model 中我很难分清什么时候使用 Observer 什么时候使用 Callback。接下来看看一段真实的代码。&lt;/p&gt;
+
+&lt;h3&gt;特定情况是否适用 Callback&lt;/h3&gt;
+
+&lt;p&gt;在 Fengche.co 中有这样一个用例，当一个 Comment 被创建的时候，我们需要让用户的使用界面与网站数据保持同步更新，这时会通过 &lt;a href="http://pusher.com"&gt;Pusher&lt;/a&gt; 来及时为用户更新数据。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# app/models/comment.rb&lt;/span&gt;
+&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Comment&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;ActiveRecord&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Base&lt;/span&gt;
+  &lt;span class="n"&gt;after_create&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;create_comment_for_client&lt;/span&gt;
+
+  &lt;span class="n"&gt;private&lt;/span&gt;
+  &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;create_comment_for_client&lt;/span&gt;
+    &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;pusher&lt;/span&gt; &lt;span class="n"&gt;gem&lt;/span&gt; &lt;span class="n"&gt;provide&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+    &lt;span class="n"&gt;pusher_trigger&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;private-#{self.project_uid}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;comments&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;attributes&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_json&lt;/span&gt; &lt;span class="p"&gt;})&lt;/span&gt;
+  &lt;span class="n"&gt;end&lt;/span&gt;
+&lt;span class="n"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上面那段代码有问题么？如果从实现功能的角度上来说确实没有问题。但是如果从代码可维护的角度来看，让 &lt;code&gt;Pusher&lt;/code&gt; 来发送 Json 数据到 Client 端真的属于 &lt;code&gt;User&lt;/code&gt; 么？在某些情况下，它确实依赖于 &lt;code&gt;User&lt;/code&gt; 。当在一个 comment 被创建以后，才会利用 Pusher 去发送 json 到 Client 端。但是这样的话，就违背了 &lt;strong&gt;Single Responsibility Principle&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;严格的说 &lt;code&gt;User&lt;/code&gt; 应该只是从数据库中获取数据、更新数据，删除数据，以及对获取的数据加以格式化或者加以区分。&lt;code&gt;User&lt;/code&gt; 不应该知道也不关心创建之后的行为。&lt;/p&gt;
+
+&lt;h3&gt;Solution: Observer&lt;/h3&gt;
+
+&lt;p&gt;我们使用 Observer 重构后：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# app/models/comment.rb&lt;/span&gt;
+&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Comment&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;ActiveRecord&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Base&lt;/span&gt;
+&lt;span class="n"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# app/observers/comment_observer.rb&lt;/span&gt;
+&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;CommentObserver&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;ActiveRecord&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Observer&lt;/span&gt;
+  &lt;span class="n"&gt;observe&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;comment&lt;/span&gt;
+
+  &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;after_create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;comment&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;pusher_trigger&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;private-#{comment.project_uid}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;comments&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;attributes&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;comment&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_json&lt;/span&gt; &lt;span class="p"&gt;})&lt;/span&gt;
+  &lt;span class="n"&gt;end&lt;/span&gt;
+&lt;span class="n"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# config/application.rb&lt;/span&gt;
+&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Application&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;Rails&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Application&lt;/span&gt;
+  &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;active_record&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;observers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;comment_observer&lt;/span&gt;
+&lt;span class="n"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Benifit&lt;/h3&gt;
+
+&lt;p&gt;现在 Puhser 和 User 完全分离开。它们不再捆绑在一起。如果有一天我们对于 Client 端的更新策略有所改变，我们只需要在 CommentObserver 中做改动，而不会再触碰 User 。这样更加符合 OO 的概念，而不是在 User 中编辑方法。&lt;/p&gt;
+
+&lt;p&gt;说了这么多，Test 可以很直接的反应出这些益处：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;describe&lt;/span&gt; &lt;span class="n"&gt;CommentObserver&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="nf"&gt;let&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;comment&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;CommentObserver&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;does trigger the pusher&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="n"&gt;comment&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;should_receive&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;pusher_trigger&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;comment&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;after_create&lt;/span&gt;
+  &lt;span class="n"&gt;end&lt;/span&gt;
+&lt;span class="n"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;很明显在测试中，我们不需要再调用 User 。&lt;/p&gt;
+
+&lt;h3&gt;By the way&lt;/h3&gt;
+
+&lt;p&gt;对于为什么使用 Observer ，除了 OO 上的考虑外，我们还有对于 Controller 上的需求，下一篇继续分享。&lt;/p&gt;
+
+&lt;p&gt;另外，如果你听说过 &amp;ldquo;skinny controller fat model&amp;rdquo; 的话，相信你也听说过 &amp;ldquo;fat model is not enough&amp;quot;，关于 Fat model 的重构推荐可以看下&lt;a href="http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/"&gt;这里&lt;/a&gt;。&lt;/p&gt;
+</description>
+      <guid>tag:yangzhuoyu.com,article.url</guid>
+      <pubDate>2014-03-03T14:43:00Z</pubDate>
+      <category>Observer, Rails, Design Pattern</category>
+    </item>
     <item>
       <title>从测试中找到更好的面向对象设计(四)</title>
       <link>http://yangzhuoyu.com/discovering-better-oo-design-with-test-four</link>

@@ -36,8 +36,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link href="/stylesheets/application.css?1392192392" media="screen" rel="stylesheet" type="text/css" />
-    <script src="/javascripts/application.js?1392192391" type="text/javascript"></script>
+    <link href="/stylesheets/application.css?1393868356" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1393868355" type="text/javascript"></script>
 
   </head>
   <body class="index">
@@ -69,6 +69,73 @@
     <section class="main">
       <div class="container">
         <div id="posts">
+  
+    <article class="post">
+      <header>
+  <h2 class="title">
+    <a href="/why-we-use-rails-observer">为什么使用 Rails Observer</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Mar 03, 2014
+    </li>
+    <li class="tags">
+      
+        <a href="/tags/observer">Observer</a>
+      
+        <a href="/tags/rails">Rails</a>
+      
+        <a href="/tags/design-pattern">Design Pattern</a>
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p><aside class="aside-block">
+  <blockquote>
+    <p><strong>Observer</strong> 和 <strong>ActionController::Caching::Sweeper</strong> 虽然在 Rails 4 中被剥离掉，但是可以使用这个 <a href="https://github.com/rails/rails-observers">Gem</a>。被剥离掉，并不意味者不好，而是出于“减肥”的目的遵循 <a href="http://en.wikipedia.org/wiki/Composition_over_inheritance">Composition over inheritance</a> ，拿掉了不常用的类。</p>
+  </blockquote>
+</aside></p>
+
+<p>在 Rails 4 中，<strong>Observer</strong> 和 <strong>ActionController::Caching::Sweeper</strong> 被剥离掉。但是在我们的项目 <a href="http://fengche.co">FengChe.co</a> 中却非常重的使用的他们。所以在这里我想用几篇文章来分享下，我们是如何使用的。</p>
+
+<p>我们使用两种 Observers:</p>
+
+<ul>
+<li>Active Record Observer</li>
+<li>Action Controller Sweeper</li>
+</ul>
+
+<h2>Active Record Observer 和 Callbacks</h2>
+
+<p>刚开始接触 Observer 的时候，在 Model 中我很难分清什么时候使用 Observer 什么时候使用 Callback。接下来看看一段真实的代码。</p>
+
+<h3>特定情况是否适用 Callback</h3>
+
+<p>在 Fengche.co 中有这样一个用例，当一个 Comment 被创建的时候，我们需要让用户的使用界面与网站数据保持同步更新，这时会通过 <a href="http://pusher.com">Pusher</a> 来及时为用户更新数据。</p>
+
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/why-we-use-rails-observer">Read more →</a>
+  </p>
+</div>
+
+    </article>
   
     <article class="post">
       <header>
@@ -335,64 +402,6 @@
   </p>
   <p>
     <a href="/discovering-better-oo-design-with-test">Read more →</a>
-  </p>
-</div>
-
-    </article>
-  
-    <article class="post">
-      <header>
-  <h2 class="title">
-    <a href="/first-month-in-pragmatic-ly">新的起点：远程创业团队</a>
-  </h2>
-</header>
-
-<aside class="aside-block">
-  <ul class="meta">
-    <!-- <li class="author-photo">
-      <a href="http://yangzhuoyu.com">
-        <img src="/images/zhuoyu-yang.png?1381549113" />
-      </a>
-    </li>
-    <li class="author">
-     by Roy Young
-    </li> -->
-    <li class="date">
-      Oct 11, 2013
-    </li>
-    <li class="tags">
-      
-    </li>
-  </ul>
-</aside>
-
-<div class="content">
-  <p><img alt="Road" src="http://wallpoper.com/images/00/28/70/33/clouds-freedom_00287033.jpg" /></p>
-
-<p>9月初的时候，很幸运的加入了 Pragmatic.ly，随后来到了杭州，和偶像吃、住、工作在一起。啥感觉呢？看过中国好声音吧，就像一个学员加入某个导师的团队后，并且和他吃住在一起的那种感觉！</p>
-
-<p>Pragmatic.ly 不是一个远程团队吗？怎么会在一起办公呢？我是暂时过来杭州，和大家在一起增进大家互相了解的。</p>
-
-<h2>享受工作</h2>
-
-<p>来到杭州后，感觉在这样一个团队里特别爽！我一直很崇拜这3位创始人，因为仅仅三个程序员就可以做出如此好的一个项目。他们的技术实力和经验就不用我介绍了，相信很多人都很了解。</p>
-
-<p><strong>团队氛围</strong></p>
-
-<p>3个人都特别好相处，没有架子、没有脾气、非常和蔼。在工作中遇到问题，他们不会责备，更不会埋怨，当然也不会很直接的告诉我解决方案。他们会给我一些引导，或者给我提供一些可选择的方案让我自己去摸索。因为我刚刚加入，有些地方还不适应，很多地方需要去学习和了解，而且自己很容易去钻牛角尖，效率非常低。他们从来都不催促我，就如此耐心的等着我自己去发现问题，解决问题，然后带着自己的想法和他们去讨论。</p>
-
-<p>在讨论中，带着自己的认识，然后再去听听大家的建议和想法后记忆深刻。而且他们的热情爆棚，刚来杭州的一周，我每天拉着 Terry 讨论问题，各种各样的话题，从技术到产品、再到业界动态、技术圈的新闻。。。真的好多时候分不清是工作还是休息，那一个星期每天和 Terry 从天黑聊到清晨，直到发现太阳出来了才意识到该睡觉了。这段时间，真的成长了很多。</p>
-
-<p><strong>工程师文化</strong></p>
-
-<p>大家在工作中互相平等，尤其是在 code review 的时候。任何人写的代码都是要别其他成员 review 的，不论你在负责什么，不论你是不是创始人，不论你的技术有多么过硬，此时只有纯粹的技术和自己思路。很多时候需要指出别人代码中的不足，或者在讨论中坚持自己的思路。对于我来说，这可是对老大评头论足呀！这可是在老大面前坚持己见、顶撞老大哎！</p>
-
-
-  <p>
-    ......
-  </p>
-  <p>
-    <a href="/first-month-in-pragmatic-ly">Read more →</a>
   </p>
 </div>
 

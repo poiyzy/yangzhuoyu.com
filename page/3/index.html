@@ -36,8 +36,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link href="/stylesheets/application.css?1392192392" media="screen" rel="stylesheet" type="text/css" />
-    <script src="/javascripts/application.js?1392192391" type="text/javascript"></script>
+    <link href="/stylesheets/application.css?1393868356" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1393868355" type="text/javascript"></script>
 
   </head>
   <body class="page page_3 page_3_index">
@@ -69,6 +69,63 @@
     <section class="main">
       <div class="container">
         <div id="posts">
+  
+    <article class="post">
+      <header>
+  <h2 class="title">
+    <a href="/ruby-1-dot-9-2zhong-wen-zhi-chi-utf8">Ruby 1.9.2中文不支持UTF8报错invalid multibyte char (US-ASCII)</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Feb 20, 2012
+    </li>
+    <li class="tags">
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p>在 <em>ruby</em> 程序中写入中文，执行报错：</p>
+<div class="highlight"><pre>invalid multibyte char <span class="o">(</span>US-ASCII<span class="o">)</span>
+</pre></div>
+<p>最后发现是 <em>locale</em> 设置问题。</p>
+
+<p>主要问题发生于 <em>Ruby 1.9</em> 中（上一篇文章中也有提到这个通用问题），<em>Ruby 1.9</em> 与之前版本相比较对于编码处理的差异很大，如写中文必须要在文件首行加入 <code># encoding: UTF-8</code> ，例如：</p>
+
+<p>&ldquo;ruby test.rb</p>
+
+<h1>encoding: UTF-8</h1>
+
+<p>@test = &quot;这是一个测试&rdquo;
+puts @test
+&ldquo;</p>
+
+<blockquote>
+<p>参考：<a href="http://ihower.tw/rails3/installation.html">安裝Rails開發環境</a></p>
+</blockquote>
+
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/ruby-1-dot-9-2zhong-wen-zhi-chi-utf8">Read more →</a>
+  </p>
+</div>
+
+    </article>
   
     <article class="post">
       <header>
@@ -303,74 +360,6 @@ require &ldquo;./myapp&rdquo; #要运行的文件，相当于index，这里是my
   </p>
   <p>
     <a href="/shi-yong-powyun-xing-sinatra">Read more →</a>
-  </p>
-</div>
-
-    </article>
-  
-    <article class="post">
-      <header>
-  <h2 class="title">
-    <a href="/shi-yong-gitguan-li-fu-wu-qi-wang-zhan">使用Git管理服务器网站</a>
-  </h2>
-</header>
-
-<aside class="aside-block">
-  <ul class="meta">
-    <!-- <li class="author-photo">
-      <a href="http://yangzhuoyu.com">
-        <img src="/images/zhuoyu-yang.png?1381549113" />
-      </a>
-    </li>
-    <li class="author">
-     by Roy Young
-    </li> -->
-    <li class="date">
-      Nov 30, 2011
-    </li>
-    <li class="tags">
-      
-    </li>
-  </ul>
-</aside>
-
-<div class="content">
-  <p><strong>摘要：<em>push</em> 到一个拥有分离的 <em>work tree</em> 和 一个运行 <code>git checkout -f</code> 的 <em>post-receive hook</em> 的远程代码库。</strong></p>
-
-<h4>建立本地代码库</h4>
-
-<p>从零开始架设：</p>
-<div class="highlight"><pre><span class="nv">$ </span>mkdir website <span class="o">&amp;&amp;</span> <span class="nb">cd </span>website
-<span class="nv">$ </span>git init
-Initialized empty Git repository in /home/ams/website/.git/
-<span class="nv">$ </span><span class="nb">echo</span> <span class="s1">&#39;Hello, world!&#39;</span> &gt; index.html
-<span class="nv">$ </span>git add index.html
-<span class="nv">$ </span>git commit -q -m <span class="s2">&quot;The humble beginnings of my web site.&quot;</span>
-</pre></div>
-<p>到此拥有了一个想要上传网站的代码库。</p>
-
-<h4>配置远程代码库</h4>
-
-<p>首先我们需要远程服务器有 <em>SSH</em> 通道，并且可以不用输入密码连接 <em>SSH</em> （通过 <em>keys</em>）。</p>
-
-<p>在服务器上，我们创建一个新的代码库来镜像本地代码库。</p>
-<div class="highlight"><pre><span class="nv">$ </span>mkdir website.git <span class="o">&amp;&amp;</span> <span class="nb">cd </span>website.git
-<span class="nv">$ </span>git init --bare
-Initialized empty Git repository in /home/ams/website.git/
-</pre></div>
-<p>然后我们用一个 <em>post-receive hook</em> 来 <em>check out</em> 最后的版本树到服务器网页目录（这个目录需要手动添加）：</p>
-<div class="highlight"><pre><span class="nv">$ </span>mkdir /var/www/www.example.org
-<span class="nv">$ </span>cat &gt; hooks/post-receive
-!/bin/sh
-<span class="nv">GIT_WORK_TREE</span><span class="o">=</span>/var/www/www.example.org git checkout -f
-<span class="nv">$ </span>chmod +x hooks/post-receive
-</pre></div>
-
-  <p>
-    ......
-  </p>
-  <p>
-    <a href="/shi-yong-gitguan-li-fu-wu-qi-wang-zhan">Read more →</a>
   </p>
 </div>
 
