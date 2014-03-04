@@ -51,9 +51,9 @@
   &lt;span class="n"&gt;end&lt;/span&gt;
 &lt;span class="n"&gt;end&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;上面那段代码有问题么？如果从实现功能的角度上来说确实没有问题。但是如果从代码可维护的角度来看，让 &lt;code&gt;Pusher&lt;/code&gt; 来发送 Json 数据到 Client 端真的属于 &lt;code&gt;User&lt;/code&gt; 么？在某些情况下，它确实依赖于 &lt;code&gt;User&lt;/code&gt; 。当在一个 comment 被创建以后，才会利用 Pusher 去发送 json 到 Client 端。但是这样的话，就违背了 &lt;strong&gt;Single Responsibility Principle&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;上面那段代码有问题么？如果从实现功能的角度上来说确实没有问题。但是如果从代码可维护的角度来看，让 &lt;code&gt;Pusher&lt;/code&gt; 来发送 Json 数据到 Client 端真的属于 &lt;code&gt;Comment&lt;/code&gt; 么？在某些情况下，它确实依赖于 &lt;code&gt;Comment&lt;/code&gt; 。当在一个 comment 被创建以后，才会利用 Pusher 去发送 json 到 Client 端。但是这样的话，就违背了 &lt;strong&gt;Single Responsibility Principle&lt;/strong&gt;。&lt;/p&gt;
 
-&lt;p&gt;严格的说 &lt;code&gt;User&lt;/code&gt; 应该只是从数据库中获取数据、更新数据，删除数据，以及对获取的数据加以格式化或者加以区分。&lt;code&gt;User&lt;/code&gt; 不应该知道也不关心创建之后的行为。&lt;/p&gt;
+&lt;p&gt;严格的说 &lt;code&gt;Comment&lt;/code&gt; 应该只是从数据库中获取数据、更新数据，删除数据，以及对获取的数据加以格式化或者加以区分。&lt;code&gt;Comment&lt;/code&gt; 不应该知道也不关心创建之后的行为。&lt;/p&gt;
 
 &lt;h3&gt;Solution: Observer&lt;/h3&gt;
 
@@ -74,9 +74,9 @@
   &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;active_record&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;observers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;comment_observer&lt;/span&gt;
 &lt;span class="n"&gt;end&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;Benifit&lt;/h3&gt;
+&lt;h3&gt;Benefit&lt;/h3&gt;
 
-&lt;p&gt;现在 Puhser 和 User 完全分离开。它们不再捆绑在一起。如果有一天我们对于 Client 端的更新策略有所改变，我们只需要在 CommentObserver 中做改动，而不会再触碰 User 。这样更加符合 OO 的概念，而不是在 User 中编辑方法。&lt;/p&gt;
+&lt;p&gt;现在 Pusher 和 Comment 完全分离开。它们不再捆绑在一起。如果有一天我们对于 Client 端的更新策略有所改变，我们只需要在 CommentObserver 中做改动，而不会再触碰 Comment 。这样更加符合 OO 的概念，而不是在 Comment 中编辑方法。&lt;/p&gt;
 
 &lt;p&gt;说了这么多，Test 可以很直接的反应出这些益处：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;describe&lt;/span&gt; &lt;span class="n"&gt;CommentObserver&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
@@ -88,13 +88,13 @@
   &lt;span class="n"&gt;end&lt;/span&gt;
 &lt;span class="n"&gt;end&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;很明显在测试中，我们不需要再调用 User 。&lt;/p&gt;
+&lt;p&gt;很明显在测试中，我们不需要再调用 Comment 。&lt;/p&gt;
 
 &lt;h3&gt;By the way&lt;/h3&gt;
 
 &lt;p&gt;对于为什么使用 Observer ，除了 OO 上的考虑外，我们还有对于 Controller 上的需求，下一篇继续分享。&lt;/p&gt;
 
-&lt;p&gt;另外，如果你听说过 &amp;ldquo;skinny controller fat model&amp;rdquo; 的话，相信你也听说过 &amp;ldquo;fat model is not enough&amp;quot;，关于 Fat model 的重构推荐可以看下&lt;a href="http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/"&gt;这里&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;另外，如果你听说过 &amp;ldquo;skinny controller fat model&amp;rdquo; 的话，相信你也听说过 &amp;ldquo;fat model is not enough&amp;quot;，关于 Fat model 的重构推荐可以看下&lt;a href="http://yedingding.com/2013/03/04/steps-to-refactor-controller-and-models-in-rails-projects.html"&gt;这里&lt;/a&gt;。&lt;/p&gt;
 </description>
       <guid>tag:yangzhuoyu.com,article.url</guid>
       <pubDate>2014-03-03T14:43:00Z</pubDate>

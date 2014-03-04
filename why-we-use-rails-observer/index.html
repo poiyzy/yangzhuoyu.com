@@ -41,8 +41,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link href="/stylesheets/application.css?1393868356" media="screen" rel="stylesheet" type="text/css" />
-    <script src="/javascripts/application.js?1393868355" type="text/javascript"></script>
+    <link href="/stylesheets/application.css?1393910495" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1393910495" type="text/javascript"></script>
 
   </head>
   <body class="why-we-use-rails-observer why-we-use-rails-observer_index">
@@ -150,9 +150,9 @@
   <span class="n">end</span>
 <span class="n">end</span>
 </pre></div>
-<p>上面那段代码有问题么？如果从实现功能的角度上来说确实没有问题。但是如果从代码可维护的角度来看，让 <code>Pusher</code> 来发送 Json 数据到 Client 端真的属于 <code>User</code> 么？在某些情况下，它确实依赖于 <code>User</code> 。当在一个 comment 被创建以后，才会利用 Pusher 去发送 json 到 Client 端。但是这样的话，就违背了 <strong>Single Responsibility Principle</strong>。</p>
+<p>上面那段代码有问题么？如果从实现功能的角度上来说确实没有问题。但是如果从代码可维护的角度来看，让 <code>Pusher</code> 来发送 Json 数据到 Client 端真的属于 <code>Comment</code> 么？在某些情况下，它确实依赖于 <code>Comment</code> 。当在一个 comment 被创建以后，才会利用 Pusher 去发送 json 到 Client 端。但是这样的话，就违背了 <strong>Single Responsibility Principle</strong>。</p>
 
-<p>严格的说 <code>User</code> 应该只是从数据库中获取数据、更新数据，删除数据，以及对获取的数据加以格式化或者加以区分。<code>User</code> 不应该知道也不关心创建之后的行为。</p>
+<p>严格的说 <code>Comment</code> 应该只是从数据库中获取数据、更新数据，删除数据，以及对获取的数据加以格式化或者加以区分。<code>Comment</code> 不应该知道也不关心创建之后的行为。</p>
 
 <h3>Solution: Observer</h3>
 
@@ -173,9 +173,9 @@
   <span class="n">config</span><span class="p">.</span><span class="n">active_record</span><span class="p">.</span><span class="n">observers</span> <span class="o">=</span> <span class="o">:</span><span class="n">comment_observer</span>
 <span class="n">end</span>
 </pre></div>
-<h3>Benifit</h3>
+<h3>Benefit</h3>
 
-<p>现在 Puhser 和 User 完全分离开。它们不再捆绑在一起。如果有一天我们对于 Client 端的更新策略有所改变，我们只需要在 CommentObserver 中做改动，而不会再触碰 User 。这样更加符合 OO 的概念，而不是在 User 中编辑方法。</p>
+<p>现在 Pusher 和 Comment 完全分离开。它们不再捆绑在一起。如果有一天我们对于 Client 端的更新策略有所改变，我们只需要在 CommentObserver 中做改动，而不会再触碰 Comment 。这样更加符合 OO 的概念，而不是在 Comment 中编辑方法。</p>
 
 <p>说了这么多，Test 可以很直接的反应出这些益处：</p>
 <div class="highlight"><pre><span class="n">describe</span> <span class="n">CommentObserver</span> <span class="k">do</span>
@@ -187,13 +187,13 @@
   <span class="n">end</span>
 <span class="n">end</span>
 </pre></div>
-<p>很明显在测试中，我们不需要再调用 User 。</p>
+<p>很明显在测试中，我们不需要再调用 Comment 。</p>
 
 <h3>By the way</h3>
 
 <p>对于为什么使用 Observer ，除了 OO 上的考虑外，我们还有对于 Controller 上的需求，下一篇继续分享。</p>
 
-<p>另外，如果你听说过 &ldquo;skinny controller fat model&rdquo; 的话，相信你也听说过 &ldquo;fat model is not enough&quot;，关于 Fat model 的重构推荐可以看下<a href="http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/">这里</a>。</p>
+<p>另外，如果你听说过 &ldquo;skinny controller fat model&rdquo; 的话，相信你也听说过 &ldquo;fat model is not enough&quot;，关于 Fat model 的重构推荐可以看下<a href="http://yedingding.com/2013/03/04/steps-to-refactor-controller-and-models-in-rails-projects.html">这里</a>。</p>
 
 </div>
 
