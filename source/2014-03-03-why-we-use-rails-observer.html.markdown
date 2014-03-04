@@ -39,9 +39,9 @@ class Comment < ActiveRecord::Base
 end
 ```
 
-上面那段代码有问题么？如果从实现功能的角度上来说确实没有问题。但是如果从代码可维护的角度来看，让 `Pusher` 来发送 Json 数据到 Client 端真的属于 `User` 么？在某些情况下，它确实依赖于 `User` 。当在一个 comment 被创建以后，才会利用 Pusher 去发送 json 到 Client 端。但是这样的话，就违背了 **Single Responsibility Principle**。
+上面那段代码有问题么？如果从实现功能的角度上来说确实没有问题。但是如果从代码可维护的角度来看，让 `Pusher` 来发送 Json 数据到 Client 端真的属于 `Comment` 么？在某些情况下，它确实依赖于 `Comment` 。当在一个 comment 被创建以后，才会利用 Pusher 去发送 json 到 Client 端。但是这样的话，就违背了 **Single Responsibility Principle**。
 
-严格的说 `User` 应该只是从数据库中获取数据、更新数据，删除数据，以及对获取的数据加以格式化或者加以区分。`User` 不应该知道也不关心创建之后的行为。
+严格的说 `Comment` 应该只是从数据库中获取数据、更新数据，删除数据，以及对获取的数据加以格式化或者加以区分。`Comment` 不应该知道也不关心创建之后的行为。
 
 ### Solution: Observer
 
@@ -71,9 +71,9 @@ class Application < Rails::Application
 end
 ```
 
-### Benifit
+### Benefit
 
-现在 Puhser 和 User 完全分离开。它们不再捆绑在一起。如果有一天我们对于 Client 端的更新策略有所改变，我们只需要在 CommentObserver 中做改动，而不会再触碰 User 。这样更加符合 OO 的概念，而不是在 User 中编辑方法。
+现在 Pusher 和 Comment 完全分离开。它们不再捆绑在一起。如果有一天我们对于 Client 端的更新策略有所改变，我们只需要在 CommentObserver 中做改动，而不会再触碰 Comment 。这样更加符合 OO 的概念，而不是在 Comment 中编辑方法。
 
 说了这么多，Test 可以很直接的反应出这些益处：
 
@@ -88,10 +88,10 @@ describe CommentObserver do
 end
 ```
 
-很明显在测试中，我们不需要再调用 User 。
+很明显在测试中，我们不需要再调用 Comment 。
 
 ### By the way
 
 对于为什么使用 Observer ，除了 OO 上的考虑外，我们还有对于 Controller 上的需求，下一篇继续分享。
 
-另外，如果你听说过 "skinny controller fat model" 的话，相信你也听说过 "fat model is not enough"，关于 Fat model 的重构推荐可以看下[这里](http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/)。
+另外，如果你听说过 "skinny controller fat model" 的话，相信你也听说过 "fat model is not enough"，关于 Fat model 的重构推荐可以看下[这里](http://yedingding.com/2013/03/04/steps-to-refactor-controller-and-models-in-rails-projects.html)。
