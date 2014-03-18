@@ -7,11 +7,11 @@ author: roy
 
 <aside class="aside-block">
   <blockquote>
-    <p>**Observer** 和 **ActionController::Caching::Sweeper** 虽然在 Rails 4 中被剥离掉，但是可以使用这个 [Gem](https://github.com/rails/rails-observers)。被剥离掉，并不意味者不好，而是出于“减肥”的目的遵循 [Composition over inheritance](http://en.wikipedia.org/wiki/Composition_over_inheritance) ，拿掉了不常用的类。</p>
+    <p>**Observer** 和 **ActionController::Caching::Sweeper** 虽然在 Rails 4 中被剥离掉，但是可以使用这个 [Gem](https://github.com/rails/rails-observers)。被剥离掉，并不意味它不好，而是出于“减肥”的目的，遵循 [Composition over inheritance](http://en.wikipedia.org/wiki/Composition_over_inheritance) ，拿掉了不常用的类。</p>
   </blockquote>
 </aside>
 
-在 Rails 4 中，**Observer** 和 **ActionController::Caching::Sweeper** 被剥离掉。但是在我们的项目 [FengChe.co](http://fengche.co) 中却非常重的使用的他们。所以在这里我想用几篇文章来分享下，我们是如何使用的。
+在 Rails 4 中，**Observer** 和 **ActionController::Caching::Sweeper** 被剥离掉。但是在我们的项目 [FengChe.co](http://fengche.co) 中却非常重的使用的它们。所以在这里分享下，我们是如何使用的。
 
 我们使用两种 Observers:
 
@@ -92,6 +92,125 @@ end
 
 ### By the way
 
-对于为什么使用 Observer ，除了 OO 上的考虑外，我们还有对于 Controller 上的需求，下一篇继续分享。
-
 另外，如果你听说过 "skinny controller fat model" 的话，相信你也听说过 "fat model is not enough"，关于 Fat model 的重构推荐可以看下[这里](http://yedingding.com/2013/03/04/steps-to-refactor-controller-and-models-in-rails-projects.html)。
+
+## Active Record Observer 和 Callbacks
+
+对于为什么使用 Observer ，除了 OO 上的考虑外，我们还有对于 Controller 上的需求。设想一下，如果当一个 Controller 请求 destroy action 后我们要在 Callback 中用到 current user 应该怎样操作？也就是说我们需要在 Model 层拿到依赖于请求的数据。
+
+来看一下下面的代码：
+
+```
+class TicketsController < ApplicationController
+  observer      :ticket_observer, only: [:destroy]
+
+  def destroy
+    if current_user.could_delete?(@ticket)
+      @ticket.destroy
+      render text: "", status: 200
+    else
+      render text: "", status: 407
+    end
+  end
+end
+```
+
+在这里当触发 `TicketsController#destroy` 后，我们需要记录删除动作的操作者并且把他传给 Pusher，那么我们这里的 `current_user` 是如何得到的呢？当然你可以把它们都放在 controller 里面执行，但是我们知道这不是优美的解决方式。所以我们这里仍然选择使用 Observer 来作处理。
+
+```
+class TicketObserver < AuditObserver
+  def after_destroy(ticket)
+    pusher_trigger("private-#{ticket.project_uid}", 'tickets', { type: 'destroy', id: ticket.uid, attributes: { operator_id: current_user.try(:uid) } })
+  end
+end
+```
+
+当然也可以专门用一个 `Service Object` 来做，在这里我必须承认这是非常常见的一种优美的解决方式，而且我想这也是为什么很多人都不怎么使用 Observer 的原因之一（说实话，没有加入 Fengche.co 前，我都在怀疑 Observer 存在的意义），但是不得不说的是这完全是两种方式：
+
+* `Service Object` 是一种 Beyond Rails 的解决方式，它脱离了 Rails 本身，更加多的强调设计模式本身。
+* `Observer` 是 Rails 自带的一种行为，而且 DHH 在很多时候建议或者说鼓励大家不要特别在意设计模式。我觉得使用 Observer 也是一种自然并且优美的解决方式，所以我们这里使用了 Rails 本身所集成的 `ActionController::Caching::Sweeper`
+
+关于前面提到的 DHH 的观点，大家可以去[这里](http://rubyrogues.com/056-rr-david-heinemeier-hansson/)了解下，真的非常精彩！
+
+### Solution: ActionController::Caching::Sweeper
+
+这里 `TicketObserver` 继承于 `AuditObserver`，我们是这样定义 `AuditObserver` ：
+
+```
+class AuditObserver < ActionController::Caching::Sweeper
+  def current_user
+    controller ? controller.send(:current_user) : nil
+  end
+end
+```
+
+首先 `AuditObserver` 继承了 `ActionController:Caching::Sweeper`，所以我们可以在这里拿到当前一个当前请求的 Controller 的实例 controller 。
+
+由于我们在 `ApplicationController` 中定义了 `current_user` 这个方法
+
+```
+class ApplicationController < ActionController::Base
+  def current_user
+    controller ? controller.send(:current_user) : Thread.current[:user]
+  end
+end
+```
+
+所以我们只需要执行 `controller.send(:current_user)` 便可以在 callback 中拿到 Controller 当前请求的 `current_user`。
+
+### Setting ActionController::Caching::Sweeper
+
+但是这里还有一个问题，Observer 怎么和 Controller 交互的呢？
+
+在 `TicketsController` 里我们是这样设置的
+
+```
+class TicketsController < ApplicationController
+  observer :ticket_observer, only: [:destroy] ## setting observer
+
+  def destroy
+    if current_user.could_delete?(@ticket)
+      @ticket.destroy
+      render text: "", status: 200
+    else
+      render text: "", status: 407
+    end
+  end
+end
+```
+
+当然只需要只用 Rails-Observer 这个 Gem 就可以实现 `observer :ticket_observer, only: [:destroy]` 完成 callback 和 controller 之间的交互。我们这里没有使用 Gem ，而是自己写了一个简单的 lib ，不过原理是差不多相同的，有兴趣的同学可以看下。
+
+```
+## lib/controller_observer.rb
+module ControllerObserver
+  extend ActiveSupport::Concern
+
+  module ClassMethods #:nodoc:
+    def observer(*observers)
+      configuration = observers.extract_options!
+
+      observers.each do |observer|
+        observer_instance = (observer.is_a?(Symbol) ? Object.const_get(observer.to_s.classify) : observer).instance
+        around_filter(observer_instance, only: configuration[:only])
+      end
+    end
+  end
+end
+```
+
+在 `ApplicationController` 中调用
+
+```
+class ApplicationController < ActionController::Base
+  include ControllerObserver
+
+  ...
+end
+```
+
+### Benifit
+
+在这里我们通过 Observer 实现了 model 和 controller 之间的互通，而且没有把 model 和 controller 变得混乱无法维护。而且，如果你对 Cache 有要求的话，可以很便捷的在 Observer 中实现对 Sweeper 的操作。
+
+*这里是我加入 Fengche.co 后所学习到的一些知识，如果有错误或者疑问欢迎大家的指正和交流。*
