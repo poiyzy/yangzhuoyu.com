@@ -41,8 +41,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link href="/stylesheets/application.css?1393910495" media="screen" rel="stylesheet" type="text/css" />
-    <script src="/javascripts/application.js?1393910495" type="text/javascript"></script>
+    <link href="/stylesheets/application.css?1395121024" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1395121024" type="text/javascript"></script>
 
   </head>
   <body class="why-we-use-rails-observer why-we-use-rails-observer_index">
@@ -119,11 +119,11 @@
 <div class="content">
   <p><aside class="aside-block">
   <blockquote>
-    <p><strong>Observer</strong> 和 <strong>ActionController::Caching::Sweeper</strong> 虽然在 Rails 4 中被剥离掉，但是可以使用这个 <a href="https://github.com/rails/rails-observers">Gem</a>。被剥离掉，并不意味者不好，而是出于“减肥”的目的遵循 <a href="http://en.wikipedia.org/wiki/Composition_over_inheritance">Composition over inheritance</a> ，拿掉了不常用的类。</p>
+    <p><strong>Observer</strong> 和 <strong>ActionController::Caching::Sweeper</strong> 虽然在 Rails 4 中被剥离掉，但是可以使用这个 <a href="https://github.com/rails/rails-observers">Gem</a>。被剥离掉，并不意味它不好，而是出于“减肥”的目的，遵循 <a href="http://en.wikipedia.org/wiki/Composition_over_inheritance">Composition over inheritance</a> ，拿掉了不常用的类。</p>
   </blockquote>
 </aside></p>
 
-<p>在 Rails 4 中，<strong>Observer</strong> 和 <strong>ActionController::Caching::Sweeper</strong> 被剥离掉。但是在我们的项目 <a href="http://fengche.co">FengChe.co</a> 中却非常重的使用的他们。所以在这里我想用几篇文章来分享下，我们是如何使用的。</p>
+<p>在 Rails 4 中，<strong>Observer</strong> 和 <strong>ActionController::Caching::Sweeper</strong> 被剥离掉。但是在我们的项目 <a href="http://fengche.co">FengChe.co</a> 中却非常重的使用的它们。所以在这里分享下，我们是如何使用的。</p>
 
 <p>我们使用两种 Observers:</p>
 
@@ -191,9 +191,109 @@
 
 <h3>By the way</h3>
 
-<p>对于为什么使用 Observer ，除了 OO 上的考虑外，我们还有对于 Controller 上的需求，下一篇继续分享。</p>
-
 <p>另外，如果你听说过 &ldquo;skinny controller fat model&rdquo; 的话，相信你也听说过 &ldquo;fat model is not enough&quot;，关于 Fat model 的重构推荐可以看下<a href="http://yedingding.com/2013/03/04/steps-to-refactor-controller-and-models-in-rails-projects.html">这里</a>。</p>
+
+<h2>Active Record Observer 和 Callbacks</h2>
+
+<p>对于为什么使用 Observer ，除了 OO 上的考虑外，我们还有对于 Controller 上的需求。设想一下，如果当一个 Controller 请求 destroy action 后我们要在 Callback 中用到 current user 应该怎样操作？也就是说我们需要在 Model 层拿到依赖于请求的数据。</p>
+
+<p>来看一下下面的代码：</p>
+<div class="highlight"><pre><span class="n">class</span> <span class="n">TicketsController</span> <span class="o">&lt;</span> <span class="n">ApplicationController</span>
+  <span class="n">observer</span>      <span class="o">:</span><span class="n">ticket_observer</span><span class="p">,</span> <span class="n">only</span><span class="o">:</span> <span class="p">[</span><span class="o">:</span><span class="n">destroy</span><span class="p">]</span>
+
+  <span class="n">def</span> <span class="n">destroy</span>
+    <span class="k">if</span> <span class="n">current_user</span><span class="p">.</span><span class="n">could_delete</span><span class="o">?</span><span class="p">(</span><span class="err">@</span><span class="n">ticket</span><span class="p">)</span>
+      <span class="err">@</span><span class="n">ticket</span><span class="p">.</span><span class="n">destroy</span>
+      <span class="n">render</span> <span class="n">text</span><span class="o">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">status</span><span class="o">:</span> <span class="mi">200</span>
+    <span class="k">else</span>
+      <span class="n">render</span> <span class="n">text</span><span class="o">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">status</span><span class="o">:</span> <span class="mi">407</span>
+    <span class="n">end</span>
+  <span class="n">end</span>
+<span class="n">end</span>
+</pre></div>
+<p>在这里当触发 <code>TicketsController#destroy</code> 后，我们需要记录删除动作的操作者并且把他传给 Pusher，那么我们这里的 <code>current_user</code> 是如何得到的呢？当然你可以把它们都放在 controller 里面执行，但是我们知道这不是优美的解决方式。所以我们这里仍然选择使用 Observer 来作处理。</p>
+<div class="highlight"><pre><span class="n">class</span> <span class="n">TicketObserver</span> <span class="o">&lt;</span> <span class="n">AuditObserver</span>
+  <span class="n">def</span> <span class="n">after_destroy</span><span class="p">(</span><span class="n">ticket</span><span class="p">)</span>
+    <span class="n">pusher_trigger</span><span class="p">(</span><span class="s">&quot;private-#{ticket.project_uid}&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">tickets</span><span class="err">&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="n">type</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">destroy</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">id</span><span class="o">:</span> <span class="n">ticket</span><span class="p">.</span><span class="n">uid</span><span class="p">,</span> <span class="n">attributes</span><span class="o">:</span> <span class="p">{</span> <span class="n">operator_id</span><span class="o">:</span> <span class="n">current_user</span><span class="p">.</span><span class="n">try</span><span class="p">(</span><span class="o">:</span><span class="n">uid</span><span class="p">)</span> <span class="p">}</span> <span class="p">})</span>
+  <span class="n">end</span>
+<span class="n">end</span>
+</pre></div>
+<p>当然也可以专门用一个 <code>Service Object</code> 来做，在这里我必须承认这是非常常见的一种优美的解决方式，而且我想这也是为什么很多人都不怎么使用 Observer 的原因之一（说实话，没有加入 Fengche.co 前，我都在怀疑 Observer 存在的意义），但是不得不说的是这完全是两种方式：</p>
+
+<ul>
+<li><code>Service Object</code> 是一种 Beyond Rails 的解决方式，它脱离了 Rails 本身，更加多的强调设计模式本身。</li>
+<li><code>Observer</code> 是 Rails 自带的一种行为，而且 DHH 在很多时候建议或者说鼓励大家不要特别在意设计模式。我觉得使用 Observer 也是一种自然并且优美的解决方式，所以我们这里使用了 Rails 本身所集成的 <code>ActionController::Caching::Sweeper</code></li>
+</ul>
+
+<p>关于前面提到的 DHH 的观点，大家可以去<a href="http://rubyrogues.com/056-rr-david-heinemeier-hansson/">这里</a>了解下，真的非常精彩！</p>
+
+<h3>Solution: ActionController::Caching::Sweeper</h3>
+
+<p>这里 <code>TicketObserver</code> 继承于 <code>AuditObserver</code>，我们是这样定义 <code>AuditObserver</code> ：</p>
+<div class="highlight"><pre><span class="n">class</span> <span class="n">AuditObserver</span> <span class="o">&lt;</span> <span class="n">ActionController</span><span class="o">::</span><span class="n">Caching</span><span class="o">::</span><span class="n">Sweeper</span>
+  <span class="n">def</span> <span class="n">current_user</span>
+    <span class="n">controller</span> <span class="o">?</span> <span class="n">controller</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="o">:</span><span class="n">current_user</span><span class="p">)</span> <span class="o">:</span> <span class="n">nil</span>
+  <span class="n">end</span>
+<span class="n">end</span>
+</pre></div>
+<p>首先 <code>AuditObserver</code> 继承了 <code>ActionController:Caching::Sweeper</code>，所以我们可以在这里拿到当前一个当前请求的 Controller 的实例 controller 。</p>
+
+<p>由于我们在 <code>ApplicationController</code> 中定义了 <code>current_user</code> 这个方法</p>
+<div class="highlight"><pre><span class="n">class</span> <span class="n">ApplicationController</span> <span class="o">&lt;</span> <span class="n">ActionController</span><span class="o">::</span><span class="n">Base</span>
+  <span class="n">def</span> <span class="n">current_user</span>
+    <span class="n">controller</span> <span class="o">?</span> <span class="n">controller</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="o">:</span><span class="n">current_user</span><span class="p">)</span> <span class="o">:</span> <span class="n">Thread</span><span class="p">.</span><span class="n">current</span><span class="p">[</span><span class="o">:</span><span class="n">user</span><span class="p">]</span>
+  <span class="n">end</span>
+<span class="n">end</span>
+</pre></div>
+<p>所以我们只需要执行 <code>controller.send(:current_user)</code> 便可以在 callback 中拿到 Controller 当前请求的 <code>current_user</code>。</p>
+
+<h3>Setting ActionController::Caching::Sweeper</h3>
+
+<p>但是这里还有一个问题，Observer 怎么和 Controller 交互的呢？</p>
+
+<p>在 <code>TicketsController</code> 里我们是这样设置的</p>
+<div class="highlight"><pre><span class="n">class</span> <span class="n">TicketsController</span> <span class="o">&lt;</span> <span class="n">ApplicationController</span>
+  <span class="n">observer</span> <span class="o">:</span><span class="n">ticket_observer</span><span class="p">,</span> <span class="n">only</span><span class="o">:</span> <span class="p">[</span><span class="o">:</span><span class="n">destroy</span><span class="p">]</span> <span class="err">##</span> <span class="n">setting</span> <span class="n">observer</span>
+
+  <span class="n">def</span> <span class="n">destroy</span>
+    <span class="k">if</span> <span class="n">current_user</span><span class="p">.</span><span class="n">could_delete</span><span class="o">?</span><span class="p">(</span><span class="err">@</span><span class="n">ticket</span><span class="p">)</span>
+      <span class="err">@</span><span class="n">ticket</span><span class="p">.</span><span class="n">destroy</span>
+      <span class="n">render</span> <span class="n">text</span><span class="o">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">status</span><span class="o">:</span> <span class="mi">200</span>
+    <span class="k">else</span>
+      <span class="n">render</span> <span class="n">text</span><span class="o">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">status</span><span class="o">:</span> <span class="mi">407</span>
+    <span class="n">end</span>
+  <span class="n">end</span>
+<span class="n">end</span>
+</pre></div>
+<p>当然只需要只用 Rails-Observer 这个 Gem 就可以实现 <code>observer :ticket_observer, only: [:destroy]</code> 完成 callback 和 controller 之间的交互。我们这里没有使用 Gem ，而是自己写了一个简单的 lib ，不过原理是差不多相同的，有兴趣的同学可以看下。</p>
+<div class="highlight"><pre><span class="cp">## lib/controller_observer.rb</span>
+<span class="n">module</span> <span class="n">ControllerObserver</span>
+  <span class="n">extend</span> <span class="n">ActiveSupport</span><span class="o">::</span><span class="n">Concern</span>
+
+  <span class="n">module</span> <span class="n">ClassMethods</span> <span class="err">#</span><span class="o">:</span><span class="n">nodoc</span><span class="o">:</span>
+    <span class="n">def</span> <span class="n">observer</span><span class="p">(</span><span class="o">*</span><span class="n">observers</span><span class="p">)</span>
+      <span class="n">configuration</span> <span class="o">=</span> <span class="n">observers</span><span class="p">.</span><span class="n">extract_options</span><span class="o">!</span>
+
+      <span class="n">observers</span><span class="p">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">observer</span><span class="o">|</span>
+        <span class="n">observer_instance</span> <span class="o">=</span> <span class="p">(</span><span class="n">observer</span><span class="p">.</span><span class="n">is_a</span><span class="o">?</span><span class="p">(</span><span class="n">Symbol</span><span class="p">)</span> <span class="o">?</span> <span class="n">Object</span><span class="p">.</span><span class="n">const_get</span><span class="p">(</span><span class="n">observer</span><span class="p">.</span><span class="n">to_s</span><span class="p">.</span><span class="n">classify</span><span class="p">)</span> <span class="o">:</span> <span class="n">observer</span><span class="p">).</span><span class="n">instance</span>
+        <span class="n">around_filter</span><span class="p">(</span><span class="n">observer_instance</span><span class="p">,</span> <span class="n">only</span><span class="o">:</span> <span class="n">configuration</span><span class="p">[</span><span class="o">:</span><span class="n">only</span><span class="p">])</span>
+      <span class="n">end</span>
+    <span class="n">end</span>
+  <span class="n">end</span>
+<span class="n">end</span>
+</pre></div>
+<p>在 <code>ApplicationController</code> 中调用</p>
+<div class="highlight"><pre><span class="n">class</span> <span class="n">ApplicationController</span> <span class="o">&lt;</span> <span class="n">ActionController</span><span class="o">::</span><span class="n">Base</span>
+  <span class="n">include</span> <span class="n">ControllerObserver</span>
+
+  <span class="p">...</span>
+<span class="n">end</span>
+</pre></div>
+<h3>Benifit</h3>
+
+<p>在这里我们通过 Observer 实现了 model 和 controller 之间的互通，而且没有把 model 和 controller 变得混乱无法维护。而且，如果你对 Cache 有要求的话，可以很便捷的在 Observer 中实现对 Sweeper 的操作。</p>
+
+<p><em>这里是我加入 Fengche.co 后所学习到的一些知识，如果有错误或者疑问欢迎大家的指正和交流。</em></p>
 
 </div>
 
