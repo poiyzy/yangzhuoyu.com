@@ -11,9 +11,9 @@ author: roy
   </blockquote>
 </aside>
 
-在 Rails 4 中，**Observer** 和 **ActionController::Caching::Sweeper** 被剥离掉。但是在我们的项目 [FengChe.co](http://fengche.co) 中却非常重的使用的它们。所以在这里分享下，我们是如何使用的。
+在 Rails 4 中，**Observer** 和 **ActionController::Caching::Sweeper** 被剥离掉。但是在我们的项目 [Fengche.co](https://fengche.co) 中却非常重的使用的它们。所以在这里分享下，我们是如何使用的。
 
-我们使用两种 Observers:
+Rails 框架中有两种 Observers:
 
 * Active Record Observer
 * Action Controller Sweeper
@@ -24,7 +24,7 @@ author: roy
 
 ### 特定情况是否适用 Callback
 
-在 Fengche.co 中有这样一个用例，当一个 Comment 被创建的时候，我们需要让用户的使用界面与网站数据保持同步更新，这时会通过 [Pusher](http://pusher.com) 来及时为用户更新数据。
+在 Fengche.co 中有这样一个用例，当一个 Comment 被创建的时候，我们需要让用户的使用界面与网站数据保持同步更新，这时会通过 [Pusher](http://pusher.com) 来及时为用户更新数据。所以很自然地我们会在 Comment 里添加一个 after_create 的 callback。
 
 ```
 # app/models/comment.rb
@@ -34,7 +34,7 @@ class Comment < ActiveRecord::Base
   private
   def create_comment_for_client
     #pusher gem provide this.
-    pusher_trigger("private-#{self.project_uid}", "comments", { type: 'create', attributes: self.as_json })
+    update_clients_page_via_pusher(self)
   end
 end
 ```
@@ -59,7 +59,7 @@ class CommentObserver < ActiveRecord::Observer
   observe :comment
 
   def after_create(comment)
-    pusher_trigger("private-#{comment.project_uid}", "comments", { type: 'create', attributes: comment.as_json })
+    update_clients_page_via_pusher(comment)
   end
 end
 ```
@@ -79,11 +79,12 @@ end
 
 ```
 describe CommentObserver do
-  let(:comment) { CommentObserver.new }
+  let(:observer) { CommentObserver.instance }
+  let(:comment) { double(:comment) }
 
   it "does trigger the pusher" do
-    comment.should_receive(:pusher_trigger)
-    comment.after_create
+    observer.should_receive(:update_clients_page_via_pusher)
+    observer.after_create(comment)
   end
 end
 ```
@@ -92,11 +93,45 @@ end
 
 ### By the way
 
-另外，如果你听说过 "skinny controller fat model" 的话，相信你也听说过 "fat model is not enough"，关于 Fat model 的重构推荐可以看下[这里](http://yedingding.com/2013/03/04/steps-to-refactor-controller-and-models-in-rails-projects.html)。
+另外，如果你听说过 "skinny controller fat model" 的话，相信你也听说过 "fat model is not enough"，关于 Fat Model 的重构推荐可以看下[Rails 项目重构指南](http://yedingding.com/2013/03/04/steps-to-refactor-controller-and-models-in-rails-projects.html)。
 
-## Active Record Observer 和 Callbacks
+### Beyonds ActiveRecord Observer
 
-对于为什么使用 Observer ，除了 OO 上的考虑外，我们还有对于 Controller 上的需求。设想一下，如果当一个 Controller 请求 destroy action 后我们要在 Callback 中用到 current user 应该怎样操作？也就是说我们需要在 Model 层拿到依赖于请求的数据。
+目前为止，我们知道了使用 Observer 能给我们带来的好处。现在又有了一个新的问题，有些情况下我们需要知道是谁触发了某个操作，举个实际例子，在[风车](https://fengche.co)里面，我们需要知道是谁对任务做了操作。
+
+![这里弄个 Activity 的图]()
+
+如果仅仅使用 Rails 提供的 Observer，我们是没有办法拿到 current_user 信息的，怎么办？目前比较通用的办法是
+
+```
+class User < ActiveRecord::Base
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
+
+  def self.current
+    Thread.current[:user]
+  end
+end
+```
+
+```
+class ApplicationController
+  around_filter :set_user_current
+
+  def set_user_current
+    User.current = current_user
+    yield
+    User.current = nil
+  end
+end
+```
+
+这样子能工作，但是有下面几个问题。
+
+1. Observer 可能需要用到多个当前的数据，比如 current account，current user，需要在多个 Model 里定义这样的方法
+2. Observer 可能需要非 Model 对象，比如 current socket id，属于 request 信息。
+3. 管理 around_filter 不直观，也不美观。
 
 来看一下下面的代码：
 
@@ -115,71 +150,13 @@ class TicketsController < ApplicationController
 end
 ```
 
-在这里当触发 `TicketsController#destroy` 后，我们需要记录删除动作的操作者并且把他传给 Pusher，那么我们这里的 `current_user` 是如何得到的呢？当然你可以把它们都放在 controller 里面执行，但是我们知道这不是优美的解决方式。所以我们这里仍然选择使用 Observer 来作处理。
+### Partial Solution: ActionController::Caching::Sweeper
 
-```
-class TicketObserver < AuditObserver
-  def after_destroy(ticket)
-    pusher_trigger("private-#{ticket.project_uid}", 'tickets', { type: 'destroy', id: ticket.uid, attributes: { operator_id: current_user.try(:uid) } })
-  end
-end
-```
+这里介绍 Sweeper 是什么东西，很多人不了解，主要是 controller 里的用法。
 
-当然也可以专门用一个 `Service Object` 来做，在这里我必须承认这是非常常见的一种优美的解决方式，而且我想这也是为什么很多人都不怎么使用 Observer 的原因之一（说实话，没有加入 Fengche.co 前，我都在怀疑 Observer 存在的意义），但是不得不说的是这完全是两种方式：
+但是 Sweeper 有个很明显的问题，就是在 Controller 里定义的 Observer 会被自动加入到 Observer 列表里面，而不是标准的 ActiveRecord Observer。当然顾名思义，它本来就是清除页面缓存使用，所以是合理的。但是对我们来说就不够用了，因为我们希望用其他渠道对数据进行的变化也能监控到，比如在 Console 里面， 在 Rake Task 里面。
 
-* `Service Object` 是一种 Beyond Rails 的解决方式，它脱离了 Rails 本身，更加多的强调设计模式本身。
-* `Observer` 是 Rails 自带的一种行为，而且 DHH 在很多时候建议或者说鼓励大家不要特别在意设计模式。我觉得使用 Observer 也是一种自然并且优美的解决方式，所以我们这里使用了 Rails 本身所集成的 `ActionController::Caching::Sweeper`
-
-关于前面提到的 DHH 的观点，大家可以去[这里](http://rubyrogues.com/056-rr-david-heinemeier-hansson/)了解下，真的非常精彩！
-
-### Solution: ActionController::Caching::Sweeper
-
-这里 `TicketObserver` 继承于 `AuditObserver`，我们是这样定义 `AuditObserver` ：
-
-```
-class AuditObserver < ActionController::Caching::Sweeper
-  def current_user
-    controller ? controller.send(:current_user) : nil
-  end
-end
-```
-
-首先 `AuditObserver` 继承了 `ActionController:Caching::Sweeper`，所以我们可以在这里拿到当前一个当前请求的 Controller 的实例 controller 。
-
-由于我们在 `ApplicationController` 中定义了 `current_user` 这个方法
-
-```
-class ApplicationController < ActionController::Base
-  def current_user
-    controller ? controller.send(:current_user) : Thread.current[:user]
-  end
-end
-```
-
-所以我们只需要执行 `controller.send(:current_user)` 便可以在 callback 中拿到 Controller 当前请求的 `current_user`。
-
-### Setting ActionController::Caching::Sweeper
-
-但是这里还有一个问题，Observer 怎么和 Controller 交互的呢？
-
-在 `TicketsController` 里我们是这样设置的
-
-```
-class TicketsController < ApplicationController
-  observer :ticket_observer, only: [:destroy] ## setting observer
-
-  def destroy
-    if current_user.could_delete?(@ticket)
-      @ticket.destroy
-      render text: "", status: 200
-    else
-      render text: "", status: 407
-    end
-  end
-end
-```
-
-当然只需要只用 Rails-Observer 这个 Gem 就可以实现 `observer :ticket_observer, only: [:destroy]` 完成 callback 和 controller 之间的交互。我们这里没有使用 Gem ，而是自己写了一个简单的 lib ，不过原理是差不多相同的，有兴趣的同学可以看下。
+受到 Sweeper 的启发，我们自己实现了类似的库，区别就是把 Observer 的选择留给了用户，而不是智能的自动加入到系统的 Observer 列表里。
 
 ```
 ## lib/controller_observer.rb
@@ -199,7 +176,7 @@ module ControllerObserver
 end
 ```
 
-在 `ApplicationController` 中调用
+在 `ApplicationController` 这么使用
 
 ```
 class ApplicationController < ActionController::Base
@@ -209,8 +186,51 @@ class ApplicationController < ActionController::Base
 end
 ```
 
+同时定义个 AuditObserver。
+
+```
+class AuditObserver < ActionController::Caching::Sweeper
+  def current_user
+    controller ? controller.send(:current_user) : nil
+  end
+end
+```
+
+到此为止，所有集成继承 `AuditObserver` 的 Observer 对象都可以获取到触发这个操作的 controller 对象，当然也就拿到了 request 对象，也就可以在 callback 中拿到当前请求的 `current_user`。
+
+下面看一个设置 Controller Observer 的实际例子，在 `TicketsController` 里。
+
+```
+class TicketsController < ApplicationController
+  observer :ticket_observer, only: [:destroy] ## setting observer
+end
+
+class TicketObserver < AuditObserver
+  def after_create(ticket)
+    create_audit_comment(ticket, current_user)
+  end
+end
+```
+
+这里的 observer 方法就是之前的 `lib/controller_observer.rb` 里面定义的。而在 AuditCommentObserver 里面我们看到在 `create_audit_comment` 的时候使用到了 `current_user` 对象，也就知道了是谁创建了这个任务。
+
 ### Benifit
 
 在这里我们通过 Observer 实现了 model 和 controller 之间的互通，而且没有把 model 和 controller 变得混乱无法维护。而且，如果你对 Cache 有要求的话，可以很便捷的在 Observer 中实现对 Sweeper 的操作。
 
+### What's More
+
+最后，就剩下一个非常讨厌的问题了，Rails 的 Observer 不支持 commit callback。而有些操作我们希望是确定事务 commit 后才去执行的，比如一些后台执行的任务。有意思的是， Model 里又可以使用 after_commit callback。我们在研究代码了以后，使用了私有函数来解决这个问题。
+
+```
+class TicketObserver < AuditObserver
+  def after_commit(record)
+    if record.send(:transaction_include_action?, :create)
+    elsif record.send(:transaction_include_action?, :destroy)
+    end
+  end
+end
+```
+
 *这里是我加入 Fengche.co 后所学习到的一些知识，如果有错误或者疑问欢迎大家的指正和交流。*
+
