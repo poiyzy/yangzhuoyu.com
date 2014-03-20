@@ -99,7 +99,7 @@ end
 
 目前为止，我们知道了使用 Observer 能给我们带来的好处。现在又有了一个新的问题，有些情况下我们需要知道是谁触发了某个操作，举个实际例子，在[风车](https://fengche.co)里面，我们需要知道是谁对任务做了操作。
 
-![这里弄个 Activity 的图]()
+![Activity Message](/images/activities.png)
 
 如果仅仅使用 Rails 提供的 Observer，我们是没有办法拿到 current_user 信息的，怎么办？目前比较通用的办法是
 
