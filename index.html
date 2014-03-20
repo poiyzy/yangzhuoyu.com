@@ -36,8 +36,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link href="/stylesheets/application.css?1395121024" media="screen" rel="stylesheet" type="text/css" />
-    <script src="/javascripts/application.js?1395121024" type="text/javascript"></script>
+    <link href="/stylesheets/application.css?1395305141" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1395305141" type="text/javascript"></script>
 
   </head>
   <body class="index">
@@ -109,9 +109,9 @@
   </blockquote>
 </aside></p>
 
-<p>在 Rails 4 中，<strong>Observer</strong> 和 <strong>ActionController::Caching::Sweeper</strong> 被剥离掉。但是在我们的项目 <a href="http://fengche.co">FengChe.co</a> 中却非常重的使用的它们。所以在这里分享下，我们是如何使用的。</p>
+<p>在 Rails 4 中，<strong>Observer</strong> 和 <strong>ActionController::Caching::Sweeper</strong> 被剥离掉。但是在我们的项目 <a href="https://fengche.co">Fengche.co</a> 中却非常重的使用的它们。所以在这里分享下，我们是如何使用的。</p>
 
-<p>我们使用两种 Observers:</p>
+<p>Rails 框架中有两种 Observers:</p>
 
 <ul>
 <li>Active Record Observer</li>
@@ -124,7 +124,7 @@
 
 <h3>特定情况是否适用 Callback</h3>
 
-<p>在 Fengche.co 中有这样一个用例，当一个 Comment 被创建的时候，我们需要让用户的使用界面与网站数据保持同步更新，这时会通过 <a href="http://pusher.com">Pusher</a> 来及时为用户更新数据。</p>
+<p>在 Fengche.co 中有这样一个用例，当一个 Comment 被创建的时候，我们需要让用户的使用界面与网站数据保持同步更新，这时会通过 <a href="http://pusher.com">Pusher</a> 来及时为用户更新数据。所以很自然地我们会在 Comment 里添加一个 after_create 的 callback。</p>
 
 
   <p>
