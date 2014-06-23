@@ -36,8 +36,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link href="/stylesheets/application.css?1395305141" media="screen" rel="stylesheet" type="text/css" />
-    <script src="/javascripts/application.js?1395305141" type="text/javascript"></script>
+    <link href="/stylesheets/application.css?1403536099" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1403536098" type="text/javascript"></script>
 
   </head>
   <body class="page page_4 page_4_index">
@@ -69,6 +69,59 @@
     <section class="main">
       <div class="container">
         <div id="posts">
+  
+    <article class="post">
+      <header>
+  <h2 class="title">
+    <a href="/shi-yong-powyun-xing-sinatra">使用pow运行sinatra</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Dec 05, 2011
+    </li>
+    <li class="tags">
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p>今天想拿 <em><a href="http://www.sinatrarb.com/intro">Sinatra</a></em> 这个轻量级的 <em>web</em> 框架练练手，写个小程序，可是使用 <code>ruby myapp.rb</code> 运行非常的麻烦。所以想到用 <em>Rails</em> 推荐的 <em><a href="http://pow.cx/">Pow</a></em> 来跑。</p>
+
+<p>在 <em><a href="http://www.sinatrarb.com/intro">Sinatra</a></em> 建立的 <em>app</em> 文件根目录下建立 <em>config.ru</em> 。</p>
+
+<p>&ldquo;sh config.ru
+require &quot;rubygems&rdquo; #必须要写，不然pow报错
+require &ldquo;./myapp&rdquo; #要运行的文件，相当于index，这里是myapp.rb</p>
+
+<p>run Sinatra::Application
+&ldquo;</p>
+
+<blockquote>
+<p>参考：<a href="https://github.com/37signals/pow/issues/38">传送门</a></p>
+</blockquote>
+
+
+  <p>
+    ......
+  </p>
+  <p>
+    <a href="/shi-yong-powyun-xing-sinatra">Read more →</a>
+  </p>
+</div>
+
+    </article>
   
     <article class="post">
       <header>
@@ -316,67 +369,6 @@ add_action(&quot;thesis_hook_after_sidebars&quot;,&quot;test&quot;)
   </p>
   <p>
     <a href="/guan-yu-railsbi-ji-one">Read more →</a>
-  </p>
-</div>
-
-    </article>
-  
-    <article class="post">
-      <header>
-  <h2 class="title">
-    <a href="/tong-shi-pushdao-githubhe-heroku">同时同步到heroku和github</a>
-  </h2>
-</header>
-
-<aside class="aside-block">
-  <ul class="meta">
-    <!-- <li class="author-photo">
-      <a href="http://yangzhuoyu.com">
-        <img src="/images/zhuoyu-yang.png?1381549113" />
-      </a>
-    </li>
-    <li class="author">
-     by Roy Young
-    </li> -->
-    <li class="date">
-      Oct 18, 2011
-    </li>
-    <li class="tags">
-      
-    </li>
-  </ul>
-</aside>
-
-<div class="content">
-  <p>现在使用的 <em>Octopress</em> ，在写完文章和做修改后，想要同时 <em>push</em> 到 <strong>Github</strong> 和 <strong>Heroku</strong> 。它们两个是同一个 <em>Repo</em> ，想要在一条命令中完成。</p>
-
-<p>一次完成多线程 <em>push</em> ,需要用到 <code>git remote set-url</code> 命令。</p>
-<div class="highlight"><pre><span class="nv">$ </span>git remote add all git@github.com:username/app-name.git
-<span class="nv">$ </span>git remote <span class="nb">set</span>-url --add all  git@herku.com:username.git
-</pre></div>
-<p>在 <strong>.git/config</strong> 文件中将会产生下面的代码：</p>
-
-<p><code>bash .git/config
-[remote &quot;all&quot;]
-url = git@github.com:username/app-name.git
-url = git@herku.com:username.git
-</code></p>
-
-<p>然后运行命令：</p>
-<div class="highlight"><pre><span class="nv">$ </span>git push all
-</pre></div>
-<p>如果你的 <em>repos</em> 只有你一个人可写操作，你就只需要在一次 <em>push</em> 中更新。</p>
-
-<blockquote>
-<p>参考自 <a href="http://stackoverflow.com/questions/6013362/github-and-heroku-repos-how-to-read-push-pull-and-generally-keep-them-synced">Stack Overflow</a></p>
-</blockquote>
-
-
-  <p>
-    ......
-  </p>
-  <p>
-    <a href="/tong-shi-pushdao-githubhe-heroku">Read more →</a>
   </p>
 </div>
 

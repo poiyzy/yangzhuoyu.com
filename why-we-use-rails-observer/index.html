@@ -41,8 +41,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link href="/stylesheets/application.css?1395305141" media="screen" rel="stylesheet" type="text/css" />
-    <script src="/javascripts/application.js?1395305141" type="text/javascript"></script>
+    <link href="/stylesheets/application.css?1403536099" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1403536098" type="text/javascript"></script>
 
   </head>
   <body class="why-we-use-rails-observer why-we-use-rails-observer_index">
@@ -139,16 +139,16 @@
 <h3>特定情况是否适用 Callback</h3>
 
 <p>在 Fengche.co 中有这样一个用例，当一个 Comment 被创建的时候，我们需要让用户的使用界面与网站数据保持同步更新，这时会通过 <a href="http://pusher.com">Pusher</a> 来及时为用户更新数据。所以很自然地我们会在 Comment 里添加一个 after_create 的 callback。</p>
-<div class="highlight"><pre><span class="cp"># app/models/comment.rb</span>
-<span class="n">class</span> <span class="n">Comment</span> <span class="o">&lt;</span> <span class="n">ActiveRecord</span><span class="o">::</span><span class="n">Base</span>
-  <span class="n">after_create</span> <span class="o">:</span><span class="n">create_comment_for_client</span>
+<div class="highlight"><pre><span class="c1"># app/models/comment.rb</span>
+<span class="k">class</span> <span class="nx">Comment</span> <span class="o">&lt;</span> <span class="nx">ActiveRecord</span><span class="o">::</span><span class="nx">Base</span>
+  <span class="nx">after_create</span> <span class="o">:</span><span class="nx">create_comment_for_client</span>
 
-  <span class="n">private</span>
-  <span class="n">def</span> <span class="n">create_comment_for_client</span>
-    <span class="err">#</span><span class="n">pusher</span> <span class="n">gem</span> <span class="n">provide</span> <span class="n">this</span><span class="p">.</span>
-    <span class="n">update_clients_page_via_pusher</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
-  <span class="n">end</span>
-<span class="n">end</span>
+  <span class="nx">private</span>
+  <span class="nx">def</span> <span class="nx">create_comment_for_client</span>
+    <span class="c1">#pusher gem provide this.</span>
+    <span class="nx">update_clients_page_via_pusher</span><span class="p">(</span><span class="nx">self</span><span class="p">)</span>
+  <span class="nx">end</span>
+<span class="nx">end</span>
 </pre></div>
 <p>上面那段代码有问题么？如果从实现功能的角度上来说确实没有问题。但是如果从代码可维护的角度来看，让 <code>Pusher</code> 来发送 Json 数据到 Client 端真的属于 <code>Comment</code> 么？在某些情况下，它确实依赖于 <code>Comment</code> 。当在一个 comment 被创建以后，才会利用 Pusher 去发送 json 到 Client 端。但是这样的话，就违背了 <strong>Single Responsibility Principle</strong>。</p>
 
@@ -157,36 +157,36 @@
 <h3>Solution: Observer</h3>
 
 <p>我们使用 Observer 重构后：</p>
-<div class="highlight"><pre><span class="cp"># app/models/comment.rb</span>
-<span class="n">class</span> <span class="n">Comment</span> <span class="o">&lt;</span> <span class="n">ActiveRecord</span><span class="o">::</span><span class="n">Base</span>
-<span class="n">end</span>
-</pre></div><div class="highlight"><pre><span class="cp"># app/observers/comment_observer.rb</span>
-<span class="n">class</span> <span class="n">CommentObserver</span> <span class="o">&lt;</span> <span class="n">ActiveRecord</span><span class="o">::</span><span class="n">Observer</span>
-  <span class="n">observe</span> <span class="o">:</span><span class="n">comment</span>
+<div class="highlight"><pre><span class="c1"># app/models/comment.rb</span>
+<span class="k">class</span> <span class="nx">Comment</span> <span class="o">&lt;</span> <span class="nx">ActiveRecord</span><span class="o">::</span><span class="nx">Base</span>
+<span class="nx">end</span>
+</pre></div><div class="highlight"><pre><span class="c1"># app/observers/comment_observer.rb</span>
+<span class="k">class</span> <span class="nx">CommentObserver</span> <span class="o">&lt;</span> <span class="nx">ActiveRecord</span><span class="o">::</span><span class="nx">Observer</span>
+  <span class="nx">observe</span> <span class="o">:</span><span class="nx">comment</span>
 
-  <span class="n">def</span> <span class="n">after_create</span><span class="p">(</span><span class="n">comment</span><span class="p">)</span>
-    <span class="n">update_clients_page_via_pusher</span><span class="p">(</span><span class="n">comment</span><span class="p">)</span>
-  <span class="n">end</span>
-<span class="n">end</span>
-</pre></div><div class="highlight"><pre><span class="cp"># config/application.rb</span>
-<span class="n">class</span> <span class="n">Application</span> <span class="o">&lt;</span> <span class="n">Rails</span><span class="o">::</span><span class="n">Application</span>
-  <span class="n">config</span><span class="p">.</span><span class="n">active_record</span><span class="p">.</span><span class="n">observers</span> <span class="o">=</span> <span class="o">:</span><span class="n">comment_observer</span>
-<span class="n">end</span>
+  <span class="nx">def</span> <span class="nx">after_create</span><span class="p">(</span><span class="nx">comment</span><span class="p">)</span>
+    <span class="nx">update_clients_page_via_pusher</span><span class="p">(</span><span class="nx">comment</span><span class="p">)</span>
+  <span class="nx">end</span>
+<span class="nx">end</span>
+</pre></div><div class="highlight"><pre><span class="c1"># config/application.rb</span>
+<span class="k">class</span> <span class="nx">Application</span> <span class="o">&lt;</span> <span class="nx">Rails</span><span class="o">::</span><span class="nx">Application</span>
+  <span class="nv">config.active_record.observers = </span><span class="o">:</span><span class="nx">comment_observer</span>
+<span class="nx">end</span>
 </pre></div>
 <h3>Benefit</h3>
 
 <p>现在 Pusher 和 Comment 完全分离开。它们不再捆绑在一起。如果有一天我们对于 Client 端的更新策略有所改变，我们只需要在 CommentObserver 中做改动，而不会再触碰 Comment 。这样更加符合 OO 的概念，而不是在 Comment 中编辑方法。</p>
 
 <p>说了这么多，Test 可以很直接的反应出这些益处：</p>
-<div class="highlight"><pre><span class="n">describe</span> <span class="n">CommentObserver</span> <span class="k">do</span>
-  <span class="nf">let</span><span class="p">(</span><span class="o">:</span><span class="n">observer</span><span class="p">)</span> <span class="p">{</span> <span class="n">CommentObserver</span><span class="p">.</span><span class="n">instance</span> <span class="p">}</span>
-  <span class="n">let</span><span class="p">(</span><span class="o">:</span><span class="n">comment</span><span class="p">)</span> <span class="p">{</span> <span class="kt">double</span><span class="p">(</span><span class="o">:</span><span class="n">comment</span><span class="p">)</span> <span class="p">}</span>
+<div class="highlight"><pre><span class="nx">describe</span> <span class="nx">CommentObserver</span> <span class="nx">do</span>
+  <span class="nx">let</span><span class="p">(</span><span class="o">:</span><span class="nx">observer</span><span class="p">)</span> <span class="p">{</span> <span class="nx">CommentObserver</span><span class="p">.</span><span class="nx">instance</span> <span class="p">}</span>
+  <span class="nx">let</span><span class="p">(</span><span class="o">:</span><span class="nx">comment</span><span class="p">)</span> <span class="p">{</span> <span class="nx">double</span><span class="p">(</span><span class="o">:</span><span class="nx">comment</span><span class="p">)</span> <span class="p">}</span>
 
-  <span class="n">it</span> <span class="s">&quot;does trigger the pusher&quot;</span> <span class="k">do</span>
-    <span class="n">observer</span><span class="p">.</span><span class="n">should_receive</span><span class="p">(</span><span class="o">:</span><span class="n">update_clients_page_via_pusher</span><span class="p">)</span>
-    <span class="n">observer</span><span class="p">.</span><span class="n">after_create</span><span class="p">(</span><span class="n">comment</span><span class="p">)</span>
-  <span class="n">end</span>
-<span class="n">end</span>
+  <span class="nx">it</span> <span class="s">&quot;does trigger the pusher&quot;</span> <span class="nx">do</span>
+    <span class="nx">observer</span><span class="p">.</span><span class="nx">should_receive</span><span class="p">(</span><span class="o">:</span><span class="nx">update_clients_page_via_pusher</span><span class="p">)</span>
+    <span class="nx">observer</span><span class="p">.</span><span class="nx">after_create</span><span class="p">(</span><span class="nx">comment</span><span class="p">)</span>
+  <span class="nx">end</span>
+<span class="nx">end</span>
 </pre></div>
 <p>很明显在测试中，我们不需要再调用 Comment 。</p>
 
@@ -201,24 +201,24 @@
 <p><img alt="Activity Message" src="/images/activities.png?1395305137" /></p>
 
 <p>如果仅仅使用 Rails 提供的 Observer，我们是没有办法拿到 current_user 信息的，怎么办？目前比较通用的办法是</p>
-<div class="highlight"><pre><span class="n">class</span> <span class="n">User</span> <span class="o">&lt;</span> <span class="n">ActiveRecord</span><span class="o">::</span><span class="n">Base</span>
-  <span class="n">def</span> <span class="n">self</span><span class="p">.</span><span class="n">current</span><span class="o">=</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
-    <span class="n">Thread</span><span class="p">.</span><span class="n">current</span><span class="p">[</span><span class="o">:</span><span class="n">user</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span>
-  <span class="n">end</span>
+<div class="highlight"><pre><span class="k">class</span> <span class="nx">User</span> <span class="o">&lt;</span> <span class="nx">ActiveRecord</span><span class="o">::</span><span class="nx">Base</span>
+  <span class="nx">def</span> <span class="nx">self</span><span class="p">.</span><span class="nx">current</span><span class="o">=</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+    <span class="nx">Thread</span><span class="p">.</span><span class="nx">current</span><span class="p">[</span><span class="o">:</span><span class="nx">user</span><span class="p">]</span> <span class="o">=</span> <span class="nx">user</span>
+  <span class="nx">end</span>
 
-  <span class="n">def</span> <span class="n">self</span><span class="p">.</span><span class="n">current</span>
-    <span class="n">Thread</span><span class="p">.</span><span class="n">current</span><span class="p">[</span><span class="o">:</span><span class="n">user</span><span class="p">]</span>
-  <span class="n">end</span>
-<span class="n">end</span>
-</pre></div><div class="highlight"><pre><span class="n">class</span> <span class="n">ApplicationController</span>
-  <span class="n">around_filter</span> <span class="o">:</span><span class="n">set_user_current</span>
+  <span class="nx">def</span> <span class="nx">self</span><span class="p">.</span><span class="nx">current</span>
+    <span class="nx">Thread</span><span class="p">.</span><span class="nx">current</span><span class="p">[</span><span class="o">:</span><span class="nx">user</span><span class="p">]</span>
+  <span class="nx">end</span>
+<span class="nx">end</span>
+</pre></div><div class="highlight"><pre><span class="k">class</span> <span class="nx">ApplicationController</span>
+  <span class="nx">around_filter</span> <span class="o">:</span><span class="nx">set_user_current</span>
 
-  <span class="n">def</span> <span class="n">set_user_current</span>
-    <span class="n">User</span><span class="p">.</span><span class="n">current</span> <span class="o">=</span> <span class="n">current_user</span>
-    <span class="n">yield</span>
-    <span class="n">User</span><span class="p">.</span><span class="n">current</span> <span class="o">=</span> <span class="n">nil</span>
-  <span class="n">end</span>
-<span class="n">end</span>
+  <span class="nx">def</span> <span class="nx">set_user_current</span>
+    <span class="nv">User.current = </span><span class="nx">current_user</span>
+    <span class="nx">yield</span>
+    <span class="nv">User.current = </span><span class="nx">nil</span>
+  <span class="nx">end</span>
+<span class="nx">end</span>
 </pre></div>
 <p>这样子能工作，但是有下面几个问题。</p>
 
@@ -229,18 +229,18 @@
 </ol>
 
 <p>来看一下下面的代码：</p>
-<div class="highlight"><pre><span class="n">class</span> <span class="n">TicketsController</span> <span class="o">&lt;</span> <span class="n">ApplicationController</span>
-  <span class="n">observer</span>      <span class="o">:</span><span class="n">ticket_observer</span><span class="p">,</span> <span class="n">only</span><span class="o">:</span> <span class="p">[</span><span class="o">:</span><span class="n">destroy</span><span class="p">]</span>
+<div class="highlight"><pre><span class="k">class</span> <span class="nx">TicketsController</span> <span class="o">&lt;</span> <span class="nx">ApplicationController</span>
+  <span class="nx">observer</span>      <span class="o">:</span><span class="nx">ticket_observer</span><span class="p">,</span> <span class="nv">only: </span><span class="p">[</span><span class="o">:</span><span class="nx">destroy</span><span class="p">]</span>
 
-  <span class="n">def</span> <span class="n">destroy</span>
-    <span class="k">if</span> <span class="n">current_user</span><span class="p">.</span><span class="n">could_delete</span><span class="o">?</span><span class="p">(</span><span class="err">@</span><span class="n">ticket</span><span class="p">)</span>
-      <span class="err">@</span><span class="n">ticket</span><span class="p">.</span><span class="n">destroy</span>
-      <span class="n">render</span> <span class="n">text</span><span class="o">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">status</span><span class="o">:</span> <span class="mi">200</span>
+  <span class="nx">def</span> <span class="nx">destroy</span>
+    <span class="k">if</span> <span class="nx">current_user</span><span class="p">.</span><span class="nx">could_delete</span><span class="o">?</span><span class="p">(</span><span class="nx">@ticket</span><span class="p">)</span>
+      <span class="nx">@ticket</span><span class="p">.</span><span class="nx">destroy</span>
+      <span class="nx">render</span> <span class="nv">text: </span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nv">status: </span><span class="mi">200</span>
     <span class="k">else</span>
-      <span class="n">render</span> <span class="n">text</span><span class="o">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">status</span><span class="o">:</span> <span class="mi">407</span>
-    <span class="n">end</span>
-  <span class="n">end</span>
-<span class="n">end</span>
+      <span class="nx">render</span> <span class="nv">text: </span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nv">status: </span><span class="mi">407</span>
+    <span class="nx">end</span>
+  <span class="nx">end</span>
+<span class="nx">end</span>
 </pre></div>
 <h3>Partial Solution: ActionController::Caching::Sweeper</h3>
 
@@ -249,48 +249,48 @@
 <p>但是 Sweeper 有个很明显的问题，就是在 Controller 里定义的 Observer 会被自动加入到 Observer 列表里面，而不是标准的 ActiveRecord Observer。当然顾名思义，它本来就是清除页面缓存使用，所以是合理的。但是对我们来说就不够用了，因为我们希望用其他渠道对数据进行的变化也能监控到，比如在 Console 里面， 在 Rake Task 里面。</p>
 
 <p>受到 Sweeper 的启发，我们自己实现了类似的库，区别就是把 Observer 的选择留给了用户，而不是智能的自动加入到系统的 Observer 列表里。</p>
-<div class="highlight"><pre><span class="cp">## lib/controller_observer.rb</span>
-<span class="n">module</span> <span class="n">ControllerObserver</span>
-  <span class="n">extend</span> <span class="n">ActiveSupport</span><span class="o">::</span><span class="n">Concern</span>
+<div class="highlight"><pre><span class="c1">## lib/controller_observer.rb</span>
+<span class="nx">module</span> <span class="nx">ControllerObserver</span>
+  <span class="nx">extend</span> <span class="nx">ActiveSupport</span><span class="o">::</span><span class="nx">Concern</span>
 
-  <span class="n">module</span> <span class="n">ClassMethods</span> <span class="err">#</span><span class="o">:</span><span class="n">nodoc</span><span class="o">:</span>
-    <span class="n">def</span> <span class="n">observer</span><span class="p">(</span><span class="o">*</span><span class="n">observers</span><span class="p">)</span>
-      <span class="n">configuration</span> <span class="o">=</span> <span class="n">observers</span><span class="p">.</span><span class="n">extract_options</span><span class="o">!</span>
+  <span class="nx">module</span> <span class="nx">ClassMethods</span> <span class="c1">#:nodoc:</span>
+    <span class="nx">def</span> <span class="nx">observer</span><span class="p">(</span><span class="o">*</span><span class="nx">observers</span><span class="p">)</span>
+      <span class="nv">configuration = </span><span class="nx">observers</span><span class="p">.</span><span class="nx">extract_options</span><span class="o">!</span>
 
-      <span class="n">observers</span><span class="p">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">observer</span><span class="o">|</span>
-        <span class="n">observer_instance</span> <span class="o">=</span> <span class="p">(</span><span class="n">observer</span><span class="p">.</span><span class="n">is_a</span><span class="o">?</span><span class="p">(</span><span class="n">Symbol</span><span class="p">)</span> <span class="o">?</span> <span class="n">Object</span><span class="p">.</span><span class="n">const_get</span><span class="p">(</span><span class="n">observer</span><span class="p">.</span><span class="n">to_s</span><span class="p">.</span><span class="n">classify</span><span class="p">)</span> <span class="o">:</span> <span class="n">observer</span><span class="p">).</span><span class="n">instance</span>
-        <span class="n">around_filter</span><span class="p">(</span><span class="n">observer_instance</span><span class="p">,</span> <span class="n">only</span><span class="o">:</span> <span class="n">configuration</span><span class="p">[</span><span class="o">:</span><span class="n">only</span><span class="p">])</span>
-      <span class="n">end</span>
-    <span class="n">end</span>
-  <span class="n">end</span>
-<span class="n">end</span>
+      <span class="nx">observers</span><span class="p">.</span><span class="nx">each</span> <span class="nx">do</span> <span class="o">|</span><span class="nx">observer</span><span class="o">|</span>
+        <span class="nv">observer_instance = </span><span class="p">(</span><span class="nx">observer</span><span class="p">.</span><span class="nx">is_a</span><span class="o">?</span><span class="p">(</span><span class="nx">Symbol</span><span class="p">)</span> <span class="o">?</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">const_get</span><span class="p">(</span><span class="nx">observer</span><span class="p">.</span><span class="nx">to_s</span><span class="p">.</span><span class="nx">classify</span><span class="p">)</span> <span class="o">:</span> <span class="nx">observer</span><span class="p">).</span><span class="nx">instance</span>
+        <span class="nx">around_filter</span><span class="p">(</span><span class="nx">observer_instance</span><span class="p">,</span> <span class="nv">only: </span><span class="nx">configuration</span><span class="p">[</span><span class="o">:</span><span class="nx">only</span><span class="p">])</span>
+      <span class="nx">end</span>
+    <span class="nx">end</span>
+  <span class="nx">end</span>
+<span class="nx">end</span>
 </pre></div>
 <p>在 <code>ApplicationController</code> 这么使用</p>
-<div class="highlight"><pre><span class="n">class</span> <span class="n">ApplicationController</span> <span class="o">&lt;</span> <span class="n">ActionController</span><span class="o">::</span><span class="n">Base</span>
-  <span class="n">include</span> <span class="n">ControllerObserver</span>
+<div class="highlight"><pre><span class="k">class</span> <span class="nx">ApplicationController</span> <span class="o">&lt;</span> <span class="nx">ActionController</span><span class="o">::</span><span class="nx">Base</span>
+  <span class="nx">include</span> <span class="nx">ControllerObserver</span>
 
   <span class="p">...</span>
-<span class="n">end</span>
+<span class="nx">end</span>
 </pre></div>
 <p>同时定义个 AuditObserver。</p>
-<div class="highlight"><pre><span class="n">class</span> <span class="n">AuditObserver</span> <span class="o">&lt;</span> <span class="n">ActionController</span><span class="o">::</span><span class="n">Caching</span><span class="o">::</span><span class="n">Sweeper</span>
-  <span class="n">def</span> <span class="n">current_user</span>
-    <span class="n">controller</span> <span class="o">?</span> <span class="n">controller</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="o">:</span><span class="n">current_user</span><span class="p">)</span> <span class="o">:</span> <span class="n">nil</span>
-  <span class="n">end</span>
-<span class="n">end</span>
+<div class="highlight"><pre><span class="k">class</span> <span class="nx">AuditObserver</span> <span class="o">&lt;</span> <span class="nx">ActionController</span><span class="o">::</span><span class="nx">Caching</span><span class="o">::</span><span class="nx">Sweeper</span>
+  <span class="nx">def</span> <span class="nx">current_user</span>
+    <span class="nx">controller</span> <span class="o">?</span> <span class="nx">controller</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="o">:</span><span class="nx">current_user</span><span class="p">)</span> <span class="o">:</span> <span class="nx">nil</span>
+  <span class="nx">end</span>
+<span class="nx">end</span>
 </pre></div>
 <p>到此为止，所有集成继承 <code>AuditObserver</code> 的 Observer 对象都可以获取到触发这个操作的 controller 对象，当然也就拿到了 request 对象，也就可以在 callback 中拿到当前请求的 <code>current_user</code>。</p>
 
 <p>下面看一个设置 Controller Observer 的实际例子，在 <code>TicketsController</code> 里。</p>
-<div class="highlight"><pre><span class="n">class</span> <span class="n">TicketsController</span> <span class="o">&lt;</span> <span class="n">ApplicationController</span>
-  <span class="n">observer</span> <span class="o">:</span><span class="n">ticket_observer</span><span class="p">,</span> <span class="n">only</span><span class="o">:</span> <span class="p">[</span><span class="o">:</span><span class="n">destroy</span><span class="p">]</span> <span class="err">##</span> <span class="n">setting</span> <span class="n">observer</span>
-<span class="n">end</span>
+<div class="highlight"><pre><span class="k">class</span> <span class="nx">TicketsController</span> <span class="o">&lt;</span> <span class="nx">ApplicationController</span>
+  <span class="nx">observer</span> <span class="o">:</span><span class="nx">ticket_observer</span><span class="p">,</span> <span class="nv">only: </span><span class="p">[</span><span class="o">:</span><span class="nx">destroy</span><span class="p">]</span> <span class="c1">## setting observer</span>
+<span class="nx">end</span>
 
-<span class="n">class</span> <span class="n">TicketObserver</span> <span class="o">&lt;</span> <span class="n">AuditObserver</span>
-  <span class="n">def</span> <span class="n">after_create</span><span class="p">(</span><span class="n">ticket</span><span class="p">)</span>
-    <span class="n">create_audit_comment</span><span class="p">(</span><span class="n">ticket</span><span class="p">,</span> <span class="n">current_user</span><span class="p">)</span>
-  <span class="n">end</span>
-<span class="n">end</span>
+<span class="k">class</span> <span class="nx">TicketObserver</span> <span class="o">&lt;</span> <span class="nx">AuditObserver</span>
+  <span class="nx">def</span> <span class="nx">after_create</span><span class="p">(</span><span class="nx">ticket</span><span class="p">)</span>
+    <span class="nx">create_audit_comment</span><span class="p">(</span><span class="nx">ticket</span><span class="p">,</span> <span class="nx">current_user</span><span class="p">)</span>
+  <span class="nx">end</span>
+<span class="nx">end</span>
 </pre></div>
 <p>这里的 observer 方法就是之前的 <code>lib/controller_observer.rb</code> 里面定义的。而在 AuditCommentObserver 里面我们看到在 <code>create_audit_comment</code> 的时候使用到了 <code>current_user</code> 对象，也就知道了是谁创建了这个任务。</p>
 
@@ -301,13 +301,13 @@
 <h3>What&#39;s More</h3>
 
 <p>最后，就剩下一个非常讨厌的问题了，Rails 的 Observer 不支持 commit callback。而有些操作我们希望是确定事务 commit 后才去执行的，比如一些后台执行的任务。有意思的是， Model 里又可以使用 after_commit callback。我们在研究代码了以后，使用了私有函数来解决这个问题。</p>
-<div class="highlight"><pre><span class="n">class</span> <span class="n">TicketObserver</span> <span class="o">&lt;</span> <span class="n">AuditObserver</span>
-  <span class="n">def</span> <span class="n">after_commit</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">record</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="o">:</span><span class="n">transaction_include_action</span><span class="o">?</span><span class="p">,</span> <span class="o">:</span><span class="n">create</span><span class="p">)</span>
-    <span class="n">elsif</span> <span class="n">record</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="o">:</span><span class="n">transaction_include_action</span><span class="o">?</span><span class="p">,</span> <span class="o">:</span><span class="n">destroy</span><span class="p">)</span>
-    <span class="n">end</span>
-  <span class="n">end</span>
-<span class="n">end</span>
+<div class="highlight"><pre><span class="k">class</span> <span class="nx">TicketObserver</span> <span class="o">&lt;</span> <span class="nx">AuditObserver</span>
+  <span class="nx">def</span> <span class="nx">after_commit</span><span class="p">(</span><span class="nx">record</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">record</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="o">:</span><span class="nx">transaction_include_action</span><span class="o">?</span><span class="p">,</span> <span class="o">:</span><span class="nx">create</span><span class="p">)</span>
+    <span class="nx">elsif</span> <span class="nx">record</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="o">:</span><span class="nx">transaction_include_action</span><span class="o">?</span><span class="p">,</span> <span class="o">:</span><span class="nx">destroy</span><span class="p">)</span>
+    <span class="nx">end</span>
+  <span class="nx">end</span>
+<span class="nx">end</span>
 </pre></div>
 <p><em>这里是我加入 Fengche.co 后所学习到的一些知识，如果有错误或者疑问欢迎大家的指正和交流。</em></p>
 

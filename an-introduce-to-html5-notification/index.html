@@ -1,0 +1,321 @@
+
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]<!-->
+<html class="no-js" lang="en">
+  <!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+
+    <title>
+        HTML5 Notification 介绍
+ - Roy's Blog
+    </title>
+
+    <meta name="description" content="Nil">
+    <meta name="keywords" content="  ["Front-end", "JS", "HTML5", "Notification"]
+">
+    <meta name="author" content="Roy Young">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="apple-touch-icon-precomposed" type="image/png" sizes="57x57" href="/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" type="image/png" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" type="image/png" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" type="image/png" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" type="image/png" href="/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <link rel="shortcut icon" sizes="16x16" href="/favicon.ico">
+    <link rel="alternate" type="application/rss+xml" title="Roy Young's Blog" href="/feed.xml" />
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/stylesheets/application.css?1403536099" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/application.js?1403536098" type="text/javascript"></script>
+
+  </head>
+  <body class="an-introduce-to-html5-notification an-introduce-to-html5-notification_index">
+    <aside class="sidebar">
+      <h1 class="site-name"><a href="/">Roy</a></h1>
+      <nav class="global-nav">
+        <ul>
+          <li><a href="/">Posts</a></li>
+          <li><a href="#TODO">Photos</a></li>
+          <li><a href="/profile">Profile</a></li>
+        </ul>        
+      </nav>
+
+      <nav class="social-connect">
+        <ul>
+          <li><a href="/rss.xml"><i class="icon-rss"></i></a></li>
+          <li><a href="//twitter.com/poiyzy"><i class="icon-twitter"></i></a></li>
+          <li><a href="//weibo.com/zhuoyuyang"><i class="icon-weibo"></i></a></li>
+        </ul>
+      </nav>
+
+      <div class="block ad">
+        <h4 class="block-title"><a href="//pragmatic.ly/">Fengche.co</a></h4>
+        <p class="block-cnt">团队协作工具</p>
+      </div>
+
+    </aside>
+
+    <section class="main">
+      <div class="container">
+          <div class="announcement">
+    <p>
+      
+        <img class="avatar" src="/images/zhuoyu-yang.png" alt="Zhuoyu Yang" />
+努力学习 Javascript 中...
+
+      
+    </p>
+  </div>
+
+  <article class="post single">
+
+    <header>
+  <h2 class="title">
+    <a href="/an-introduce-to-html5-notification">HTML5 Notification 介绍</a>
+  </h2>
+</header>
+
+<aside class="aside-block">
+  <ul class="meta">
+    <!-- <li class="author-photo">
+      <a href="http://yangzhuoyu.com">
+        <img src="/images/zhuoyu-yang.png?1381549113" />
+      </a>
+    </li>
+    <li class="author">
+     by Roy Young
+    </li> -->
+    <li class="date">
+      Jun 20, 2014
+    </li>
+    <li class="tags">
+      
+        <a href="/tags/front-end">Front-end</a>
+      
+        <a href="/tags/js">JS</a>
+      
+        <a href="/tags/html5">HTML5</a>
+      
+        <a href="/tags/notification">Notification</a>
+      
+    </li>
+  </ul>
+</aside>
+
+<div class="content">
+  <p><img alt="Html5 Notification" src="/images/html5-notification/chrome-notification.png?1403536095" /></p>
+
+<p>浏览器的提醒功能越来越多的被使用，只要用户使用浏览器访问网站就会自动收到基于 HTML 5 的 Notification.</p>
+
+<p>在<a href="https://fengche.co">风车</a>中很早就使用了这个技术来作为我们的在线消息提醒，在不断的完善和改进后，希望可以把 HTML 5 Notification 做一个总结介绍。</p>
+
+<h2>浏览器支持</h2>
+
+<p>目前支持 HTML 5 Notification 的常用浏览器有 Safari 6+，FireFox 23+，Chrome，IE 9.0+ 。不同的浏览器使用的方法不同。</p>
+
+<p>另外要说的一点，关于 IE 对 HTML 5 Notification 的支持不完美，个人不推荐使用。<em>真爱生命，远离 IE</em>。</p>
+
+<h2>HTML 5 Notification 使用步骤</h2>
+
+<ul>
+<li>判定用户浏览器是否支持</li>
+<li>获取权限 (用户可以在浏览器中设置是否启用 HTML 5 Notification)</li>
+<li>设置权限 (用户如果第一次使用该网站，需要让用户设置 HTML 5 Notification 为开启，当然用户也可以选择拒绝)</li>
+<li>创建 Notification</li>
+</ul>
+
+<h2>实现（CoffeeScript)</h2>
+
+<p>代码源自于<a href="https://fengche.co">风车</a></p>
+
+<h5>首先判定用户浏览器是否支持 HTML 5 Notification</h5>
+<div class="highlight"><pre><span class="nv">hasSupport: </span><span class="nf">-&gt;</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">Notification</span><span class="o">?</span> <span class="o">or</span> <span class="nb">window</span><span class="p">.</span><span class="nx">webkitNotifications</span><span class="o">?</span> <span class="o">or</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">external</span> <span class="o">&amp;&amp;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">external</span><span class="p">.</span><span class="nx">msIsSiteMode</span><span class="o">?</span><span class="p">()</span> <span class="o">isnt</span> <span class="kc">undefined</span><span class="p">)</span>
+</pre></div>
+<p><code>window.Notification?</code> 用于判定 FireFox 23+ 以及 Chrome</p>
+
+<p><code>window.webkitNotifications?</code> 用于判定 Safari 6+</p>
+
+<p><code>window.external &amp;&amp; window.external.msIsSiteMode?() isnt undefined</code> 用于判定 IE 9+</p>
+
+<h5>获取用户浏览器设置权限</h5>
+
+<p>此时，我们需要判定用户浏览器权限，可能用户没有开启 Notification 或者用户禁用了 Notification。</p>
+<div class="highlight"><pre><span class="nv">hasPermission: </span><span class="nf">-&gt;</span>
+  <span class="k">if</span> <span class="nb">window</span><span class="p">.</span><span class="nx">webkitNotifications</span><span class="o">?</span>
+    <span class="k">if</span> <span class="nb">window</span><span class="p">.</span><span class="nx">webkitNotifications</span><span class="p">.</span><span class="nx">checkPermission</span><span class="p">()</span> <span class="o">is</span> <span class="mi">0</span>
+      <span class="k">return</span> <span class="kc">true</span>
+    <span class="k">else</span>
+      <span class="k">return</span> <span class="kc">false</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="nb">window</span><span class="p">.</span><span class="nx">Notification</span><span class="o">?</span><span class="p">.</span><span class="nx">permission</span>
+    <span class="k">if</span> <span class="nb">window</span><span class="p">.</span><span class="nx">Notification</span><span class="p">.</span><span class="nx">permission</span> <span class="o">is</span> <span class="s">&quot;granted&quot;</span>
+      <span class="k">return</span> <span class="kc">true</span>
+    <span class="k">else</span>
+      <span class="k">return</span> <span class="kc">false</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="nb">window</span><span class="p">.</span><span class="nx">external</span><span class="p">.</span><span class="nx">msIsSiteMode</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">true</span>
+  <span class="k">else</span>
+    <span class="k">return</span> <span class="kc">false</span>
+</pre></div>
+<ul>
+<li><p>Safari:</p>
+<div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">webkitNotifications</span><span class="p">.</span><span class="nx">checkPermission</span><span class="p">()</span>
+</pre></div></li>
+</ul>
+
+<p>返回值: 0 允许，1 还未设置，2 禁止。</p>
+
+<ul>
+<li><p>Chrome &amp;&amp; FireFox :</p>
+<div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">Notification</span><span class="p">.</span><span class="nx">permission</span>
+</pre></div></li>
+</ul>
+
+<p>返回值: default 还未设置，granted 允许，denied 禁止</p>
+
+<ul>
+<li><p>IE:</p>
+<div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">external</span><span class="p">.</span><span class="nx">msIsSiteMode</span><span class="p">()</span>
+</pre></div></li>
+</ul>
+
+<p>是否 Pin the website （通俗的说就是是否把网站设置为快捷图标。:) ）</p>
+
+<h5>设置权限</h5>
+
+<ul>
+<li><p>Safari:</p>
+<div class="highlight"><pre><span class="nx">Notification</span><span class="p">.</span><span class="nx">requestPermission</span><span class="p">()</span>
+</pre></div></li>
+</ul>
+
+<p>调用此方法将会弹出</p>
+
+<p><img alt="set safari notification" src="/images/html5-notification/setting-safari-notification.png?1403536095" /></p>
+
+<ul>
+<li><p>Chrome &amp; FireFox:</p>
+<div class="highlight"><pre><span class="nx">webkitNotifications</span><span class="p">.</span><span class="nx">requestPermission</span><span class="p">()</span>
+</pre></div></li>
+</ul>
+
+<p>调用此方法将会弹出</p>
+
+<p><img alt="set chrome notification" src="/images/html5-notification/setting-chrome-notification.png?1403536095" /></p>
+
+<h5>创建 Notification</h5>
+<div class="highlight"><pre><span class="nv">notify: </span><span class="nf">(avatar, title, content, url = null) -&gt;</span>
+  <span class="k">if</span> <span class="nb">window</span><span class="p">.</span><span class="nx">Notification</span>
+    <span class="nv">onclick = </span><span class="nf">-&gt;</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">focus</span><span class="p">()</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">notifier</span><span class="p">.</span><span class="nx">visitUrl</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+
+    <span class="nv">popup = </span><span class="k">new</span> <span class="nx">Notification</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="p">{</span> <span class="s">&#39;body&#39;</span><span class="o">:</span> <span class="nx">content</span><span class="p">,</span> <span class="s">&#39;onclick&#39;</span><span class="o">:</span> <span class="nx">onclick</span><span class="p">,</span> <span class="s">&#39;icon&#39;</span><span class="o">:</span> <span class="nx">avatar</span> <span class="p">})</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="nb">window</span><span class="p">.</span><span class="nx">webkitNotifications</span>
+    <span class="nv">popup = </span><span class="nb">window</span><span class="p">.</span><span class="nx">webkitNotifications</span><span class="p">.</span><span class="nx">createNotification</span><span class="p">(</span><span class="nx">avatar</span><span class="p">,</span> <span class="nx">title</span><span class="p">,</span> <span class="nx">content</span><span class="p">)</span>
+    <span class="nx">popup</span><span class="p">.</span><span class="nx">show</span><span class="p">()</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="nb">window</span><span class="p">.</span><span class="nx">external</span> <span class="o">and</span> <span class="nb">window</span><span class="p">.</span><span class="nx">external</span><span class="p">.</span><span class="nx">msIsSiteMode</span><span class="p">()</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">external</span><span class="p">.</span><span class="nx">msSiteModeClearIconOverlay</span><span class="p">()</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">external</span><span class="p">.</span><span class="nx">msSiteModeSetIconOverlay</span> <span class="s">&quot;/chat.ico&quot;</span><span class="p">,</span> <span class="nx">title</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">external</span><span class="p">.</span><span class="nx">msSiteModeActivate</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nx">popup</span>
+      <span class="nv">popup.onclick = </span><span class="nx">onclick</span> <span class="k">if</span> <span class="nx">url</span>
+</pre></div>
+<ul>
+<li><p>Safari:</p>
+<div class="highlight"><pre><span class="k">new</span> <span class="nx">Notification</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="p">{</span> <span class="s">&#39;body&#39;</span><span class="o">:</span> <span class="nx">content</span><span class="p">,</span> <span class="s">&#39;onclick&#39;</span><span class="o">:</span> <span class="nx">onclick</span> <span class="p">})</span>
+</pre></div></li>
+</ul>
+
+<p>在 Safari 中不支持图片，只可以传入“标题”， “内容”，“绑定事件”，在这里我们设置为当点击一个 Notification 的时候，浏览器会跳转到相应的地址。</p>
+
+<p><img alt="safari notification" src="/images/html5-notification/safari-notification.png?1403536095" /></p>
+
+<ul>
+<li><p>Chrom &amp; FireFox 创建:</p>
+<div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">webkitNotifications</span><span class="p">.</span><span class="nx">createNotification</span><span class="p">(</span><span class="nx">avatar</span><span class="p">,</span> <span class="nx">title</span><span class="p">,</span> <span class="nx">content</span><span class="p">)</span>
+</pre></div></li>
+</ul>
+
+<p>在 Chrome 和 FireFox 中，除了可以传入“标题”和“内容”外，我们还可以传入图片!</p>
+
+<p><img alt="webkit notification" src="/images/html5-notification/chrome-notification.png?1403536095" /></p>
+
+<ul>
+<li><p>IE:</p>
+<div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">external</span><span class="p">.</span><span class="nx">msSiteModeClearIconOverlay</span><span class="p">()</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">external</span><span class="p">.</span><span class="nx">msSiteModeSetIconOverlay</span> <span class="s">&quot;/chat.ico&quot;</span><span class="p">,</span> <span class="nx">title</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">external</span><span class="p">.</span><span class="nx">msSiteModeActivate</span><span class="p">()</span>
+</pre></div></li>
+</ul>
+
+<p>这个就比较。。。。不说了，只会在左下脚图标中出现一个小脚标，然后有闪动效果。</p>
+
+<p><img alt="windows notification" src="/images/html5-notification/ie-notification.png?1403536095" /></p>
+
+<blockquote>
+<p>更多关于 IE 的资料 <a href="http://msdn.microsoft.com/en-us/library/ie/gg618532(v=vs.85">http://msdn.microsoft.com/en-us/library/ie/gg618532(v=vs.85).aspx</a>.aspx)</p>
+</blockquote>
+
+</div>
+
+  </article>
+
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'yangzhuoyu'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+      </div>
+    </section>
+    
+    <footer>
+      <div class="copyright">
+        <p>&copy;2013 Roy</p>
+      </div>
+    </footer>
+
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-44777679-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+  </body>
+</html>
